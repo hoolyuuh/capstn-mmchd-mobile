@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/loginblaank"
+    tools:context=".LoginActivity">
+
+
+    <EditText
+        android:id="@+id/ti_email"
+        android:inputType="text"
+        android:layout_width="320dp"
+        android:layout_height="47dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="450dp"
+        android:textSize="18dp"
+        android:textColor="@color/light_gray"
+        android:background="@drawable/inputbox"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="   Email   "
+        android:textColor="@color/light_gray"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/ti_email"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintLeft_toLeftOf="@id/ti_email"
+        android:layout_marginLeft="10dp"
+        />
+
+
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/ti_password"
+        android:layout_width="320dp"
+        android:layout_height="47dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="365dp"
+        android:textSize="18dp"
+        android:textColor="@color/light_gray"
+        style="@style/Input"
+        android:background="@drawable/inputbox"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="   Password   "
+        android:textColor="@color/light_gray"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/ti_password"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintLeft_toLeftOf="@id/ti_password"
+        android:layout_marginLeft="10dp"
+        />
+    <ImageView
+        android:id="@+id/iv_eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@id/ti_password"
+        android:src="@drawable/eyeoff"
+        app:layout_constraintBottom_toBottomOf="@id/ti_password"
+        app:layout_constraintTop_toTopOf="@id/ti_password"
+        android:layout_marginRight="10dp"/>
+
+    <Button
+        android:id="@+id/btn_log"
+        android:layout_width="204dp"
+        android:layout_height="65dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="260dp"
+        style="@style/NoCorner"
+        android:backgroundTint="@color/theme_blue"
+        android:text="Login"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:fontFamily="@font/worksans_semibold"
+        android:textAllCaps="false"
+        android:textColor="@color/theme_cream"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

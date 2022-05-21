@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/theme_cream"
+    tools:context=".AddcifMeaslesActivity">
+
+    <LinearLayout
+        android:id="@+id/tv_addCase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Add a Case"
+            android:textColor="@color/theme_blue"
+            android:textSize="26dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Select the disease of the reported case:"
+            android:textColor="@color/theme_green"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add_cif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/tv_addCase"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/rounded_rect"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Case Investigation Form (CIF)"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:fontFamily="@font/worksans_semibold"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <Button
+            android:id="@+id/add_measles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Measles"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/theme_blue"
+            android:background="#f2f2f2"
+            style="?android:attr/borderlessButtonStyle"
+            />
+        <Button
+            android:id="@+id/add_rabies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rabies"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/theme_blue"
+            android:background="#f2f2f2"
+            style="?android:attr/borderlessButtonStyle"
+            />
+        <Button
+            android:id="@+id/add_pertussis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pertussis"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/theme_blue"
+            android:background="#f2f2f2"
+            style="?android:attr/borderlessButtonStyle"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add_crf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/add_cif"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/rounded_rect"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Case Report Form (CRF)"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:fontFamily="@font/worksans_semibold"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <Button
+            android:id="@+id/add_dengue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dengue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/theme_blue"
+            android:background="#f2f2f2"
+            style="?android:attr/borderlessButtonStyle"
+            />
+        <Button
+            android:id="@+id/add_cholera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cholera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/theme_blue"
+            android:background="#f2f2f2"
+            style="?android:attr/borderlessButtonStyle"
+            />
+        <Button
+            android:id="@+id/add_leptospirosis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leptospirosis"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/theme_blue"
+            android:background="#f2f2f2"
+            style="?android:attr/borderlessButtonStyle"
+            />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
