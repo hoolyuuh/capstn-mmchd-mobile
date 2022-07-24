@@ -69,6 +69,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
         <Button
             android:id="@+id/add_rabies"
@@ -93,6 +94,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
     </LinearLayout>
 
@@ -129,6 +131,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
         <Button
             android:id="@+id/add_cholera"
@@ -141,6 +144,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
         <Button
             android:id="@+id/add_leptospirosis"
@@ -153,6 +157,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
 
 
