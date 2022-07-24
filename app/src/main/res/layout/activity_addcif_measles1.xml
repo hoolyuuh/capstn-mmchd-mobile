@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_cream"
+    tools:context=".AddcifMeaslesActivity">
+
+    <LinearLayout
+        android:id="@+id/measlesBars1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginLeft="35.6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_blue"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35.6dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measlesBars1"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Patient Record"
+            android:textColor="@color/theme_green"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Add a Measles Case (CIF)"
+            android:textColor="@color/theme_blue"
+            android:textSize="26dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/measlesinput1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="125dp"
+        android:layout_marginBottom="85dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measlesBars1"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons_mea1a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/ti_mea_lastname"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Last Name *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_lastname"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_lastname" />
+
+                <EditText
+                    android:id="@+id/ti_mea_firstname"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_lastname" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   First Name *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_firstname"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_firstname" />
+
+                <EditText
+                    android:id="@+id/ti_mea_middlename"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_firstname" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Middle Name *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_middlename"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_middlename" />
+
+                <EditText
+                    android:id="@+id/ti_mea_birthdate"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_middlename" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Birthdate *  "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_birthdate"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_birthdate" />
+
+                <EditText
+                    android:id="@+id/ti_mea_sex"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="1.5dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_birthdate" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Sex *  "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_sex"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_sex" />
+
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/radiogroup_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_birthdate"
+                    tools:ignore="MissingConstraints">
+
+                    <RadioButton
+                        android:id="@+id/radiobutton_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="42dp"
+                        android:buttonTint="@color/theme_darkgray"
+                        android:text="Female"
+                        android:textColor="@color/theme_darkgray" />
+
+                    <RadioButton
+                        android:id="@+id/radiobutton_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:buttonTint="@color/theme_darkgray"
+                        android:text="Male"
+                        android:textColor="@color/theme_darkgray" />
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/ti_mea_pregnancy"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="1.5dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_sex" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Pregnancy *  "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_pregnancy"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_pregnancy" />
+
+                <RadioGroup
+                    android:id="@+id/radiogroup_pregnancy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/radiogroup_sex"
+                    tools:ignore="MissingConstraints">
+
+                    <RadioButton
+                        android:id="@+id/radiobutton_notpreg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:buttonTint="@color/theme_darkgray"
+                        android:text="Not Pregnant"
+                        android:textColor="@color/theme_darkgray" />
+
+                    <RadioButton
+                        android:id="@+id/radiobutton_preg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:buttonTint="@color/theme_darkgray"
+                        android:text=""
+                        android:textColor="@color/theme_darkgray" />
+
+                    <EditText
+                        android:layout_width="35dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="-10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/inputbox"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="-10dp"
+                        android:paddingRight="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Weeks Pregnant"
+                        android:textColor="@color/theme_darkgray" />
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/ti_mea_phone"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="65dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_pregnancy" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Phone *  "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_phone"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_phone" />
+
+                <TextView
+                    android:id="@+id/tv_mea_civilstatus"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="text"
+                    android:paddingTop="15dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_phone" />
+
+                <Spinner
+                    android:id="@+id/spinner_mea_civilstatus"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="10dp"
+                    android:spinnerMode="dropdown"
+                    android:textColor="#FFFBEE"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_mea_civilstatus" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Civil Status *  "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/tv_mea_civilstatus"
+                    app:layout_constraintTop_toTopOf="@id/tv_mea_civilstatus" />
+
+                <EditText
+                    android:id="@+id/ti_mea_indigenous"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_mea_civilstatus" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Indigenous Group   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_indigenous"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_indigenous" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/cons_mea1a"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons_mea1b"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/cons_mea1a"
+                android:paddingTop="20dp">
+
+                <EditText
+                    android:id="@+id/ti_mea_occupation"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cons_mea1b"
+                    tools:ignore="MissingConstraints" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Occupation *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_occupation"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_occupation" />
+
+                <EditText
+                    android:id="@+id/ti_mea_occuloc"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="57dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:hint="Office/School"
+                    android:textColorHint="@color/theme_gray"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_occupation" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Occupation Location *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_occuloc"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_occuloc" />
+
+                <EditText
+                    android:id="@+id/ti_mea_occustreet"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_occuloc" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Occupation Street *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_occustreet"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_occustreet" />
+
+                <LinearLayout
+                    android:id="@+id/cons_mea1c"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_occustreet"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_mea1d"
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_mea_occucity"
+                            style="@style/Input"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="15dp"
+                            android:paddingLeft="6dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            app:layout_constraintTop_toTopOf="@id/cons_mea1d"
+                            tools:ignore="MissingConstraints,NotSibling" />
+
+                        <Spinner
+                            android:id="@+id/spinner_mea_occucity"
+                            style="@style/Widget.AppCompat.Spinner.DropDown"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="7dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#FFFBEE"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_occucity" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:background="@color/theme_cream"
+                            android:text="   City *  "
+                            android:textColor="@color/light_gray"
+                            android:textSize="15dp"
+                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_occucity"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_occucity" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_mea1e"
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_mea_occubrgy"
+                            style="@style/Input"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="15dp"
+                            android:paddingLeft="6dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            app:layout_constraintTop_toTopOf="@id/cons_mea1e"
+                            tools:ignore="MissingConstraints,NotSibling" />
+
+                        <Spinner
+                            android:id="@+id/spinner_mea_occubrgy"
+                            style="@style/Widget.AppCompat.Spinner.DropDown"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="7dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#FFFBEE"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_occubrgy" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:background="@color/theme_cream"
+                            android:text="   Barangay *  "
+                            android:textColor="@color/light_gray"
+                            android:textSize="15dp"
+                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_occubrgy"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_occubrgy" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/ti_mea_currstreet"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="80dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cons_mea1c" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Current Street Address *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_currstreet"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_currstreet" />
+
+                <LinearLayout
+                    android:id="@+id/cons_mea1f"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_currstreet"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_mea1g"
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_mea_currcity"
+                            style="@style/Input"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="15dp"
+                            android:paddingLeft="6dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            app:layout_constraintTop_toTopOf="@id/cons_mea1g"
+                            tools:ignore="MissingConstraints,NotSibling" />
+
+                        <Spinner
+                            android:id="@+id/spinner_mea_currcity"
+                            style="@style/Widget.AppCompat.Spinner.DropDown"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="7dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#FFFBEE"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_currcity" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:background="@color/theme_cream"
+                            android:text="   City *  "
+                            android:textColor="@color/light_gray"
+                            android:textSize="15dp"
+                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_currcity"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_currcity" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_mea1h"
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_mea_currbrgy"
+                            style="@style/Input"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="15dp"
+                            android:paddingLeft="6dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            app:layout_constraintTop_toTopOf="@id/cons_mea1h"
+                            tools:ignore="MissingConstraints,NotSibling" />
+
+                        <Spinner
+                            android:id="@+id/spinner_mea_currbrgy"
+                            style="@style/Widget.AppCompat.Spinner.DropDown"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="7dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#FFFBEE"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_currbrgy" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:background="@color/theme_cream"
+                            android:text="   Barangay *  "
+                            android:textColor="@color/light_gray"
+                            android:textSize="15dp"
+                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_currbrgy"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_currbrgy" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <CheckBox android:id="@+id/checkbox_sameaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Same Current and Permanent Address"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/theme_darkgray"
+                    android:buttonTint="@color/theme_darkgray"
+                    app:layout_constraintTop_toBottomOf="@id/cons_mea1f"
+                    tools:ignore="MissingConstraints" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons_perminfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/cons_mea1b"
+                tools:ignore="NotSibling">
+                <EditText
+                    android:id="@+id/ti_mea_permstreet"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cons_perminfo"
+                    tools:ignore="NotSibling" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Permanent Street Address *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_permstreet"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_permstreet" />
+
+                <LinearLayout
+                    android:id="@+id/cons_mea1j"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_permstreet"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_mea1k"
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_mea_permcity"
+                            style="@style/Input"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="15dp"
+                            android:paddingLeft="6dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            app:layout_constraintTop_toTopOf="@id/cons_mea1k"
+                            tools:ignore="MissingConstraints,NotSibling" />
+
+                        <Spinner
+                            android:id="@+id/spinner_mea_permcity"
+                            style="@style/Widget.AppCompat.Spinner.DropDown"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="7dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#FFFBEE"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_permcity" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:background="@color/theme_cream"
+                            android:text="   City *  "
+                            android:textColor="@color/light_gray"
+                            android:textSize="15dp"
+                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_permcity"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_permcity" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_mea1l"
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_mea_permbrgy"
+                            style="@style/Input"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="15dp"
+                            android:paddingLeft="6dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"
+                            app:layout_constraintTop_toTopOf="@id/cons_mea1l"
+                            tools:ignore="MissingConstraints,NotSibling" />
+
+                        <Spinner
+                            android:id="@+id/spinner_mea_permbrgy"
+                            style="@style/Widget.AppCompat.Spinner.DropDown"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="7dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="#FFFBEE"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_permbrgy" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:background="@color/theme_cream"
+                            android:text="   Barangay *  "
+                            android:textColor="@color/light_gray"
+                            android:textSize="15dp"
+                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_permbrgy"
+                            app:layout_constraintTop_toTopOf="@id/tv_mea_permbrgy" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/cons_perminfo"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons_mea1m"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/cons_perminfo"
+                android:layout_marginTop="50dp"
+                android:paddingBottom="50dp"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/ti_mea_parentcg"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cons_mea1m"
+                    tools:ignore="MissingConstraints" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Parent/Caregiver *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_parentcg"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_parentcg" />
+
+                <EditText
+                    android:id="@+id/ti_mea_parentcgContact"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="number"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_parentcg" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Contact No. *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_parentcgContact"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_parentcgContact" />
+
+                <EditText
+                    android:id="@+id/ti_mea_hcpn"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_parentcgContact" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   HCPN   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_hcpn"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_hcpn" />
+
+                <EditText
+                    android:id="@+id/ti_mea_ilhz"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_hcpn" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   ILHZ   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/ti_mea_ilhz"
+                    app:layout_constraintTop_toTopOf="@id/ti_mea_ilhz" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:flow_horizontalAlign="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btn_meas_back0"
+            style="@style/NoCorner"
+            android:layout_width="95dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/theme_cream"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Back"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/theme_blue"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/btn_meas_next2"
+            style="@style/NoCorner"
+            android:layout_width="95dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="45dp"
+            android:backgroundTint="#346083"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Next"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFBEE"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
