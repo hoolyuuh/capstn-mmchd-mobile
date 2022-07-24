@@ -11,6 +11,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 
 import com.idsr.mobile.databinding.ActivityAddcifMeasles0Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles1Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles2Binding;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -33,12 +35,21 @@ import java.util.Date;
 public class AddcifMeaslesActivity extends AppCompatActivity {
     private ActivityAddcifMeasles0Binding binding0;
     private ActivityAddcifMeasles1Binding binding1;
+    private ActivityAddcifMeasles2Binding binding2;
 
     private Boolean page1 = Boolean.FALSE;
     private Boolean page2 = Boolean.FALSE;
     private Boolean page3 = Boolean.FALSE;
+    private Boolean page4 = Boolean.FALSE;
+    private Boolean page5 = Boolean.FALSE;
+    private Boolean page6 = Boolean.FALSE;
+    private Boolean page7 = Boolean.FALSE;
+    private Boolean page8 = Boolean.FALSE;
+    private Boolean page9 = Boolean.FALSE;
+    private Button cancel, next1, back0, next2, back1, next3, back2, next4, back3, next5, back4, next6, back5, next7, back6, next8, back7, next9, back8, submit;
 
-    private Button next1, cancel1, next2, cancel2, next3, cancel3;
+    private AutoCompleteTextView autocompPatients;
+
     private EditText ETlastname, ETmiddlename, ETfirstname, ETbirthdate, ETphone;
     private RadioGroup radioSex;
     private RadioButton radioFemale, radioMale;
@@ -51,7 +62,6 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String firstName, middleName, lastName, sex, civilstatus;
     private Date birthday;
     private int phone;
-
     private String street;
     private String city;
     private String barangay;
@@ -59,13 +69,46 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-//        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
-//        setContentView(R.layout.activity_addcif_measles0);
+        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
+        setContentView(R.layout.activity_addcif_measles0);
+        pagezero();
+//        startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+    }
 
-        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_addcif_measles1);
+    public void pagezero() {
+        String[] patientnames =  {
+            "Hello, Android - Ed Burnette",
+            "Professional Android 2 App Dev - Reto Meier",
+        };
+        ArrayAdapter<String> adapterPatients = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,patientnames);
+        this.autocompPatients = (AutoCompleteTextView)findViewById(R.id.autocomp_mea_searchpatient);
+        autocompPatients.setThreshold(1);
+        autocompPatients.setAdapter(adapterPatients);
+        autocompPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                patientInfoFill(autocompPatients.getText().toString());
+                Toast.makeText(getBaseContext(), autocompPatients.getText().toString(), Toast.LENGTH_SHORT).show();
+                binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
+                setContentView(R.layout.activity_addcif_measles2);
+                pageTwoOnwards();
+            }
+        });
+
+        this.next1 = findViewById(R.id.btn_meas_next1);
+        this.cancel = findViewById(R.id.btn_meas_cancel);
+        next1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
+                setContentView(R.layout.activity_addcif_measles1);
+                pageOne();
+            }
+        });
+    }
+
+    public void pageOne() {
 
         this.ETlastname = findViewById(R.id.ti_mea_lastname);
         this.ETfirstname = findViewById(R.id.ti_mea_firstname);
@@ -92,9 +135,6 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         TextView currbrgy = findViewById(R.id.tv_mea_currbrgy);
         TextView permcity = findViewById(R.id.tv_mea_permcity);
         TextView permbrgy = findViewById(R.id.tv_mea_permbrgy);
-
-        this.next1 = findViewById(R.id.btn_meas_next1);
-        this.cancel1 = findViewById(R.id.btn_meas_cancel);
 
 //        DATE
         this.ETbirthdate.setOnClickListener(new View.OnClickListener() {
@@ -233,7 +273,24 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
-//        startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+        this.next2 = findViewById(R.id.btn_meas_next2);
+        this.back0 = findViewById(R.id.btn_meas_back0);
+        next2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
+                setContentView(R.layout.activity_addcif_measles2);
+                pageTwoOnwards();
+            }
+        });
+    }
+
+    public void pageTwoOnwards() {
+
+    }
+
+    public void patientInfoFill(String patient) {
+        //get patient info
     }
 
     public int getBrgy(String city) {
