@@ -22,8 +22,8 @@ public class StartActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-//                startActivity(new Intent(StartActivity.this, LoginActivity.class));
-                startActivity(new Intent(StartActivity.this, AddcifMeaslesActivity.class));
+                startActivity(new Intent(StartActivity.this, LoginActivity.class));
+//                startActivity(new Intent(StartActivity.this, AddcifMeaslesActivity.class));
             }
         }, 4000);
     }
