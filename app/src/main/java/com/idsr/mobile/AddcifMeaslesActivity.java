@@ -27,6 +27,11 @@ import com.idsr.mobile.databinding.ActivityAddcifMeasles1Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles2Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles3Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles4Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles5Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles6Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles7Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles8Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles9Binding;
 
 import org.w3c.dom.Text;
 
@@ -42,6 +47,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private ActivityAddcifMeasles2Binding binding2;
     private ActivityAddcifMeasles3Binding binding3;
     private ActivityAddcifMeasles4Binding binding4;
+    private ActivityAddcifMeasles5Binding binding5;
+    private ActivityAddcifMeasles6Binding binding6;
+    private ActivityAddcifMeasles7Binding binding7;
+    private ActivityAddcifMeasles8Binding binding8;
+    private ActivityAddcifMeasles9Binding binding9;
 
     private Boolean page1 = Boolean.FALSE;
     private Boolean page2 = Boolean.FALSE;
@@ -107,6 +117,30 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String vaccinationStatus, vaccineMV, vaccineMR, vaccineMMR, vaccineLastDoseDate, vaccinationValidity, vaccineCampaign, novaccineReasonOther, vitA;
     // TODO: no vaxx reason initializaton, not sure also how theyre stored
 
+//    page 5
+    private RadioGroup radioTravelhistory, radioRashOnset, radioMeaslesContact, radioRubellaContact, radioRubellaExposure, radioOtherFeverRashes;
+    private ConstraintLayout consWithTravelHistory, consConfirmedRubella;
+    private EditText etTravelPlace, etTravelDate, etRubellaContactName, etRubellaContactPlace, etRubellaTravelDate, etRubellaExposureOther;
+
+    private String travelHistory, travelPlace, travelDate, rashOnset, measlesContact, rubellaContact, rubellaContactName, rubellaContactPlace, rubellaContactTravelDate, rubellaExposure, otherKnownFeverRash;
+
+//    page 6
+    private RadioGroup radioSourceinfo;
+    private String sourceinfo;
+
+//    page 7
+    private RadioGroup radioOutcome;
+    private EditText etDatedied, etFinalDiagnosis;
+    private String outcome, datedied, finaldiagnosis;
+
+//    page 8
+    private RadioGroup radioLabResult;
+    private ConstraintLayout consWithLabResult, consNoLabResult;
+    private TextView tvLabspecimen, tvLabSelect;
+    private Spinner spinnerLabSpecimen, spinnerLabSelect;
+    private EditText etCollectdate, etReceivedate, etresultMeasles, etresultRubella, etresultVirus, etresultPRC, etInvestigator, etInvestigContact, etInvestigDate;
+
+    private String labresult, labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, invesitgatorContact, invesitgateDate, labselected;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -117,6 +151,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
         binding3 = ActivityAddcifMeasles3Binding.inflate(getLayoutInflater());
         binding4 = ActivityAddcifMeasles4Binding.inflate(getLayoutInflater());
+        binding5 = ActivityAddcifMeasles5Binding.inflate(getLayoutInflater());
+        binding6 = ActivityAddcifMeasles6Binding.inflate(getLayoutInflater());
+        binding7 = ActivityAddcifMeasles7Binding.inflate(getLayoutInflater());
+        binding8 = ActivityAddcifMeasles8Binding.inflate(getLayoutInflater());
+        binding9 = ActivityAddcifMeasles9Binding.inflate(getLayoutInflater());
         pageZero();
 //        startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
     }
@@ -158,7 +197,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     }
 
     public void patientInfoFill(String patient) {
-        //get patient info
+        // TODO: get patient info
     }
 
     public void pageOne() {
@@ -202,22 +241,13 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.etILHZ = findViewById(R.id.et_mea_ilhz);
 
 //        DATE
-        this.etBirthdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int mYear, mMonth, mDay;
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
+        this.etBirthdate.setOnClickListener(new View.OnClickListener() {@Override
+            public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+                mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                                etBirthdate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);}
-                        }, mYear, mMonth, mDay);
-                datePickerDialog.show();
-            }
+                        new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                                etBirthdate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                datePickerDialog.show(); }
         });
 
 //        RADIO
@@ -241,19 +271,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             }
         });
 
-        checkboxSameaddress.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
+        checkboxSameaddress.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    constPermanentAdd.setVisibility(View.GONE);
-                    sameCurrPermAddress = true;
-                }
-                else {
-                    constPermanentAdd.setVisibility(View.VISIBLE);
-                    sameCurrPermAddress = false;
-                }
-            }
+                if (b) constPermanentAdd.setVisibility(View.GONE);
+                else constPermanentAdd.setVisibility(View.VISIBLE);
+                sameCurrPermAddress = b;}
         });
 
 //        DROPDOWN
@@ -365,6 +387,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 middleName = etMiddlename.getText().toString();
                 birthdate = etBirthdate.getText().toString();
                 // sex & pregnancy above in radio onclick
+                // TODO: logic for pregnancy, if pregnancy != not pregnant, get etPregantweeks value
                 civilstatus = tvCivilStatus.getText().toString();
                 indigenousgroup = etIndigenousgroup.getText().toString();
                 phone = etPhone.getText().toString();
@@ -587,7 +610,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 symptoms = etSymptoms.getText().toString();
                 workingdiagnosis = etWorkingDiagnosis.getText().toString();
 
-                // no validation needed, since not required
+                // no validation needed, since no required
                 page3 = true;
                 pageFour();
             }
@@ -605,7 +628,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.etVaccineMMR = findViewById(R.id.et_mea_vaccinedoseMMR);
         this.etVaccineLastDoseDate = findViewById(R.id.et_mea_vaccinelastdosedate);
         this.radioVaccineValidity = findViewById(R.id.radiogroup_vaccinevalidation);
-        this.etVaccineValidityOthers = findViewById(R.id.radiobutton_vaccinevalidationOther);
+        this.etVaccineValidityOthers = findViewById(R.id.et_vaccinevalidationOther);
         this.radioVaccineCampaign = findViewById(R.id.radiogroup_vaccinecampaign);
 
         this.checkNoVaccReas1 = findViewById(R.id.checkbox_novaccine1);
@@ -686,17 +709,16 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         next5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // vaccinationStatus set in onclick
+                // set in onclick: vaccinationStatus, vaccinevalidity, vaccineCampaign
                 vaccineMV = etVaccineMV.getText().toString();
                 vaccineMR = etVaccineMR.getText().toString();
                 vaccineMMR = etVaccineMMR.getText().toString();
                 vaccineLastDoseDate = etVaccineLastDoseDate.getText().toString();
                 vaccinationValidity = etVaccineValidityOthers.getText().toString();
-                // vaccinevalidity & vaccineCampaign set in onclick
 
                 // TODO: no vaxx reason retrieve, use ischeck()
                 novaccineReasonOther = etNoVaccReasOther.getText().toString();
-                // vita also set onclick
+                // vitA also set onclick
 
                 // TODO: validation ekek
                 if (false) {
@@ -714,15 +736,92 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     public void pageFive() {
         setContentView(R.layout.activity_addcif_measles4);
 
-        this.next6 = findViewById(R.id.btn_meas_next5);
-        this.back4 = findViewById(R.id.btn_meas_back3);
-        back6.setOnClickListener(new View.OnClickListener() {
+        this.radioTravelhistory = findViewById(R.id.radiogroup_mea_travelhistory);
+        this.consWithTravelHistory = findViewById(R.id.cons_mea_withtravelhistory);
+        this.etTravelPlace = findViewById(R.id.et_mea_travelplace);
+        this.etTravelDate = findViewById(R.id.et_mea_traveldate);
+        this.radioRashOnset = findViewById(R.id.radiogroup_rashonsetdate);
+        this.radioMeaslesContact = findViewById(R.id.radiogroup_measlescontact);
+        this.radioRubellaContact = findViewById(R.id.radiogroup_rubellacontact);
+        this.consConfirmedRubella = findViewById(R.id.cons_mea_confirmedrubella);
+        this.etRubellaContactName = findViewById(R.id.et_rubella_contactname);
+        this.etRubellaContactPlace = findViewById(R.id.et_rubella_contactplace);
+        this.etRubellaTravelDate = findViewById(R.id.et_rubella_traveldate);
+        this.radioRubellaExposure = findViewById(R.id.radiogroup_rubellaExposure);
+        this.etRubellaExposureOther = findViewById(R.id.et_rubellaexposureOther);
+        this.radioOtherFeverRashes = findViewById(R.id.radiogroup_otherfeverrashes);
+
+        radioTravelhistory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                if (radioButton.getText().toString().equals("Yes")) consWithTravelHistory.setVisibility(View.VISIBLE);
+                else consWithTravelHistory.setVisibility(View.GONE);
+                travelHistory = radioButton.getText().toString();
+            }
+        });
+        radioRashOnset.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                rashOnset = radioButton.getText().toString();}
+        });
+        radioMeaslesContact.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                measlesContact = radioButton.getText().toString();}
+        });
+        radioRubellaContact.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                if (radioButton.getText().toString().equals("Yes")) consConfirmedRubella.setVisibility(View.VISIBLE);
+                else consConfirmedRubella.setVisibility(View.GONE);
+                rubellaContact = radioButton.getText().toString();}
+        });
+        radioRubellaExposure.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                if (radioButton.getText().toString().equals("Other:")) etRubellaExposureOther.setVisibility(View.VISIBLE);
+                else etRubellaExposureOther.setVisibility(View.GONE);
+                rubellaExposure = radioButton.getText().toString();}
+        });
+        radioOtherFeverRashes.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                otherKnownFeverRash = radioButton.getText().toString();}
+        });
+
+        this.etTravelPlace.setOnClickListener(new View.OnClickListener() {@Override
+        public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                        etTravelPlace.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+        this.etTravelDate.setOnClickListener(new View.OnClickListener() {@Override
+        public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                        etTravelDate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+
+        this.next6 = findViewById(R.id.btn_meas_next6);
+        this.back4 = findViewById(R.id.btn_meas_back4);
+        back4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { pageFour(); }
         });
-        next4.setOnClickListener(new View.OnClickListener() {
+        next6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // all set in onclick: travelHistory, rashOnset, measlesContact, rubellaContact, rubellaExposure, otherKnownFeverRash
+                travelPlace = etTravelPlace.getText().toString();
+                travelDate = etTravelDate.getText().toString();
+                rubellaContactName = etRubellaContactName.getText().toString();
+                rubellaContactPlace = etRubellaContactPlace.getText().toString();
+                rubellaContactTravelDate = etRubellaTravelDate.getText().toString();
+
                 // TODO: validation ekek
                 if (false) {
                     Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
@@ -737,7 +836,240 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     }
 
     public void pageSix() {
+        setContentView(R.layout.activity_addcif_measles6);
 
+        this.radioSourceinfo = findViewById(R.id.radiogroup_mea_sourceinfo);
+        radioSourceinfo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                sourceinfo = radioButton.getText().toString();}
+        });
+
+        this.next7 = findViewById(R.id.btn_meas_next7);
+        this.back5 = findViewById(R.id.btn_meas_back5);
+        back5.setOnClickListener(new View.OnClickListener() { @Override
+            public void onClick(View view) { pageFive(); }
+        });
+        next7.setOnClickListener(new View.OnClickListener() { @Override
+            public void onClick(View view) {
+                if (sourceinfo.isEmpty()) { page6 = false; Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show(); }
+                else { page6 = true; pageSeven(); }
+            }
+        });
+    }
+
+    public void pageSeven() {
+        setContentView(R.layout.activity_addcif_measles7);
+
+        this.radioOutcome = findViewById(R.id.radiogroup_mea_outcome);
+        this.etDatedied = findViewById(R.id.et_mea_datedied);
+        this.etFinalDiagnosis = findViewById(R.id.et_mea_finaldiagnosis);
+
+        radioOutcome.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                outcome = radioButton.getText().toString();
+                if (outcome.equals("Alive")) etDatedied.setVisibility(View.INVISIBLE);
+                else etDatedied.setVisibility(View.VISIBLE);}
+        });
+
+        this.etDatedied.setOnClickListener(new View.OnClickListener() {@Override
+        public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                        etDatedied.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+
+        this.next8 = findViewById(R.id.btn_meas_next8);
+        this.back6 = findViewById(R.id.btn_meas_back6);
+        back6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { pageSix(); }
+        });
+        next8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // outcome is set in onclick
+                datedied = etDatedied.getText().toString();
+                finaldiagnosis = etFinalDiagnosis.getText().toString();
+
+                // TODO: validation ekek
+                if (false) {
+                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                    page7 = false;
+                }
+                else {
+                    page7 = true;
+                    pageEight();
+                }
+            }
+        });
+    }
+
+    public void pageEight() {
+        setContentView(R.layout.activity_addcif_measles8);
+
+        this.radioLabResult = findViewById(R.id.radiogroup_mea_labresult);
+        this.consWithLabResult = findViewById(R.id.cons_mea_withlabresult);
+        this.consNoLabResult = findViewById(R.id.cons_mea_nolabresult);
+        this.tvLabspecimen = findViewById(R.id.tv_mea_labspecimen);
+        this.spinnerLabSpecimen = findViewById(R.id.spinner_mea_labspecimen);
+        this.etCollectdate = findViewById(R.id.et_mea_collectdate);
+        this.etReceivedate = findViewById(R.id.et_mea_receivedate);
+        this.etresultMeasles = findViewById(R.id.et_meaaslesresultIgm);
+        this.etresultRubella = findViewById(R.id.et_rubellaresultIgm);
+        this.etresultVirus = findViewById(R.id.et_meaaslesresultVirusIsolation);
+        this.etresultPRC = findViewById(R.id.et_meaaslesresultPRC);
+        this.etInvestigator = findViewById(R.id.et_mea_resultInvestigator);
+        this.etInvestigContact = findViewById(R.id.et_mea_resultInvestigatorContact);
+        this.etInvestigDate = findViewById(R.id.et_mea_resultInvestiDate);
+        this.tvLabSelect = findViewById(R.id.tv_mea_labselect);
+        this.spinnerLabSelect = findViewById(R.id.spinner_mea_labselect);
+
+        radioLabResult.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButton = (RadioButton) findViewById(i);
+                labresult = radioButton.getText().toString();
+                if (labresult.equals("Yes")) {consWithLabResult.setVisibility(View.VISIBLE); consNoLabResult.setVisibility(View.INVISIBLE);}
+                else if (labresult.equals("No")) {consWithLabResult.setVisibility(View.INVISIBLE); consNoLabResult.setVisibility(View.VISIBLE);}
+            }
+        });
+
+        etCollectdate.setOnClickListener(new View.OnClickListener() {@Override
+        public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                        etCollectdate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+        etReceivedate.setOnClickListener(new View.OnClickListener() {@Override
+        public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                        etReceivedate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+        etInvestigDate.setOnClickListener(new View.OnClickListener() {@Override
+        public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                        etInvestigDate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+
+        ArrayAdapter<CharSequence>adapterLabSpecimen=ArrayAdapter.createFromResource(this, R.array.measLabSpecimen, android.R.layout.simple_spinner_item);
+        adapterLabSpecimen.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinnerLabSpecimen.setAdapter(adapterLabSpecimen);
+        spinnerLabSpecimen.setSelection(0, true);
+        spinnerLabSpecimen.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                tvLabspecimen.setText(spinnerLabSpecimen.getSelectedItem().toString());
+                ((TextView) adapterView.getChildAt(0)).setVisibility(View.INVISIBLE);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+        ArrayAdapter<CharSequence>adapterLabSelection=ArrayAdapter.createFromResource(this, R.array.measLabSelection, android.R.layout.simple_spinner_item);
+        adapterLabSelection.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinnerLabSelect.setAdapter(adapterLabSelection);
+        spinnerLabSelect.setSelection(0, true);
+        spinnerLabSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                tvLabSelect.setText(spinnerLabSelect.getSelectedItem().toString());
+                ((TextView) adapterView.getChildAt(0)).setVisibility(View.INVISIBLE);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+        this.next9 = findViewById(R.id.btn_meas_next9);
+        this.back7 = findViewById(R.id.btn_meas_back7);
+        back7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { pageSeven(); }
+        });
+        next9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // set in onclick: labresult
+                labspecimen = tvLabspecimen.getText().toString();
+                collectdate = etCollectdate.getText().toString();
+                receivedate = etReceivedate.getText().toString();
+                resultMeasle = etresultMeasles.getText().toString();
+                resultRubella = etresultRubella.getText().toString();
+                resultVirus = etresultVirus.getText().toString();
+                resultPRC = etresultPRC.getText().toString();
+                investigator = etInvestigator.getText().toString();
+                invesitgatorContact = etInvestigContact.getText().toString();
+                invesitgateDate = etInvestigDate.getText().toString();
+                labselected = tvLabSelect.getText().toString();
+
+                // TODO: validation ekek
+                if (false) {
+                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                    page8 = false;
+                }
+                else {
+                    page8 = true;
+                    pageNine();
+                }
+            }
+        });
+    }
+
+    public void pageNine() {
+        setContentView(R.layout.activity_addcif_measles9);
+
+        // radiogroup & dropdown imgbutton
+
+        // img button onclick = textview.
+        /*
+
+        btn.setOnClickListener(
+            if (textview.visible()) {
+                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+                hiddenGroup.setVisibility(View.GONE);
+                arrow.setImageResource(android.R.drawable.arrowdown);
+            }
+            else {
+                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+                hiddenGroup.setVisibility(View.VISIBLE);
+                arrow.setImageResource(android.R.drawable.arrowup);
+            }
+        )
+
+         */
+
+        this.submit = findViewById(R.id.btn_meas_submit);
+        this.back8 = findViewById(R.id.btn_meas_back8);
+        back8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { pageEight(); }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // TODO: validation ekek
+                if (false) {
+                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                    page9 = false;
+                }
+                else {
+                    page9 = true;
+//                    submit();
+                }
+            }
+        });
     }
 
     public int getBrgy(String city) {

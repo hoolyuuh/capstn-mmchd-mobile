@@ -23,6 +23,19 @@
         <item>WIDOWED</item>
     </string-array>
 
+    <string name="measLabSpecimen">measLabSpecimen</string>
+    <string-array name="measLabSpecimen">
+        <item>SERUM</item>
+        <item>DRIED BLOOD SPOT</item>
+        <item>OROPHARYNGEAL/NASOPHARYNGEAL SWAB</item>
+    </string-array>
+
+    <string name="measLabSelection">measLabSelection</string>
+    <string-array name="measLabSelection">
+        <item>LAB NAME 1</item>
+        <item>LAB NAME 2</item>
+    </string-array>
+
     <string name="city">city</string>
     <string-array name="city">
         <item>CALOOCAN CITY</item>
