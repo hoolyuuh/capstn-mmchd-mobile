@@ -189,7 +189,7 @@
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_marginRight="15dp"
             android:backgroundTint="@color/theme_cream"
             android:fontFamily="@font/worksans_semibold"
             android:text="Cancel"
