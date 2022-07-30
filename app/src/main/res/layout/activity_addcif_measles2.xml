@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_cream"
+    tools:context=".AddcifMeaslesActivity">
+
+    <LinearLayout
+        android:id="@+id/measlesBars2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginLeft="35.6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_blue"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35.6dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measlesBars2"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Patient Information"
+            android:textColor="@color/theme_green"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Add a Measles Case (CIF)"
+            android:textColor="@color/theme_blue"
+            android:textSize="26dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="125dp"
+        android:layout_marginBottom="85dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/measlesBars2"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="50dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons_mea2a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/et_mea_patientadmit"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="1.5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cons_mea2a" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Patient Admitted *  "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/et_mea_patientadmit"
+                    app:layout_constraintTop_toTopOf="@id/et_mea_patientadmit" />
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/radiogroup_patientadmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/et_mea_patientadmit"
+                    tools:ignore="MissingConstraints">
+                    <RadioButton
+                        android:id="@+id/radiobutton_patientnotadmit"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:buttonTint="@color/theme_darkgray"
+                        android:text="No"
+                        android:textColor="@color/theme_darkgray" />
+                    <RadioButton
+                        android:id="@+id/radiobutton_patientadmitted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:buttonTint="@color/theme_darkgray"
+                        android:text="Yes"
+                        android:textColor="@color/theme_darkgray" />
+                    <EditText
+                        android:visibility="invisible"
+                        android:id="@+id/et_mea_admitDate"
+                        style="@style/Input"
+                        android:layout_width="113dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="0dp"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:background="@drawable/inputbox"
+                        android:focusable="false"
+                        android:inputType="date"
+                        android:hint="Date Admitted"
+                        android:textColorHint="@color/theme_gray"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/radiobutton_patientadmitted" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/cons_mea2b"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/et_mea_patientadmit"
+                    tools:ignore="MissingConstraints">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_mea2c"
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        app:layout_constraintLeft_toLeftOf="parent">
+                        <EditText
+                            android:id="@+id/et_mea_onsetdate"
+                            style="@style/Input"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/inputbox"
+                            android:focusable="false"
+                            android:inputType="text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/cons_mea2c" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:background="@color/theme_cream"
+                            android:text="   Date Onset *  "
+                            android:textColor="@color/light_gray"
+                            android:textSize="15dp"
+                            app:layout_constraintLeft_toLeftOf="@id/et_mea_onsetdate"
+                            app:layout_constraintTop_toTopOf="@id/et_mea_onsetdate" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cons_mea2d"
+                        android:layout_width="155dp"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/et_mea_reportdate"
+                            style="@style/Input"
+                            android:layout_width="155dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/inputbox"
+                            android:focusable="false"
+                            android:inputType="text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/cons_mea2d" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:background="@color/theme_cream"
+                            android:text="  Date Reported *  "
+                            android:textColor="@color/light_gray"
+                            android:textSize="15dp"
+                            app:layout_constraintLeft_toLeftOf="@id/et_mea_reportdate"
+                            app:layout_constraintTop_toTopOf="@id/et_mea_reportdate" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_mea_reporter"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="75dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="textCapCharacters"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cons_mea2b" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Reporter *   "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/et_mea_reporter"
+                    app:layout_constraintTop_toTopOf="@id/et_mea_reporter" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RISK FACTORS"
+                android:textColor="@color/theme_blue"
+                android:fontFamily="@font/worksans_semibold"
+                android:textSize="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/cons_mea2a"
+                android:layout_marginTop="20dp"
+                tools:ignore="MissingConstraints,NotSibling" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons_mea2e"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/cons_mea2a">
+
+                <LinearLayout
+                    android:id="@+id/cons_mea2f"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    tools:ignore="MissingConstraints">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lifestyle"
+                        android:textColor="@color/theme_green"
+                        android:fontFamily="@font/worksans_semibold"
+                        android:textSize="16dp"
+                        app:layout_constraintTop_toTopOf="@+id/cons_mea2f"
+                        android:layout_marginLeft="5dp"
+                        tools:ignore="MissingConstraints,NotSibling" />
+
+                    <CheckBox android:id="@+id/checkbox_mea_rfL1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="None"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-3dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/cons_mea2f"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfL2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Smoking"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfL1"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfL3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alcoholism"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfL2"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfL4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Drug Use"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfL3"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfL5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Physical Inactivity"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfL4"
+                        tools:ignore="MissingConstraints" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox android:id="@+id/checkbox_mea_rfL6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Others:"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="-5dp"
+                            android:textColor="@color/theme_darkgray"
+                            android:buttonTint="@color/theme_darkgray"
+                            app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfL5"
+                            tools:ignore="MissingConstraints" >
+                        </CheckBox>
+                        <EditText
+                            android:id="@+id/et_mea_rfLOthers"
+                            style="@style/Input"
+                            android:layout_width="75dp"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="-4dp"
+                            android:layout_marginLeft="3dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="textCapCharacters"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="12dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/checkbox_mea_rfL6" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/cons_mea2g"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    app:layout_constraintTop_toBottomOf="@id/cons_mea2f"
+                    android:layout_marginTop="-190dp"
+                    android:paddingLeft="0dp"
+                    app:layout_constraintLeft_toRightOf="@id/cons_mea2f"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/worksans_semibold"
+                        android:text="Curent Health Condition"
+                        android:textColor="@color/theme_green"
+                        android:textSize="16dp"
+                        app:layout_constraintTop_toTopOf="@+id/cons_mea2g"
+                        tools:ignore="MissingConstraints,NotSibling" />
+
+                    <CheckBox android:id="@+id/checkbox_mea_rfC1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="None"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-3dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/cons_mea2g"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfC2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Asthma"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfC1"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfC3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hereditary"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfC2"
+                        tools:ignore="MissingConstraints" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox android:id="@+id/checkbox_mea_rfC4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Others:"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="-5dp"
+                            android:textColor="@color/theme_darkgray"
+                            android:buttonTint="@color/theme_darkgray"
+                            app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfC3"
+                            tools:ignore="MissingConstraints" >
+                        </CheckBox>
+                        <EditText
+                            android:id="@+id/et_mea_rfCOthers"
+                            style="@style/Input"
+                            android:layout_width="75dp"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="-4dp"
+                            android:layout_marginLeft="3dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="textCapCharacters"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="12dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/checkbox_mea_rfC4" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/cons_mea2h"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    app:layout_constraintTop_toBottomOf="@id/cons_mea2f"
+                    android:layout_marginTop="10dp"
+                    tools:ignore="MissingConstraints">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Historical Health Data"
+                        android:textColor="@color/theme_green"
+                        android:fontFamily="@font/worksans_semibold"
+                        android:textSize="16dp"
+                        app:layout_constraintTop_toTopOf="@+id/cons_mea2h"
+                        android:layout_marginLeft="5dp"
+                        tools:ignore="MissingConstraints,NotSibling" />
+
+                    <CheckBox android:id="@+id/checkbox_mea_rfH1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="None"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-3dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/cons_mea2h"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfH2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diabetes"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfH1"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfH3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Heart Disease"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfH2"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfH4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hypertension"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfH3"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfH5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Obesity"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfH4"
+                        tools:ignore="MissingConstraints" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox android:id="@+id/checkbox_mea_rfH6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Others:"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="-5dp"
+                            android:textColor="@color/theme_darkgray"
+                            android:buttonTint="@color/theme_darkgray"
+                            app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfH5"
+                            tools:ignore="MissingConstraints" >
+                        </CheckBox>
+                        <EditText
+                            android:id="@+id/et_mea_rfHOthers"
+                            style="@style/Input"
+                            android:layout_width="75dp"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="-4dp"
+                            android:layout_marginLeft="3dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="textCapCharacters"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="12dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/checkbox_mea_rfH6" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/cons_mea2i"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    app:layout_constraintTop_toBottomOf="@id/cons_mea2h"
+                    android:layout_marginTop="-245dp"
+                    android:paddingLeft="0dp"
+                    app:layout_constraintLeft_toRightOf="@id/cons_mea2h"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/worksans_semibold"
+                        android:text="Other Risks"
+                        android:textColor="@color/theme_green"
+                        android:textSize="16dp"
+                        app:layout_constraintTop_toTopOf="@+id/cons_mea2i"
+                        tools:ignore="MissingConstraints,NotSibling" />
+
+                    <CheckBox android:id="@+id/checkbox_mea_rfO1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="None"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-3dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/cons_mea2i"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Air Pollution"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO1"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No clean water"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO2"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Flooding"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO3"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lack Health Facility"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO4"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lack Education"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO5"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Poverty"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO6"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Inadequate Shelter"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO7"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Waste Management"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO8"
+                        tools:ignore="MissingConstraints" />
+                    <CheckBox android:id="@+id/checkbox_mea_rfO10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Insufficient Vaccines"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/theme_darkgray"
+                        android:buttonTint="@color/theme_darkgray"
+                        app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO9"
+                        tools:ignore="MissingConstraints" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox android:id="@+id/checkbox_mea_rfO11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Others:"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="-5dp"
+                            android:textColor="@color/theme_darkgray"
+                            android:buttonTint="@color/theme_darkgray"
+                            app:layout_constraintTop_toBottomOf="@id/checkbox_mea_rfO10"
+                            tools:ignore="MissingConstraints" >
+                        </CheckBox>
+                        <EditText
+                            android:id="@+id/et_mea_rfOOthers"
+                            style="@style/Input"
+                            android:layout_width="75dp"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="-4dp"
+                            android:layout_marginLeft="3dp"
+                            android:background="@drawable/inputbox"
+                            android:inputType="textCapCharacters"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="12dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/checkbox_mea_rfO11" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:flow_horizontalAlign="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btn_meas_back1"
+            style="@style/NoCorner"
+            android:layout_width="95dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/theme_cream"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Back"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/theme_blue"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/btn_meas_next3"
+            style="@style/NoCorner"
+            android:layout_width="95dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="45dp"
+            android:backgroundTint="#346083"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Next"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFBEE"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
