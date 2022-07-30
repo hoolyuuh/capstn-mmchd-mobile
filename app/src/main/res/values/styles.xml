@@ -1,0 +1,27 @@
+<resources>
+
+    <style name="Widget.Theme.CovID.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="NoCorner" parent="Widget.AppCompat.ActionBar">
+        <item name="cornerRadius">0dp</item>
+    </style>
+
+    <style name="Login" parent="Widget.AppCompat.ActionBar">
+        <item name="cornerRadius">0dp</item>
+        <item name="strokeColor">#346083</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="Widget.Theme.CovID.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="Input" parent="Widget.Design.TextInputLayout">
+        <item name="cornerRadius">0dp</item>
+        <item name="strokeColor">#c3c6ca</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+</resources>

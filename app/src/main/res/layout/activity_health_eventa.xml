@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/theme_cream"
+    android:theme="@style/ThemeOverlay.CovID.FullscreenContainer">
+<!--    tools:context=".HealthEventActivity">-->
+
+    <EditText
+        android:id="@+id/ti_capture_date"
+        android:inputType="text"
+        android:layout_width="320dp"
+        android:layout_height="47dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="220dp"
+        android:textSize="18dp"
+        android:focusable="false"
+        style="@style/Input"
+        android:background="@drawable/inputbox"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="   Date Captured *  "
+        android:textColor="@color/light_gray"
+        android:background="@color/theme_cream"
+        app:layout_constraintTop_toTopOf="@id/ti_capture_date"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintLeft_toLeftOf="@id/ti_capture_date"
+        android:layout_marginLeft="10dp"
+        />
+
+    <EditText
+        android:id="@+id/ti_capture_time"
+        android:inputType="text"
+        android:layout_width="320dp"
+        android:layout_height="47dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ti_capture_date"
+        android:layout_marginTop="80dp"
+        android:textSize="18dp"
+        style="@style/Input"
+        android:background="@drawable/inputbox"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="   Time Captured *  "
+        android:textColor="@color/light_gray"
+        android:background="@color/theme_cream"
+        app:layout_constraintTop_toTopOf="@id/ti_capture_time"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintLeft_toLeftOf="@id/ti_capture_time"
+        android:layout_marginLeft="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:textColor="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/ti_capture_time"
+        app:layout_constraintLeft_toLeftOf="@id/ti_capture_time"
+        android:layout_marginTop="3dp"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="95dp"
+        android:layout_height="45dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="80dp"
+        android:layout_marginRight="158dp"
+        android:backgroundTint="@color/theme_cream"
+        style="@style/NoCorner"
+        android:text="Cancel"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:fontFamily="@font/worksans_semibold"
+        android:textAllCaps="false"
+        android:textColor="@color/theme_blue"
+        />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="95dp"
+        android:layout_height="45dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="80dp"
+        android:layout_marginRight="45dp"
+        style="@style/NoCorner"
+        android:backgroundTint="#346083"
+        android:text="Next"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:fontFamily="@font/worksans_semibold"
+        android:textAllCaps="false"
+        android:textColor="#FFFBEE"
+        />
+
+    <View
+        android:id="@+id/vi_bar"
+        android:layout_width="87dp"
+        android:layout_height="5.1dp"
+        android:background="@drawable/bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="76.8dp"
+        android:layout_marginLeft="35.6dp"
+        android:outlineSpotShadowColor="@color/black"
+        android:outlineAmbientShadowColor="@color/black"
+        android:backgroundTint="@color/theme_blue"
+        tools:ignore="MissingConstraints"/>
+
+    <View
+        android:layout_width="87dp"
+        android:layout_height="5.1dp"
+        android:background="@drawable/bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="76.8dp"
+        android:layout_marginLeft="137.3dp"
+        android:outlineSpotShadowColor="@color/black"
+        android:outlineAmbientShadowColor="@color/black"
+        tools:ignore="MissingConstraints"/>
+
+    <View
+        android:layout_width="87dp"
+        android:layout_height="5.1dp"
+        android:background="@drawable/bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="76.8dp"
+        android:layout_marginLeft="239dp"
+        android:outlineSpotShadowColor="@color/black"
+        android:outlineAmbientShadowColor="@color/black"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/vi_bar"
+        android:text="Source Details"
+        app:layout_constraintLeft_toLeftOf="@id/vi_bar"
+        android:textSize="13dp"
+        android:textColor="@color/theme_green"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/vi_bar"
+        android:text="New Health Event"
+        app:layout_constraintLeft_toLeftOf="@id/vi_bar"
+        android:textSize="35dp"
+        android:textColor="@color/theme_blue"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/worksans_semibold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/vi_bar"
+        android:text="Please fill up with                                     ."
+        app:layout_constraintLeft_toLeftOf="@id/vi_bar"
+        android:textSize="13dp"
+        android:textColor="@color/theme_green"
+        android:layout_marginTop="79dp"
+        android:letterSpacing="0.03"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/vi_bar"
+        android:text="complete and correct information."
+        app:layout_constraintLeft_toLeftOf="@id/vi_bar"
+        android:textSize="13dp"
+        android:textColor="@color/theme_green"
+        android:layout_marginTop="78dp"
+        android:layout_marginLeft="111dp"
+        android:letterSpacing="0.0001"
+        android:fontFamily="@font/worksans_semibold"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
