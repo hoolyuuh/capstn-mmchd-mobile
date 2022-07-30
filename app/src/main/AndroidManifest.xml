@@ -31,6 +31,10 @@
             android:name=".AddcifMeaslesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_login" />
+        <activity
+            android:name=".AddHealthEventActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_login" />
     </application>
 
 </manifest>
