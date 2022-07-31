@@ -5,8 +5,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -15,7 +22,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -33,25 +44,19 @@ import com.idsr.mobile.databinding.ActivityAddcifMeasles7Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles8Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles9Binding;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddcifMeaslesActivity extends AppCompatActivity {
-    private ActivityAddcifMeasles0Binding binding0;
-    private ActivityAddcifMeasles1Binding binding1;
-    private ActivityAddcifMeasles2Binding binding2;
-    private ActivityAddcifMeasles3Binding binding3;
-    private ActivityAddcifMeasles4Binding binding4;
-    private ActivityAddcifMeasles5Binding binding5;
-    private ActivityAddcifMeasles6Binding binding6;
-    private ActivityAddcifMeasles7Binding binding7;
-    private ActivityAddcifMeasles8Binding binding8;
-    private ActivityAddcifMeasles9Binding binding9;
+//    private ActivityAddcifMeasles0Binding binding0;
+//    private ActivityAddcifMeasles1Binding binding1;
+//    private ActivityAddcifMeasles2Binding binding2;
+//    private ActivityAddcifMeasles3Binding binding3;
+//    private ActivityAddcifMeasles4Binding binding4;
+//    private ActivityAddcifMeasles5Binding binding5;
+//    private ActivityAddcifMeasles6Binding binding6;
+//    private ActivityAddcifMeasles7Binding binding7;
+//    private ActivityAddcifMeasles8Binding binding8;
+//    private ActivityAddcifMeasles9Binding binding9;
 
     private Boolean page1 = Boolean.FALSE;
     private Boolean page2 = Boolean.FALSE;
@@ -142,20 +147,28 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
     private String labresult, labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, invesitgatorContact, invesitgateDate, labselected;
 
+//    page 9
+    private RadioGroup radioFinalClassif;
+    private ImageButton imageDropdown1, imageDropdown2;
+    private TextView textDropdown1, textDropdown2;
+    private LinearLayout lineargroup1, lineargroup2;
+
+    private String finalClassification;
+
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
-        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
-        binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
-        binding3 = ActivityAddcifMeasles3Binding.inflate(getLayoutInflater());
-        binding4 = ActivityAddcifMeasles4Binding.inflate(getLayoutInflater());
-        binding5 = ActivityAddcifMeasles5Binding.inflate(getLayoutInflater());
-        binding6 = ActivityAddcifMeasles6Binding.inflate(getLayoutInflater());
-        binding7 = ActivityAddcifMeasles7Binding.inflate(getLayoutInflater());
-        binding8 = ActivityAddcifMeasles8Binding.inflate(getLayoutInflater());
-        binding9 = ActivityAddcifMeasles9Binding.inflate(getLayoutInflater());
+//        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
+//        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
+//        binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
+//        binding3 = ActivityAddcifMeasles3Binding.inflate(getLayoutInflater());
+//        binding4 = ActivityAddcifMeasles4Binding.inflate(getLayoutInflater());
+//        binding5 = ActivityAddcifMeasles5Binding.inflate(getLayoutInflater());
+//        binding6 = ActivityAddcifMeasles6Binding.inflate(getLayoutInflater());
+//        binding7 = ActivityAddcifMeasles7Binding.inflate(getLayoutInflater());
+//        binding8 = ActivityAddcifMeasles8Binding.inflate(getLayoutInflater());
+//        binding9 = ActivityAddcifMeasles9Binding.inflate(getLayoutInflater());
         pageZero();
 //        startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
     }
@@ -734,7 +747,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     }
 
     public void pageFive() {
-        setContentView(R.layout.activity_addcif_measles4);
+        setContentView(R.layout.activity_addcif_measles5);
 
         this.radioTravelhistory = findViewById(R.id.radiogroup_mea_travelhistory);
         this.consWithTravelHistory = findViewById(R.id.cons_mea_withtravelhistory);
@@ -852,7 +865,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         });
         next7.setOnClickListener(new View.OnClickListener() { @Override
             public void onClick(View view) {
-                if (sourceinfo.isEmpty()) { page6 = false; Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show(); }
+                if (false) { page6 = false; Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show(); }
                 else { page6 = true; pageSeven(); }
             }
         });
@@ -873,7 +886,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 else etDatedied.setVisibility(View.VISIBLE);}
         });
 
-        this.etDatedied.setOnClickListener(new View.OnClickListener() {@Override
+        etDatedied.setOnClickListener(new View.OnClickListener() {@Override
         public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
@@ -933,8 +946,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 RadioButton radioButton = (RadioButton) findViewById(i);
                 labresult = radioButton.getText().toString();
-                if (labresult.equals("Yes")) {consWithLabResult.setVisibility(View.VISIBLE); consNoLabResult.setVisibility(View.INVISIBLE);}
-                else if (labresult.equals("No")) {consWithLabResult.setVisibility(View.INVISIBLE); consNoLabResult.setVisibility(View.VISIBLE);}
+                if (labresult.equals("Yes")) {consWithLabResult.setVisibility(View.VISIBLE); consNoLabResult.setVisibility(View.GONE);}
+                else if (labresult.equals("No")) {consWithLabResult.setVisibility(View.GONE); consNoLabResult.setVisibility(View.VISIBLE);}
+                else if (labresult.equals("Processing")) {consWithLabResult.setVisibility(View.GONE); consNoLabResult.setVisibility(View.GONE);}
             }
         });
 
@@ -1030,24 +1044,51 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addcif_measles9);
 
         // radiogroup & dropdown imgbutton
+        this.radioFinalClassif = findViewById(R.id.radiogroup_mea_finalclassif);
+        this.imageDropdown1 = findViewById(R.id.image_mea_expand1);
+        this.imageDropdown2 = findViewById(R.id.image_mea_expand2);
+        this.textDropdown1 = findViewById(R.id.tv_mea_expand1);
+        this.textDropdown2 = findViewById(R.id.tv_mea_expand2);
+        this.lineargroup1 = findViewById(R.id.linear_mea_finalclass1);
+        this.lineargroup2 = findViewById(R.id.linear_mea_finalclass2);
 
-        // img button onclick = textview.
-        /*
-
-        btn.setOnClickListener(
-            if (textview.visible()) {
-                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                hiddenGroup.setVisibility(View.GONE);
-                arrow.setImageResource(android.R.drawable.arrowdown);
+        imageDropdown1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textDropdown1.getVisibility() == View.VISIBLE) {
+//                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup1, new AutoTransition());
+                    textDropdown1.setVisibility(View.GONE);
+                    imageDropdown1.setBackgroundResource(R.drawable.arrow_down);
+                }
+                else {
+//                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup2, new AutoTransition());
+                    textDropdown1.setVisibility(View.VISIBLE);
+                    imageDropdown1.setBackgroundResource(R.drawable.arrow_up);
+                }
             }
-            else {
-                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                hiddenGroup.setVisibility(View.VISIBLE);
-                arrow.setImageResource(android.R.drawable.arrowup);
+        });
+        imageDropdown2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textDropdown2.getVisibility() == View.VISIBLE) {
+                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup2, new AutoTransition());
+                    textDropdown2.setVisibility(View.GONE);
+                    imageDropdown2.setBackgroundResource(R.drawable.arrow_down);
+                }
+                else {
+                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup2, new AutoTransition());
+                    textDropdown2.setVisibility(View.VISIBLE);
+                    imageDropdown2.setBackgroundResource(R.drawable.arrow_up);
+                }
             }
-        )
+        });
 
-         */
+        radioFinalClassif.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                finalClassification = radioButton.getText().toString();
+            }
+        });
 
         this.submit = findViewById(R.id.btn_meas_submit);
         this.back8 = findViewById(R.id.btn_meas_back8);
@@ -1066,9 +1107,84 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 }
                 else {
                     page9 = true;
-//                    submit();
+                    submit(view);
                 }
             }
+        });
+    }
+
+    public void submit(View view) {
+        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.activity_confirm_popup, null);
+
+        //Specify the length and width through constants
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+
+        //Make Inactive Items Outside Of PopupWindow
+        boolean focusable = true;
+
+        //Create a window with our parameters
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        //Set the location of the window on the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        Button buttonCancel = popupView.findViewById(R.id.btn_cancel);
+        Button buttonConfirm = popupView.findViewById(R.id.btn_confirm);
+        buttonCancel.setOnClickListener(new View.OnClickListener() { @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        buttonConfirm.setOnClickListener(new View.OnClickListener() { @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                //As an example, display the message
+                Toast.makeText(view.getContext(), "Please wait for page to load", Toast.LENGTH_SHORT).show();
+
+                setContentView(R.layout.activity_loadingpage);
+
+                // TODO: make function to submit the thingies
+                TextView tvCaseAddStatus = findViewById(R.id.tv_caseAddStatus);
+                ProgressBar loadingpanel = findViewById(R.id.loadingPanel);
+                ImageView imgCheck = findViewById(R.id.imgCheckPanel);
+
+                LinearLayout layoutDone = findViewById(R.id.layout_done);
+                Button buttonHome = findViewById(R.id.btn_home);
+                Button buttonAddCase = findViewById(R.id.btn_addanothercase);
+
+                int i = 900000000;
+                while (i>= -900000000) {
+                    i -= 1;
+                    if (i== -900000000) {
+                        loadingpanel.setVisibility(View.GONE);
+                        imgCheck.setVisibility(View.VISIBLE);
+                        layoutDone.setVisibility(View.VISIBLE);
+                        tvCaseAddStatus.setText("Case successfully submitted!");
+
+                        buttonHome.setOnClickListener(new View.OnClickListener() { @Override
+                            public void onClick(View view) {
+                                pageNine();
+//                            startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                            }
+                        });
+                        buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        //Handler for clicking on the inactive zone of the window
+        popupView.setOnTouchListener(new View.OnTouchListener() { @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //Close the window when clicked
+                popupWindow.dismiss();
+                return true; }
         });
     }
 
