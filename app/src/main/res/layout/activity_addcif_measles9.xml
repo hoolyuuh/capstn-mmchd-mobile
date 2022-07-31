@@ -201,7 +201,7 @@
                 app:layout_constraintLeft_toLeftOf="@id/et_mea_finalclassif"
                 app:layout_constraintTop_toTopOf="@id/et_mea_finalclassif" />
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/radiogroup_finalclassif"
+                android:id="@+id/radiogroup_mea_finalclassif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -212,9 +212,12 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/et_mea_finalclassif"
                 tools:ignore="MissingConstraints">
+
                 <LinearLayout
+                    android:id="@+id/linear_mea_finalclass1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
                     android:orientation="vertical">
                     <ImageButton
                         android:id="@+id/image_mea_expand1"
@@ -222,7 +225,7 @@
                         android:layout_height="30dp"
                         android:layout_gravity="right"
                         android:layout_marginTop="2dp"
-                        android:background="@drawable/drop_arrow"
+                        android:background="@drawable/arrow_down"
                         />
                     <RadioButton
                         android:id="@+id/radiobutton_mea_finalclassif1"
@@ -236,7 +239,7 @@
                         android:textColor="@color/theme_darkgray" />
                     <TextView
                         android:id="@+id/tv_mea_expand1"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -245,8 +248,7 @@
                         android:paddingLeft="32dp"
                         android:paddingRight="5dp"
                         android:text="ALIHEBIUEYBEIUBEU"
-                        android:textColor="@color/light_gray"
-                        app:layout_constraintTop_toBottomOf="@id/radiobutton_mea_finalclassif1"/>
+                        android:textColor="@color/light_gray"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
@@ -260,7 +262,58 @@
                         android:layout_marginRight="5dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@id/radiobutton_mea_finalclassif1"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_mea_finalclass2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/image_mea_expand2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/arrow_down"
+                        />
+                    <RadioButton
+                        android:id="@+id/radiobutton_mea_finalclassif2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="-32dp"
+                        android:buttonTint="@color/theme_darkgray"
+                        android:text="Alive"
+                        android:textColor="@color/theme_darkgray" />
+                    <TextView
+                        android:id="@+id/tv_mea_expand2"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="5dp"
+                        android:text="ALIHEBIUEYBEIUBEU"
+                        android:textColor="@color/light_gray"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/theme_gray"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:outlineSpotShadowColor="@color/black"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints" />
                 </LinearLayout>
 
@@ -304,7 +357,7 @@
             android:layout_marginRight="45dp"
             android:backgroundTint="#346083"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Next"
+            android:text="Submit"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#FFFBEE"
