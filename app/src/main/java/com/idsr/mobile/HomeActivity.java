@@ -25,6 +25,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        this.findViewById(R.id.add_ebs).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, AddHealthEventActivity.class));
+            }
+        });
+
         this.findViewById(R.id.add_tcl).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
