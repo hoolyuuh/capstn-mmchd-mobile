@@ -9,7 +9,7 @@
     tools:context=".AddtclActivity">
 
     <LinearLayout
-        android:id="@+id/measlesBars0"
+        android:id="@+id/tclBars0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -17,7 +17,7 @@
         tools:ignore="MissingConstraints">
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="70dp"
             android:layout_height="5.1dp"
             android:layout_marginLeft="35.6dp"
             android:layout_marginRight="6dp"
@@ -30,7 +30,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="70dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -40,7 +40,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="70dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -50,7 +50,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="70dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -59,65 +59,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
     </LinearLayout>
 
     <LinearLayout
@@ -126,7 +67,7 @@
         android:layout_marginLeft="35.6dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars0"
+        app:layout_constraintTop_toBottomOf="@id/tclBars0"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -142,13 +83,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Add a Measles Case (CIF)"
+            android:text="Add Immunization Entry"
             android:textColor="@color/theme_blue"
             android:textSize="26dp" />
     </LinearLayout>
 
     <AutoCompleteTextView
-        android:id="@+id/autocomp_mea_searchpatient"
+        android:id="@+id/autocomp_tcl_searchpatient"
         style="@style/Input"
         android:layout_width="320dp"
         android:layout_height="47dp"
@@ -157,7 +98,7 @@
         android:inputType="text"
         android:textSize="18dp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars0"
+        app:layout_constraintTop_toBottomOf="@id/tclBars0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -170,8 +111,8 @@
         android:text="   Type Patient Name   "
         android:textColor="@color/light_gray"
         android:textSize="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/autocomp_mea_searchpatient"
-        app:layout_constraintTop_toTopOf="@id/autocomp_mea_searchpatient" />
+        app:layout_constraintLeft_toLeftOf="@id/autocomp_tcl_searchpatient"
+        app:layout_constraintTop_toTopOf="@id/autocomp_tcl_searchpatient" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -184,7 +125,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_meas_cancel"
+            android:id="@+id/btn_tcl_cancel"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
@@ -200,7 +141,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next1"
+            android:id="@+id/btn_tcl_next1"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
