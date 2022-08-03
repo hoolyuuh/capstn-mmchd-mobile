@@ -5,8 +5,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -15,7 +24,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -33,25 +46,20 @@ import com.idsr.mobile.databinding.ActivityAddcifMeasles7Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles8Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles9Binding;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Objects;
 
 public class AddcifMeaslesActivity extends AppCompatActivity {
-    private ActivityAddcifMeasles0Binding binding0;
-    private ActivityAddcifMeasles1Binding binding1;
-    private ActivityAddcifMeasles2Binding binding2;
-    private ActivityAddcifMeasles3Binding binding3;
-    private ActivityAddcifMeasles4Binding binding4;
-    private ActivityAddcifMeasles5Binding binding5;
-    private ActivityAddcifMeasles6Binding binding6;
-    private ActivityAddcifMeasles7Binding binding7;
-    private ActivityAddcifMeasles8Binding binding8;
-    private ActivityAddcifMeasles9Binding binding9;
+//    private ActivityAddcifMeasles0Binding binding0;
+//    private ActivityAddcifMeasles1Binding binding1;
+//    private ActivityAddcifMeasles2Binding binding2;
+//    private ActivityAddcifMeasles3Binding binding3;
+//    private ActivityAddcifMeasles4Binding binding4;
+//    private ActivityAddcifMeasles5Binding binding5;
+//    private ActivityAddcifMeasles6Binding binding6;
+//    private ActivityAddcifMeasles7Binding binding7;
+//    private ActivityAddcifMeasles8Binding binding8;
+//    private ActivityAddcifMeasles9Binding binding9;
 
     private Boolean page1 = Boolean.FALSE;
     private Boolean page2 = Boolean.FALSE;
@@ -78,7 +86,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private ConstraintLayout constPermanentAdd;
     private EditText etOccupation, etOcculoc, etOccuStreet, etCurrStreet, etPermStreet, etParentCg, etParentCgContact, etHCPN, etILHZ;
 
-    private String lastName, firstName, middleName, birthdate, sex, pregnancy, civilstatus, indigenousgroup;
+    private String lastName, firstName, middleName, birthdate, sex = "", pregnancy = "", civilstatus, indigenousgroup;
     private String phone, parentCgContact;
     private String occupation, occuloc, occuStreet, occuCity, occuBrgy, currStreet, currCity, currBrgy;
     private Boolean sameCurrPermAddress = false;
@@ -94,7 +102,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private CheckBox checkRfO1, checkRfO2, checkRfO3, checkRfO4, checkRfO5, checkRfO6, checkRfO7, checkRfO8, checkRfO9, checkRfO10, checkRfO11;
     private EditText etRfLOthers, etRfCOthers, etRfHOthers, etRfOOthers;
 
-    private String patientAdmit, admitdate, onsetdate, reportdate, reporter;
+    private String patientAdmit = "", admitdate, onsetdate, reportdate, reporter;
     private int riskfactors = 0;
 
 //    page 3
@@ -114,7 +122,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private EditText etNoVaccReasOther;
     private RadioGroup radioVitA;
 
-    private String vaccinationStatus, vaccineMV, vaccineMR, vaccineMMR, vaccineLastDoseDate, vaccinationValidity, vaccineCampaign, novaccineReasonOther, vitA;
+    private String vaccinationStatus="", vaccineMV, vaccineMR, vaccineMMR, vaccineLastDoseDate, vaccinationValidity="", vaccineCampaign="", novaccineReasonOther="", vitA="";
     // TODO: no vaxx reason initializaton, not sure also how theyre stored
 
 //    page 5
@@ -122,16 +130,16 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private ConstraintLayout consWithTravelHistory, consConfirmedRubella;
     private EditText etTravelPlace, etTravelDate, etRubellaContactName, etRubellaContactPlace, etRubellaTravelDate, etRubellaExposureOther;
 
-    private String travelHistory, travelPlace, travelDate, rashOnset, measlesContact, rubellaContact, rubellaContactName, rubellaContactPlace, rubellaContactTravelDate, rubellaExposure, otherKnownFeverRash;
+    private String travelHistory="", travelPlace, travelDate, rashOnset="", measlesContact="", rubellaContact="", rubellaContactName, rubellaContactPlace, rubellaContactTravelDate, rubellaExposure="", otherKnownFeverRash="";
 
 //    page 6
     private RadioGroup radioSourceinfo;
-    private String sourceinfo;
+    private String sourceinfo="";
 
 //    page 7
     private RadioGroup radioOutcome;
     private EditText etDatedied, etFinalDiagnosis;
-    private String outcome, datedied, finaldiagnosis;
+    private String outcome="", datedied, finaldiagnosis;
 
 //    page 8
     private RadioGroup radioLabResult;
@@ -140,24 +148,31 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private Spinner spinnerLabSpecimen, spinnerLabSelect;
     private EditText etCollectdate, etReceivedate, etresultMeasles, etresultRubella, etresultVirus, etresultPRC, etInvestigator, etInvestigContact, etInvestigDate;
 
-    private String labresult, labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, invesitgatorContact, invesitgateDate, labselected;
+    private String labresult="", labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, invesitgatorContact, invesitgateDate, labselected;
+
+//    page 9
+    private RadioGroup radioFinalClassif;
+    private ImageButton imageDropdown1, imageDropdown2;
+    private TextView textDropdown1, textDropdown2;
+    private LinearLayout lineargroup1, lineargroup2;
+
+    private String finalClassification="";
 
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
-        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
-        binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
-        binding3 = ActivityAddcifMeasles3Binding.inflate(getLayoutInflater());
-        binding4 = ActivityAddcifMeasles4Binding.inflate(getLayoutInflater());
-        binding5 = ActivityAddcifMeasles5Binding.inflate(getLayoutInflater());
-        binding6 = ActivityAddcifMeasles6Binding.inflate(getLayoutInflater());
-        binding7 = ActivityAddcifMeasles7Binding.inflate(getLayoutInflater());
-        binding8 = ActivityAddcifMeasles8Binding.inflate(getLayoutInflater());
-        binding9 = ActivityAddcifMeasles9Binding.inflate(getLayoutInflater());
+//        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
+//        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
+//        binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
+//        binding3 = ActivityAddcifMeasles3Binding.inflate(getLayoutInflater());
+//        binding4 = ActivityAddcifMeasles4Binding.inflate(getLayoutInflater());
+//        binding5 = ActivityAddcifMeasles5Binding.inflate(getLayoutInflater());
+//        binding6 = ActivityAddcifMeasles6Binding.inflate(getLayoutInflater());
+//        binding7 = ActivityAddcifMeasles7Binding.inflate(getLayoutInflater());
+//        binding8 = ActivityAddcifMeasles8Binding.inflate(getLayoutInflater());
+//        binding9 = ActivityAddcifMeasles9Binding.inflate(getLayoutInflater());
         pageZero();
-//        startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
     }
 
     public void pageZero() {
@@ -175,7 +190,6 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 patientInfoFill(autocompPatients.getText().toString());
-                Toast.makeText(getBaseContext(), autocompPatients.getText().toString(), Toast.LENGTH_SHORT).show();
                 pageTwo();
             }
         });
@@ -266,7 +280,10 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 RadioButton radioButton = (RadioButton) findViewById(i);
                 pregnancy = radioButton.getText().toString();
-                if (pregnancy.equals("Not Pregnant")) etPregantweeks.setTextIsSelectable(false);
+                if (pregnancy.equals("Not Pregnant")) {
+                    etPregantweeks.setText("");
+                    etPregantweeks.setTextIsSelectable(false);
+                }
                 else etPregantweeks.setTextIsSelectable(true);
             }
         });
@@ -380,47 +397,87 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.next2 = findViewById(R.id.btn_meas_next2);
         this.back0 = findViewById(R.id.btn_meas_back0);
         next2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                lastName = etLastname.getText().toString();
-                firstName = etFirstname.getText().toString();
-                middleName = etMiddlename.getText().toString();
-                birthdate = etBirthdate.getText().toString();
-                // sex & pregnancy above in radio onclick
-                // TODO: logic for pregnancy, if pregnancy != not pregnant, get etPregantweeks value
-                civilstatus = tvCivilStatus.getText().toString();
-                indigenousgroup = etIndigenousgroup.getText().toString();
-                phone = etPhone.getText().toString();
-                occupation = etOccupation.getText().toString();
-                occuloc = etOcculoc.getText().toString();
-                occuStreet = etOccuStreet.getText().toString();
-                occuCity = tvOccuCity.getText().toString();
-                occuBrgy = tvOccuBrgy.getText().toString();
-                currStreet = etCurrStreet.getText().toString();
-                currCity = tvCurrCity.getText().toString();
-                currBrgy = tvCurrBrgy.getText().toString();
-                // sameCurrPermAddress set in checkbox onclick
-                permStreet = etPermStreet.getText().toString();
-                permCity = tvPermCity.getText().toString();
-                permBrgy = tvPermBrgy.getText().toString();
-                parentCg = etCurrStreet.getText().toString();
-                parentCgContact = etCurrStreet.getText().toString();
-                HCPN = etCurrStreet.getText().toString();
-                ILHZ = etCurrStreet.getText().toString();
+                page1 = true;
 
-                // idk how to check validity of phone nums zz, both phone & parentCgContact
-//                if (lastName.isEmpty() && firstName.isEmpty() && middleName.isEmpty() && birthdate.isEmpty() &&
-//                        sex.isEmpty() && pregnancy.isEmpty() && civilstatus.isEmpty() && indigenousgroup.isEmpty() &&
-//                        occupation.isEmpty() && occuloc.isEmpty() && occuStreet.isEmpty() && occuCity.isEmpty() && occuBrgy.isEmpty() &&
-//                        currStreet.isEmpty() && currCity.isEmpty() && currBrgy.isEmpty() &&
-//                        (sameCurrPermAddress || (permStreet.isEmpty() && permCity.isEmpty() && permBrgy.isEmpty())) &&
-//                        parentCg.isEmpty() && HCPN.isEmpty() && ILHZ.isEmpty()) {
-                if (false) {
-                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
-                    page1 = false;
+                if (etLastname.getText().toString().length() <= 0) { page1 = page1 & false; etLastname.setBackgroundResource(R.drawable.inputbox_red); }
+                else etLastname.setBackgroundResource(R.drawable.inputbox);
+                if (etFirstname.getText().toString().length() <= 0) { page1 = page1 & false; etFirstname.setBackgroundResource(R.drawable.inputbox_red); }
+                else etFirstname.setBackgroundResource(R.drawable.inputbox);
+                if (etMiddlename.getText().toString().length() <= 0) { page1 = page1 & false; etMiddlename.setBackgroundResource(R.drawable.inputbox_red); }
+                else etMiddlename.setBackgroundResource(R.drawable.inputbox);
+                if (etBirthdate.getText().toString().length() <= 0) { page1 = page1 & false; etBirthdate.setBackgroundResource(R.drawable.inputbox_red); }
+                else etBirthdate.setBackgroundResource(R.drawable.inputbox);
+                if (sex.length() <= 0) { page1 = page1 & false; radioSex.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioSex.setBackgroundResource(0);
+                if (pregnancy.length() <= 0 && etPregantweeks.length() <= 0) { page1 = page1 & false; radioPregnancy.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioPregnancy.setBackgroundResource(0);
+                if (etPhone.getText().toString().length() <= 0) { page1 = page1 & false; etPhone.setBackgroundResource(R.drawable.inputbox_red); }
+                else etPhone.setBackgroundResource(R.drawable.inputbox);
+                if (tvCivilStatus.getText().toString().length() <= 0) { page1 = page1 & false; tvCivilStatus.setBackgroundResource(R.drawable.inputbox_red); tvCivilStatus.setPadding(55,50,55,20); }
+                else { tvCivilStatus.setBackgroundResource(R.drawable.inputbox); tvCivilStatus.setPadding(55,50,55,20); }
+
+                if (etOccupation.getText().toString().length() <= 0) { page1 = page1 & false; etOccupation.setBackgroundResource(R.drawable.inputbox_red); }
+                else etOccupation.setBackgroundResource(R.drawable.inputbox);
+                if (etOcculoc.getText().toString().length() <= 0) { page1 = page1 & false; etOcculoc.setBackgroundResource(R.drawable.inputbox_red); }
+                else etOcculoc.setBackgroundResource(R.drawable.inputbox);
+                if (etOccuStreet.getText().toString().length() <= 0) { page1 = page1 & false; etOccuStreet.setBackgroundResource(R.drawable.inputbox_red); }
+                else etOccuStreet.setBackgroundResource(R.drawable.inputbox);
+                if (tvOccuCity.getText().toString().length() <= 0) { page1 = page1 & false; tvOccuCity.setBackgroundResource(R.drawable.inputbox_red); tvOccuCity.setPadding(25,50,25,20); }
+                else { tvOccuCity.setBackgroundResource(R.drawable.inputbox); tvOccuCity.setPadding(25,50,25,20); }
+                if (tvOccuBrgy.getText().toString().length() <= 0) { page1 = page1 & false; tvOccuBrgy.setBackgroundResource(R.drawable.inputbox_red); tvOccuBrgy.setPadding(25,50,25,20); }
+                else { tvOccuBrgy.setBackgroundResource(R.drawable.inputbox); tvOccuBrgy.setPadding(25,50,25,20); }
+
+                if (etCurrStreet.getText().toString().length() <= 0) { page1 = page1 & false; etCurrStreet.setBackgroundResource(R.drawable.inputbox_red); }
+                else etCurrStreet.setBackgroundResource(R.drawable.inputbox);
+                if (tvCurrCity.getText().toString().length() <= 0) { page1 = page1 & false; tvCurrCity.setBackgroundResource(R.drawable.inputbox_red); tvCurrCity.setPadding(25,50,25,20); }
+                else { tvCurrCity.setBackgroundResource(R.drawable.inputbox); tvCurrCity.setPadding(25,50,25,20); }
+                if (tvCurrBrgy.getText().toString().length() <= 0) { page1 = page1 & false; tvCurrBrgy.setBackgroundResource(R.drawable.inputbox_red); tvCurrBrgy.setPadding(25,50,25,20); }
+                else { tvCurrBrgy.setBackgroundResource(R.drawable.inputbox); tvCurrBrgy.setPadding(25,50,25,20); }
+                // sameCurrPermAddress not required but red
+                if (!sameCurrPermAddress) {
+                    if (etPermStreet.getText().toString().length() <= 0) { page1 = page1 & false; etPermStreet.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etPermStreet.setBackgroundResource(R.drawable.inputbox);
+                    if (tvPermCity.getText().toString().length() <= 0) { page1 = page1 & false; tvPermCity.setBackgroundResource(R.drawable.inputbox_red); tvPermCity.setPadding(55,50,55,20); }
+                    else { tvPermCity.setBackgroundResource(R.drawable.inputbox); tvPermCity.setPadding(55,50,55,20); }
+                    if (tvPermBrgy.getText().toString().length() <= 0) { page1 = page1 & false; tvPermBrgy.setBackgroundResource(R.drawable.inputbox_red); tvPermBrgy.setPadding(55,50,55,20); }
+                    else { tvPermBrgy.setBackgroundResource(R.drawable.inputbox); tvPermBrgy.setPadding(55,50,55,20); }
                 }
+                if (etParentCg.getText().toString().length() <= 0) { page1 = page1 & false; etParentCg.setBackgroundResource(R.drawable.inputbox_red); }
+                else etParentCg.setBackgroundResource(R.drawable.inputbox);
+                if (etParentCgContact.getText().toString().length() <= 0) { page1 = page1 & false; etParentCgContact.setBackgroundResource(R.drawable.inputbox_red); }
+                else etParentCgContact.setBackgroundResource(R.drawable.inputbox);
+
+                if (!page1) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    page1 = true;
+                    lastName = etLastname.getText().toString();
+                    firstName = etFirstname.getText().toString();
+                    middleName = etMiddlename.getText().toString();
+                    birthdate = etBirthdate.getText().toString();
+                    // sex & pregnancy above in radio onclick, but preg weeks below
+                    if (pregnancy.length()==0) pregnancy = etPregantweeks.getText().toString();
+                    phone = etPhone.getText().toString();
+                    civilstatus = tvCivilStatus.getText().toString();
+                    indigenousgroup = etIndigenousgroup.getText().toString();
+                    occupation = etOccupation.getText().toString();
+                    occuloc = etOcculoc.getText().toString();
+                    occuStreet = etOccuStreet.getText().toString();
+                    occuCity = tvOccuCity.getText().toString();
+                    occuBrgy = tvOccuBrgy.getText().toString();
+                    currStreet = etCurrStreet.getText().toString();
+                    currCity = tvCurrCity.getText().toString();
+                    currBrgy = tvCurrBrgy.getText().toString();
+                    // sameCurrPermAddress set in checkbox onclick
+                    permStreet = etPermStreet.getText().toString();
+                    permCity = tvPermCity.getText().toString();
+                    permBrgy = tvPermBrgy.getText().toString();
+                    parentCg = etParentCg.getText().toString();
+                    parentCgContact = etParentCgContact.getText().toString();
+                    HCPN = etHCPN.getText().toString();
+                    ILHZ = etILHZ.getText().toString();
+
                     pageTwo();
                 }
             }
@@ -526,31 +583,62 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.next3 = findViewById(R.id.btn_meas_next3);
         this.back1 = findViewById(R.id.btn_meas_back1);
 
-        next3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // patientAdmit set in onclick
-                admitdate = etAdmitdate.getText().toString();
-                onsetdate = etOnsetdate.getText().toString();
-                reportdate = etReportdate.getText().toString();
-                reporter = etReporter.getText().toString();
-                // TODO: idk how to get risk factor
-
-                // TODO: some validation
-                if (false) {
-                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
-                    page2 = false;
-                }
-                else {
-                    page2 = true;
-                    pageThree();
-                }
-            }
-        });
         back1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { pageOne(); }
         });
+
+        next3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                page2 = true;
+
+                if (patientAdmit.length() <= 0) { page2 = page2 & false; radioPatientAdmit.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioPatientAdmit.setBackgroundResource(0);
+                if (Objects.equals(patientAdmit, "Yes")) {
+                    if (etAdmitdate.getText().toString().length() <= 0) { page2 = page2 & false; etAdmitdate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etAdmitdate.setBackgroundResource(R.drawable.inputbox);
+                }
+                if (etOnsetdate.getText().toString().length() <= 0) { page2 = page2 & false; etOnsetdate.setBackgroundResource(R.drawable.inputbox_red); }
+                else etOnsetdate.setBackgroundResource(R.drawable.inputbox);
+                if (etReportdate.getText().toString().length() <= 0) { page2 = page2 & false; etReportdate.setBackgroundResource(R.drawable.inputbox_red); }
+                else etReportdate.setBackgroundResource(R.drawable.inputbox);
+                if (etReporter.getText().toString().length() <= 0) { page2 = page2 & false; etReporter.setBackgroundResource(R.drawable.inputbox_red); }
+                else etReporter.setBackgroundResource(R.drawable.inputbox);
+
+                if (checkRfL6.isChecked()) {
+                    if (etRfLOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfLOthers.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRfLOthers.setBackgroundResource(R.drawable.inputbox);
+                }
+                if (checkRfC4.isChecked()) {
+                    if (etRfCOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfCOthers.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRfCOthers.setBackgroundResource(R.drawable.inputbox);
+                }
+                if (checkRfH6.isChecked()) {
+                    if (etRfHOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfHOthers.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRfHOthers.setBackgroundResource(R.drawable.inputbox);
+                }
+                if (checkRfO11.isChecked()) {
+                    if (etRfOOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfOOthers.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRfOOthers.setBackgroundResource(R.drawable.inputbox);
+                }
+
+                // TODO: validate risk factors
+
+                if (!page2) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                else {
+                    // patientAdmit set in onclick
+                    admitdate = etAdmitdate.getText().toString();
+                    onsetdate = etOnsetdate.getText().toString();
+                    reportdate = etReportdate.getText().toString();
+                    reporter = etReporter.getText().toString();
+                    // TODO: idk how to get risk factor
+
+                    pageThree();
+                }
+            }
+        });
+
     }
 
     public void pageThree() {
@@ -603,6 +691,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         next4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                page3 = true;
+
                 // TODO: idk how to get symptoms
                 symp1date = etSymp1Date.getText().toString();
                 symp2date = etSymp2Date.getText().toString();
@@ -647,13 +737,13 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         radioMeaslesVaccination.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                vaccinationStatus = radioButton.getText().toString();
                 if (radioButton.getText().toString().equals("Yes")) {
                     constVaccinated.setVisibility(View.VISIBLE);
                     constUnvaccinated.setVisibility(View.GONE);}
                 else if (radioButton.getText().toString().equals("No")) {
                     constVaccinated.setVisibility(View.GONE);
                     constUnvaccinated.setVisibility(View.VISIBLE);}
-                vaccinationStatus = radioButton.getText().toString();
             }
         });
 
@@ -670,29 +760,25 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         radioVaccineValidity.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) findViewById(checkedId);
-                if (radioButton.getText().toString().equals("Others:")) etVaccineValidityOthers.setVisibility(View.VISIBLE);
+                vaccinationValidity = radioButton.getText().toString();
+                if (radioButton.getText().toString().equals("Other:")) etVaccineValidityOthers.setVisibility(View.VISIBLE);
                 else etVaccineValidityOthers.setVisibility(View.INVISIBLE);
-                vaccinationValidity = radioButton.getText().toString();}
-        });
-
-        etVaccineValidityOthers.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
-                mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() { @Override
-                public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etVaccineValidityOthers.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
-                datePickerDialog.show(); }
+            }
         });
 
         radioVaccineCampaign.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) findViewById(checkedId);
-                vaccineCampaign = radioButton.getText().toString();}
+                vaccineCampaign = radioButton.getText().toString();
+            }
         });
 
-        checkNoVaccReasOthers.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-            if (b) etNoVaccReasOther.setVisibility(View.VISIBLE); else etNoVaccReasOther.setVisibility(View.INVISIBLE); } });
+        checkNoVaccReasOthers.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) etNoVaccReasOther.setVisibility(View.VISIBLE);
+                else etNoVaccReasOther.setVisibility(View.INVISIBLE);
+            }
+        });
 
         radioVitA.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -709,24 +795,43 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         next5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // set in onclick: vaccinationStatus, vaccinevalidity, vaccineCampaign
-                vaccineMV = etVaccineMV.getText().toString();
-                vaccineMR = etVaccineMR.getText().toString();
-                vaccineMMR = etVaccineMMR.getText().toString();
-                vaccineLastDoseDate = etVaccineLastDoseDate.getText().toString();
-                vaccinationValidity = etVaccineValidityOthers.getText().toString();
+                page4 = true;
 
-                // TODO: no vaxx reason retrieve, use ischeck()
-                novaccineReasonOther = etNoVaccReasOther.getText().toString();
-                // vitA also set onclick
-
-                // TODO: validation ekek
-                if (false) {
-                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
-                    page4 = false;
+                if (vaccinationStatus.length() <= 0) { page4 = page4 & false; radioMeaslesVaccination.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioMeaslesVaccination.setBackgroundResource(0);
+                if (vaccinationStatus.equals("Yes")) {
+                    if (etVaccineLastDoseDate.getText().toString().length() <= 0) { page4 = page4 & false; etVaccineLastDoseDate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etVaccineLastDoseDate.setBackgroundResource(R.drawable.inputbox);
+                    if (vaccinationValidity.length() <= 0) { page4 = page4 & false; radioVaccineValidity.setBackgroundResource(R.color.theme_lightest_red); }
+                    else radioVaccineValidity.setBackgroundResource(0);
+                    if (vaccinationValidity.equals("Other:")) {
+                        if (etVaccineValidityOthers.getText().toString().length() <= 0) { page4 = page4 & false; etVaccineValidityOthers.setBackgroundResource(R.color.theme_lightest_red); }
+                        else etVaccineValidityOthers.setBackgroundResource(0);
+                    }
+                    if (vaccineCampaign.length() <= 0) { page4 = page4 & false; radioVaccineCampaign.setBackgroundResource(R.color.theme_lightest_red); }
+                    else radioVaccineCampaign.setBackgroundResource(0);
                 }
+                else if (vaccinationStatus.equals("No")) {
+                    if (checkNoVaccReasOthers.isChecked()) {
+                        if (etNoVaccReasOther.getText().toString().length() <= 0) { page4 = page4 & false; etNoVaccReasOther.setBackgroundResource(R.color.theme_lightest_red); }
+                        else etNoVaccReasOther.setBackgroundResource(0);
+                    }
+                }
+                if (vitA.length() <= 0) { page4 = page4 & false; radioVitA.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioVitA.setBackgroundResource(0);
+
+                if (!page4) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    page4 = true;
+                    // set in onclick: vaccinationStatus, vaccinevalidity, vaccineCampaign
+                    vaccineMV = etVaccineMV.getText().toString();
+                    vaccineMR = etVaccineMR.getText().toString();
+                    vaccineMMR = etVaccineMMR.getText().toString();
+                    vaccineLastDoseDate = etVaccineLastDoseDate.getText().toString();
+                    vaccinationValidity = etVaccineValidityOthers.getText().toString();
+                    // TODO: no vaxx reason retrieve, use ischeck()
+                    novaccineReasonOther = etNoVaccReasOther.getText().toString();
+                    // vitA also set onclick
+
                     pageFive();
                 }
             }
@@ -734,7 +839,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     }
 
     public void pageFive() {
-        setContentView(R.layout.activity_addcif_measles4);
+        setContentView(R.layout.activity_addcif_measles5);
 
         this.radioTravelhistory = findViewById(R.id.radiogroup_mea_travelhistory);
         this.consWithTravelHistory = findViewById(R.id.cons_mea_withtravelhistory);
@@ -815,20 +920,48 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         next6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // all set in onclick: travelHistory, rashOnset, measlesContact, rubellaContact, rubellaExposure, otherKnownFeverRash
-                travelPlace = etTravelPlace.getText().toString();
-                travelDate = etTravelDate.getText().toString();
-                rubellaContactName = etRubellaContactName.getText().toString();
-                rubellaContactPlace = etRubellaContactPlace.getText().toString();
-                rubellaContactTravelDate = etRubellaTravelDate.getText().toString();
+                page5 = true;
 
-                // TODO: validation ekek
-                if (false) {
-                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
-                    page5 = false;
+                if (travelHistory.length() <= 0) { page5 = page5 & false; radioTravelhistory.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioTravelhistory.setBackgroundResource(0);
+                if (Objects.equals(travelHistory, "Yes")) {
+                    if (etTravelPlace.getText().toString().length() <= 0) { page5 = page5 & false; etTravelPlace.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etTravelPlace.setBackgroundResource(R.drawable.inputbox);
+                    if (etTravelDate.getText().toString().length() <= 0) { page5 = page5 & false; etTravelDate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etTravelDate.setBackgroundResource(R.drawable.inputbox);
+                    if (rashOnset.length() <= 0) { page5 = page5 & false; radioRashOnset.setBackgroundResource(R.color.theme_lightest_red); }
+                    else radioRashOnset.setBackgroundResource(0);
                 }
+                if (measlesContact.length() <= 0) { page5 = page5 & false; radioMeaslesContact.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioMeaslesContact.setBackgroundResource(0);
+                if (rubellaContact.length() <= 0) { page5 = page5 & false; radioRubellaContact.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioRubellaContact.setBackgroundResource(0);
+                if (Objects.equals(rubellaContact, "Yes")) {
+                    if (etRubellaContactName.getText().toString().length() <= 0) { page5 = page5 & false; etRubellaContactName.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRubellaContactName.setBackgroundResource(R.drawable.inputbox);
+                    if (etRubellaContactPlace.getText().toString().length() <= 0) { page5 = page5 & false; etRubellaContactPlace.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRubellaContactPlace.setBackgroundResource(R.drawable.inputbox);
+                    if (etRubellaTravelDate.getText().toString().length() <= 0) { page5 = page5 & false; etRubellaTravelDate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRubellaTravelDate.setBackgroundResource(R.drawable.inputbox);
+                    if (rubellaExposure.length() <= 0) { page5 = page5 & false; radioRubellaExposure.setBackgroundResource(R.color.theme_lightest_red); }
+                    else radioRubellaExposure.setBackgroundResource(0);
+                    if (Objects.equals(rubellaExposure, "Other:")) {
+                        if (etRubellaExposureOther.getText().toString().length() <= 0) { page5 = page5 & false; etRubellaExposureOther.setBackgroundResource(R.drawable.inputbox_red); }
+                        else etRubellaExposureOther.setBackgroundResource(R.drawable.inputbox);
+                    }
+                }
+                if (otherKnownFeverRash.length() <= 0) { page5 = page5 & false; radioOtherFeverRashes.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioOtherFeverRashes.setBackgroundResource(0);
+
+                if (!page5) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    page5 = true;
+                    // all set in onclick: travelHistory, rashOnset, measlesContact, rubellaContact, rubellaExposure, otherKnownFeverRash
+                    travelPlace = etTravelPlace.getText().toString();
+                    travelDate = etTravelDate.getText().toString();
+                    rubellaContactName = etRubellaContactName.getText().toString();
+                    rubellaContactPlace = etRubellaContactPlace.getText().toString();
+                    rubellaContactTravelDate = etRubellaTravelDate.getText().toString();
+
                     pageSix();
                 }
             }
@@ -852,8 +985,16 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         });
         next7.setOnClickListener(new View.OnClickListener() { @Override
             public void onClick(View view) {
-                if (sourceinfo.isEmpty()) { page6 = false; Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show(); }
-                else { page6 = true; pageSeven(); }
+                page6 = true;
+
+                if (sourceinfo.length() <= 0) { page6 = page6 & false; radioSourceinfo.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioSourceinfo.setBackgroundResource(0);
+
+                if (!page6) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                else {
+                    // sourceinfo set in onclick
+                    pageSeven();
+                }
             }
         });
     }
@@ -873,7 +1014,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 else etDatedied.setVisibility(View.VISIBLE);}
         });
 
-        this.etDatedied.setOnClickListener(new View.OnClickListener() {@Override
+        etDatedied.setOnClickListener(new View.OnClickListener() {@Override
         public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
@@ -891,17 +1032,23 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         next8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // outcome is set in onclick
-                datedied = etDatedied.getText().toString();
-                finaldiagnosis = etFinalDiagnosis.getText().toString();
+                page7 = true;
 
-                // TODO: validation ekek
-                if (false) {
-                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
-                    page7 = false;
+                if (outcome.length() <= 0) { page7 = page7 & false; radioOutcome.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioOutcome.setBackgroundResource(0);
+                if (Objects.equals(outcome, "Dead")) {
+                    if (etDatedied.getText().toString().length() <= 0) { page7 = page7 & false; etDatedied.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etDatedied.setBackgroundResource(R.drawable.inputbox);
                 }
+                if (etFinalDiagnosis.getText().toString().length() <= 0) { page7 = page7 & false; etFinalDiagnosis.setBackgroundResource(R.drawable.inputbox_red); }
+                else etFinalDiagnosis.setBackgroundResource(R.drawable.inputbox);
+
+                if (!page7) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    page7 = true;
+                    // outcome is set in onclick
+                    datedied = etDatedied.getText().toString();
+                    finaldiagnosis = etFinalDiagnosis.getText().toString();
+
                     pageEight();
                 }
             }
@@ -933,8 +1080,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 RadioButton radioButton = (RadioButton) findViewById(i);
                 labresult = radioButton.getText().toString();
-                if (labresult.equals("Yes")) {consWithLabResult.setVisibility(View.VISIBLE); consNoLabResult.setVisibility(View.INVISIBLE);}
-                else if (labresult.equals("No")) {consWithLabResult.setVisibility(View.INVISIBLE); consNoLabResult.setVisibility(View.VISIBLE);}
+                if (labresult.equals("Yes")) {consWithLabResult.setVisibility(View.VISIBLE); consNoLabResult.setVisibility(View.GONE);}
+                else if (labresult.equals("No")) {consWithLabResult.setVisibility(View.GONE); consNoLabResult.setVisibility(View.VISIBLE);}
+                else if (labresult.equals("Processing")) {consWithLabResult.setVisibility(View.GONE); consNoLabResult.setVisibility(View.GONE);}
             }
         });
 
@@ -999,27 +1147,52 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         next9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                page8 = true;
 
-                // set in onclick: labresult
-                labspecimen = tvLabspecimen.getText().toString();
-                collectdate = etCollectdate.getText().toString();
-                receivedate = etReceivedate.getText().toString();
-                resultMeasle = etresultMeasles.getText().toString();
-                resultRubella = etresultRubella.getText().toString();
-                resultVirus = etresultVirus.getText().toString();
-                resultPRC = etresultPRC.getText().toString();
-                investigator = etInvestigator.getText().toString();
-                invesitgatorContact = etInvestigContact.getText().toString();
-                invesitgateDate = etInvestigDate.getText().toString();
-                labselected = tvLabSelect.getText().toString();
-
-                // TODO: validation ekek
-                if (false) {
-                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
-                    page8 = false;
+                if (labresult.length() <= 0) { page8 = page8 & false; radioLabResult.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioLabResult.setBackgroundResource(0);
+                if (Objects.equals(labresult, "No")) {
+                    if (tvLabSelect.getText().toString().length() <= 0) { page8 = page8 & false; tvLabSelect.setBackgroundResource(R.drawable.inputbox_red); tvLabSelect.setPadding(55,50,55,20); }
+                    else { tvLabSelect.setBackgroundResource(R.drawable.inputbox); tvLabSelect.setPadding(55,50,55,20); }
                 }
+                else if (Objects.equals(labresult, "Yes")) {
+                    if (tvLabspecimen.getText().toString().length() <= 0) { page8 = page8 & false; tvLabspecimen.setBackgroundResource(R.drawable.inputbox_red); tvLabSelect.setPadding(55,50,55,20); }
+                    else { tvLabspecimen.setBackgroundResource(R.drawable.inputbox); tvLabspecimen.setPadding(55,50,55,20); }
+                    if (etCollectdate.getText().toString().length() <= 0) { page8 = page8 & false; etCollectdate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etCollectdate.setBackgroundResource(R.drawable.inputbox);
+                    if (etReceivedate.getText().toString().length() <= 0) { page8 = page8 & false; etReceivedate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etReceivedate.setBackgroundResource(R.drawable.inputbox);
+                    if (etresultMeasles.getText().toString().length() <= 0) { page8 = page8 & false; etresultMeasles.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etresultMeasles.setBackgroundResource(R.drawable.inputbox);
+                    if (etresultRubella.getText().toString().length() <= 0) { page8 = page8 & false; etresultRubella.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etresultRubella.setBackgroundResource(R.drawable.inputbox);
+                    if (etresultVirus.getText().toString().length() <= 0) { page8 = page8 & false; etresultVirus.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etresultVirus.setBackgroundResource(R.drawable.inputbox);
+                    if (etresultPRC.getText().toString().length() <= 0) { page8 = page8 & false; etresultPRC.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etresultPRC.setBackgroundResource(R.drawable.inputbox);
+                    if (etInvestigator.getText().toString().length() <= 0) { page8 = page8 & false; etInvestigator.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etInvestigator.setBackgroundResource(R.drawable.inputbox);
+                    if (etInvestigContact.getText().toString().length() <= 0) { page8 = page8 & false; etInvestigContact.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etInvestigContact.setBackgroundResource(R.drawable.inputbox);
+                    if (etInvestigDate.getText().toString().length() <= 0) { page8 = page8 & false; etInvestigDate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etInvestigDate.setBackgroundResource(R.drawable.inputbox);
+                }
+
+                if (!page8) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    page8 = true;
+                    // set in onclick: labresult
+                    labspecimen = tvLabspecimen.getText().toString();
+                    collectdate = etCollectdate.getText().toString();
+                    receivedate = etReceivedate.getText().toString();
+                    resultMeasle = etresultMeasles.getText().toString();
+                    resultRubella = etresultRubella.getText().toString();
+                    resultVirus = etresultVirus.getText().toString();
+                    resultPRC = etresultPRC.getText().toString();
+                    investigator = etInvestigator.getText().toString();
+                    invesitgatorContact = etInvestigContact.getText().toString();
+                    invesitgateDate = etInvestigDate.getText().toString();
+                    labselected = tvLabSelect.getText().toString();
+
                     pageNine();
                 }
             }
@@ -1030,24 +1203,51 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addcif_measles9);
 
         // radiogroup & dropdown imgbutton
+        this.radioFinalClassif = findViewById(R.id.radiogroup_mea_finalclassif);
+        this.imageDropdown1 = findViewById(R.id.image_mea_expand1);
+        this.imageDropdown2 = findViewById(R.id.image_mea_expand2);
+        this.textDropdown1 = findViewById(R.id.tv_mea_expand1);
+        this.textDropdown2 = findViewById(R.id.tv_mea_expand2);
+        this.lineargroup1 = findViewById(R.id.linear_mea_finalclass1);
+        this.lineargroup2 = findViewById(R.id.linear_mea_finalclass2);
 
-        // img button onclick = textview.
-        /*
-
-        btn.setOnClickListener(
-            if (textview.visible()) {
-                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                hiddenGroup.setVisibility(View.GONE);
-                arrow.setImageResource(android.R.drawable.arrowdown);
+        imageDropdown1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textDropdown1.getVisibility() == View.VISIBLE) {
+                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup1, new AutoTransition());
+                    textDropdown1.setVisibility(View.GONE);
+                    imageDropdown1.setBackgroundResource(R.drawable.arrow_down);
+                }
+                else {
+                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup1, new AutoTransition());
+                    textDropdown1.setVisibility(View.VISIBLE);
+                    imageDropdown1.setBackgroundResource(R.drawable.arrow_up);
+                }
             }
-            else {
-                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                hiddenGroup.setVisibility(View.VISIBLE);
-                arrow.setImageResource(android.R.drawable.arrowup);
+        });
+        imageDropdown2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textDropdown2.getVisibility() == View.VISIBLE) {
+                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup2, new AutoTransition());
+                    textDropdown2.setVisibility(View.GONE);
+                    imageDropdown2.setBackgroundResource(R.drawable.arrow_down);
+                }
+                else {
+                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup2, new AutoTransition());
+                    textDropdown2.setVisibility(View.VISIBLE);
+                    imageDropdown2.setBackgroundResource(R.drawable.arrow_up);
+                }
             }
-        )
+        });
 
-         */
+        radioFinalClassif.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                finalClassification = radioButton.getText().toString();
+            }
+        });
 
         this.submit = findViewById(R.id.btn_meas_submit);
         this.back8 = findViewById(R.id.btn_meas_back8);
@@ -1058,17 +1258,92 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                page9 = true;
 
-                // TODO: validation ekek
-                if (false) {
-                    Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
-                    page9 = false;
-                }
+                if (finalClassification.length() <= 0) { page9 = page9 & false; radioFinalClassif.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioFinalClassif.setBackgroundResource(0);
+
+                if (!page9) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    page9 = true;
-//                    submit();
+                    // finalClassification set during onclick
+                    submit(view);
                 }
             }
+        });
+    }
+
+    public void submit(View view) {
+        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.activity_confirm_popup, null);
+
+        //Specify the length and width through constants
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+
+        //Make Inactive Items Outside Of PopupWindow
+        boolean focusable = true;
+
+        //Create a window with our parameters
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        //Set the location of the window on the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        Button buttonCancel = popupView.findViewById(R.id.btn_cancel);
+        Button buttonConfirm = popupView.findViewById(R.id.btn_confirm);
+        buttonCancel.setOnClickListener(new View.OnClickListener() { @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        buttonConfirm.setOnClickListener(new View.OnClickListener() { @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                //As an example, display the message
+                Toast.makeText(view.getContext(), "Please wait for page to load", Toast.LENGTH_SHORT).show();
+
+                setContentView(R.layout.activity_loadingpage);
+
+                // TODO: make function to submit the thingies
+                TextView tvCaseAddStatus = findViewById(R.id.tv_caseAddStatus);
+                ProgressBar loadingpanel = findViewById(R.id.loadingPanel);
+                ImageView imgCheck = findViewById(R.id.imgCheckPanel);
+
+                LinearLayout layoutDone = findViewById(R.id.layout_done);
+                Button buttonHome = findViewById(R.id.btn_home);
+                Button buttonAddCase = findViewById(R.id.btn_addanothercase);
+
+                int i = 900000000;
+                while (i>= -900000000) {
+                    i -= 1;
+                    if (i== -900000000) {
+                        loadingpanel.setVisibility(View.GONE);
+                        imgCheck.setVisibility(View.VISIBLE);
+                        layoutDone.setVisibility(View.VISIBLE);
+                        tvCaseAddStatus.setText("Case successfully submitted!");
+
+                        buttonHome.setOnClickListener(new View.OnClickListener() { @Override
+                            public void onClick(View view) {
+                                pageNine();
+//                            startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                            }
+                        });
+                        buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        //Handler for clicking on the inactive zone of the window
+        popupView.setOnTouchListener(new View.OnTouchListener() { @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //Close the window when clicked
+                popupWindow.dismiss();
+                return true; }
         });
     }
 

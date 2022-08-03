@@ -17,7 +17,9 @@
     <color name="theme_light_blue">#8BCAE5</color>
     <color name="theme_green">#53A262</color>
     <color name="theme_light_green">#CEE9C0</color>
-    <color name="theme_red">#DA4944</color>
+    <color name="theme_red">#ff0000</color>
+    <color name="theme_light_red">#DA4944</color>
+    <color name="theme_lightest_red">#ffcccb</color>
     <color name="theme_cream">#FFFBEE</color>
     <color name="theme_gray">#C4C4C4</color>
     <color name="theme_darkgray">#707C8B</color>

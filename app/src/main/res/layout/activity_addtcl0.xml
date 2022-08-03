@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_cream"
-    tools:context=".AddcifMeaslesActivity">
+    tools:context=".AddtclActivity">
 
     <LinearLayout
-        android:id="@+id/measlesBars6"
+        android:id="@+id/measlesBars0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -22,7 +22,7 @@
             android:layout_marginLeft="35.6dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
+            android:backgroundTint="@color/theme_blue"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -34,7 +34,6 @@
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +44,6 @@
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +54,6 @@
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -67,7 +64,6 @@
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -78,7 +74,6 @@
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -89,7 +84,6 @@
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_blue"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -132,14 +126,14 @@
         android:layout_marginLeft="35.6dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars6"
+        app:layout_constraintTop_toBottomOf="@id/measlesBars0"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Information Source"
+            android:text="Search Patient"
             android:textColor="@color/theme_green"
             android:textSize="13dp" />
 
@@ -153,106 +147,31 @@
             android:textSize="26dp" />
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="125dp"
-        android:layout_marginBottom="85dp"
-        android:paddingLeft="36dp"
-        android:paddingRight="36dp"
-        android:scrollbars="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <AutoCompleteTextView
+        android:id="@+id/autocomp_mea_searchpatient"
+        style="@style/Input"
+        android:layout_width="320dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/inputbox"
+        android:inputType="text"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/measlesBars0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars6"
-        app:layout_constraintVertical_bias="0.0">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_mea6a"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="50dp">
-            <EditText
-                android:id="@+id/et_mea_sourceinfo"
-                style="@style/Input"
-                android:layout_width="320dp"
-                android:layout_height="1.5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/inputbox"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cons_mea6a"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
-                android:background="@color/theme_cream"
-                android:text="   Select source of information *  "
-                android:textColor="@color/light_gray"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/et_mea_sourceinfo"
-                app:layout_constraintTop_toTopOf="@id/et_mea_sourceinfo" />
-            <RadioGroup
-                android:id="@+id/radiogroup_mea_sourceinfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/et_mea_sourceinfo"
-                tools:ignore="MissingConstraints">
-                <RadioButton
-                    android:id="@+id/radiobutton_mea_sourceinfo1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="2dp"
-                    android:buttonTint="@color/theme_darkgray"
-                    android:text="Endemic"
-                    android:textColor="@color/theme_darkgray" />
-                <RadioButton
-                    android:id="@+id/radiobutton_mea_sourceinfo2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="1dp"
-                    android:buttonTint="@color/theme_darkgray"
-                    android:text="Imported"
-                    android:textColor="@color/theme_darkgray" />
-                <RadioButton
-                    android:id="@+id/radiobutton_mea_sourceinfo3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="1dp"
-                    android:buttonTint="@color/theme_darkgray"
-                    android:text="Import-related"
-                    android:textColor="@color/theme_darkgray" />
-                <RadioButton
-                    android:id="@+id/radiobutton_mea_sourceinfo4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="1dp"
-                    android:buttonTint="@color/theme_darkgray"
-                    android:text="Unknown"
-                    android:textColor="@color/theme_darkgray" />
-            </RadioGroup>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-10dp"
+        android:background="@color/theme_cream"
+        android:text="   Type Patient Name   "
+        android:textColor="@color/light_gray"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/autocomp_mea_searchpatient"
+        app:layout_constraintTop_toTopOf="@id/autocomp_mea_searchpatient" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -265,14 +184,14 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_meas_back5"
+            android:id="@+id/btn_meas_cancel"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
             android:layout_marginRight="15dp"
             android:backgroundTint="@color/theme_cream"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Back"
+            android:text="Cancel"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/theme_blue"
@@ -281,7 +200,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next7"
+            android:id="@+id/btn_meas_next1"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"

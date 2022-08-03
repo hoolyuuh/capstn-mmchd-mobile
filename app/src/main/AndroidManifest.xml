@@ -24,6 +24,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_login" />
         <activity
+            android:name=".HomeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_login" />
+        <activity
             android:name=".AddcaseActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_login" />
@@ -33,6 +37,10 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".AddHealthEventActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".AddtclActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_login" />
     </application>
