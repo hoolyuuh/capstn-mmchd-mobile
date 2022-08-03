@@ -241,7 +241,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.spinnerCurrCity = findViewById(R.id.spinner_mea_currcity);
         this.tvCurrBrgy = findViewById(R.id.tv_mea_currbrgy);
         this.spinnerCurrBrgy = findViewById(R.id.spinner_mea_currbrgy);
-        this.checkboxSameaddress = findViewById(R.id.checkbox_sameaddress);
+        this.checkboxSameaddress = findViewById(R.id.checkbox_mea_sameaddress);
         this.constPermanentAdd = findViewById(R.id.cons_perminfo);
         this.etPermStreet = findViewById(R.id.et_mea_permstreet);
         this.tvPermCity = findViewById(R.id.tv_mea_permcity);
@@ -1325,7 +1325,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                         buttonHome.setOnClickListener(new View.OnClickListener() { @Override
                             public void onClick(View view) {
                                 pageNine();
-//                            startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                            startActivity(new Intent(AddcifMeaslesActivity.this, HomeActivity.class));
                             }
                         });
                         buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override

@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_cream"
-    tools:context=".AddcifMeaslesActivity">
+    tools:context=".AddtclActivity">
 
     <LinearLayout
-        android:id="@+id/measlesBars1"
+        android:id="@+id/tclBars1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -17,7 +17,7 @@
         tools:ignore="MissingConstraints">
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="70dp"
             android:layout_height="5.1dp"
             android:layout_marginLeft="35.6dp"
             android:layout_marginRight="6dp"
@@ -30,7 +30,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="70dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -41,7 +41,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="70dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -51,67 +51,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
+            android:layout_width="70dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -127,7 +67,7 @@
         android:layout_marginLeft="35.6dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars1"
+        app:layout_constraintTop_toBottomOf="@id/tclBars1"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -143,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Add a Measles Case"
+            android:text="Add Immunization Entry"
             android:textColor="@color/theme_blue"
             android:textSize="26dp" />
     </LinearLayout>
@@ -160,7 +100,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars1"
+        app:layout_constraintTop_toBottomOf="@id/tclBars1"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -168,13 +108,13 @@
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cons_mea1a"
+                android:id="@+id/cons_tcl1a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:id="@+id/et_mea_lastname"
+                    android:id="@+id/et_tcl_lastname"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -197,11 +137,11 @@
                     android:text="   Last Name *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_lastname"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_lastname" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_lastname"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_lastname" />
 
                 <EditText
-                    android:id="@+id/et_mea_firstname"
+                    android:id="@+id/et_tcl_firstname"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -213,7 +153,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_lastname" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_lastname" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -224,11 +164,11 @@
                     android:text="   First Name *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_firstname"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_firstname" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_firstname"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_firstname" />
 
                 <EditText
-                    android:id="@+id/et_mea_middlename"
+                    android:id="@+id/et_tcl_middlename"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -240,7 +180,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_firstname" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_firstname" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -251,11 +191,11 @@
                     android:text="   Middle Name *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_middlename"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_middlename" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_middlename"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_middlename" />
 
                 <EditText
-                    android:id="@+id/et_mea_birthdate"
+                    android:id="@+id/et_tcl_birthdate"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -268,7 +208,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_middlename" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_middlename" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -279,11 +219,11 @@
                     android:text="   Birthdate *  "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_birthdate"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_birthdate" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_birthdate"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_birthdate" />
 
                 <EditText
-                    android:id="@+id/et_mea_sex"
+                    android:id="@+id/et_tcl_sex"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="1.5dp"
@@ -294,7 +234,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_birthdate" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_birthdate" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -305,8 +245,8 @@
                     android:text="   Sex *  "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_sex"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_sex" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_sex"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_sex" />
 
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/radiogroup_sex"
@@ -318,7 +258,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_birthdate"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_birthdate"
                     tools:ignore="MissingConstraints">
 
                     <RadioButton
@@ -343,7 +283,7 @@
                 </RadioGroup>
 
                 <EditText
-                    android:id="@+id/et_mea_pregnancy"
+                    android:id="@+id/et_tcl_pregnancy"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="1.5dp"
@@ -354,7 +294,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_sex" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_sex" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -365,8 +305,8 @@
                     android:text="   Pregnancy *  "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_pregnancy"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_pregnancy" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_pregnancy"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_pregnancy" />
 
                 <RadioGroup
                     android:id="@+id/radiogroup_pregnancy"
@@ -402,7 +342,7 @@
                         android:textColor="@color/theme_darkgray" />
 
                     <EditText
-                        android:id="@+id/et_mea_pregweeks"
+                        android:id="@+id/et_tcl_pregweeks"
                         android:layout_width="35dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="-10dp"
@@ -426,7 +366,7 @@
                 </RadioGroup>
 
                 <EditText
-                    android:id="@+id/et_mea_phone"
+                    android:id="@+id/et_tcl_phone"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -437,7 +377,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_pregnancy" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_pregnancy" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -448,11 +388,11 @@
                     android:text="   Phone *  "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_phone"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_phone" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_phone"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_phone" />
 
                 <TextView
-                    android:id="@+id/tv_mea_civilstatus"
+                    android:id="@+id/tv_tcl_civilstatus"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -465,10 +405,10 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_phone" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_phone" />
 
                 <Spinner
-                    android:id="@+id/spinner_mea_civilstatus"
+                    android:id="@+id/spinner_tcl_civilstatus"
                     style="@style/Widget.AppCompat.Spinner.DropDown"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -478,7 +418,7 @@
                     android:theme="@style/ThemeOverlay.AppCompat.Light"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mea_civilstatus" />
+                    app:layout_constraintTop_toTopOf="@id/tv_tcl_civilstatus" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -489,11 +429,11 @@
                     android:text="   Civil Status *  "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/tv_mea_civilstatus"
-                    app:layout_constraintTop_toTopOf="@id/tv_mea_civilstatus" />
+                    app:layout_constraintLeft_toLeftOf="@id/tv_tcl_civilstatus"
+                    app:layout_constraintTop_toTopOf="@id/tv_tcl_civilstatus" />
 
                 <EditText
-                    android:id="@+id/et_mea_indigenous"
+                    android:id="@+id/et_tcl_indigenous"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -505,7 +445,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mea_civilstatus" />
+                    app:layout_constraintTop_toTopOf="@id/tv_tcl_civilstatus" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -517,8 +457,8 @@
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_indigenous"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_indigenous" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_indigenous"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_indigenous" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -529,7 +469,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@+id/cons_mea1a"
+                app:layout_constraintTop_toBottomOf="@+id/cons_tcl1a"
                 tools:ignore="MissingConstraints" />
             <TextView
                 android:layout_width="match_parent"
@@ -538,20 +478,20 @@
                 android:textColor="@color/theme_blue"
                 android:fontFamily="@font/worksans_semibold"
                 android:textSize="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/cons_mea1a"
+                app:layout_constraintTop_toBottomOf="@+id/cons_tcl1a"
                 android:layout_marginTop="20dp"
                 tools:ignore="MissingConstraints" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cons_mea1b"
+                android:id="@+id/cons_tcl1b"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/cons_mea1a"
+                app:layout_constraintTop_toBottomOf="@+id/cons_tcl1a"
                 android:paddingTop="25dp">
 
                 <EditText
-                    android:id="@+id/et_mea_occupation"
+                    android:id="@+id/et_tcl_occupation"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -563,7 +503,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/cons_mea1b"
+                    app:layout_constraintTop_toTopOf="@id/cons_tcl1b"
                     tools:ignore="MissingConstraints" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -574,11 +514,11 @@
                     android:text="   Occupation *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_occupation"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_occupation" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_occupation"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_occupation" />
 
                 <EditText
-                    android:id="@+id/et_mea_occuloc"
+                    android:id="@+id/et_tcl_occuloc"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -592,7 +532,7 @@
                     android:textColorHint="@color/theme_gray"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_occupation" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_occupation" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -602,11 +542,11 @@
                     android:text="   Occupation Location *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_occuloc"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_occuloc" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_occuloc"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_occuloc" />
 
                 <EditText
-                    android:id="@+id/et_mea_occustreet"
+                    android:id="@+id/et_tcl_occustreet"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -618,7 +558,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_occuloc" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_occuloc" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -628,29 +568,29 @@
                     android:text="   Occupation Street *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_occustreet"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_occustreet" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_occustreet"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_occustreet" />
 
                 <LinearLayout
-                    android:id="@+id/cons_mea1c"
+                    android:id="@+id/cons_tcl1c"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="65dp"
                     android:orientation="horizontal"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_occustreet"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_occustreet"
                     tools:ignore="MissingConstraints">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cons_mea1d"
+                        android:id="@+id/cons_tcl1d"
                         android:layout_width="155dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_mea_occucity"
+                            android:id="@+id/tv_tcl_occucity"
                             style="@style/Input"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -662,11 +602,11 @@
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="17dp"
-                            app:layout_constraintTop_toTopOf="@id/cons_mea1d"
+                            app:layout_constraintTop_toTopOf="@id/cons_tcl1d"
                             tools:ignore="MissingConstraints,NotSibling" />
 
                         <Spinner
-                            android:id="@+id/spinner_mea_occucity"
+                            android:id="@+id/spinner_tcl_occucity"
                             style="@style/Widget.AppCompat.Spinner.DropDown"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -676,7 +616,7 @@
                             android:theme="@style/ThemeOverlay.AppCompat.Light"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_occucity" />
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_occucity" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -687,19 +627,19 @@
                             android:text="   Occu City *  "
                             android:textColor="@color/light_gray"
                             android:textSize="15dp"
-                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_occucity"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_occucity" />
+                            app:layout_constraintLeft_toLeftOf="@id/tv_tcl_occucity"
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_occucity" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cons_mea1e"
+                        android:id="@+id/cons_tcl1e"
                         android:layout_width="155dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_mea_occubrgy"
+                            android:id="@+id/tv_tcl_occubrgy"
                             style="@style/Input"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -711,11 +651,11 @@
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="17dp"
-                            app:layout_constraintTop_toTopOf="@id/cons_mea1e"
+                            app:layout_constraintTop_toTopOf="@id/cons_tcl1e"
                             tools:ignore="MissingConstraints,NotSibling" />
 
                         <Spinner
-                            android:id="@+id/spinner_mea_occubrgy"
+                            android:id="@+id/spinner_tcl_occubrgy"
                             style="@style/Widget.AppCompat.Spinner.DropDown"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -725,7 +665,7 @@
                             android:theme="@style/ThemeOverlay.AppCompat.Light"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_occubrgy" />
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_occubrgy" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -736,15 +676,15 @@
                             android:text="   Occu Brgy *  "
                             android:textColor="@color/light_gray"
                             android:textSize="15dp"
-                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_occubrgy"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_occubrgy" />
+                            app:layout_constraintLeft_toLeftOf="@id/tv_tcl_occubrgy"
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_occubrgy" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/et_mea_currstreet"
+                    android:id="@+id/et_tcl_currstreet"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -756,7 +696,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/cons_mea1c" />
+                    app:layout_constraintTop_toTopOf="@id/cons_tcl1c" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -766,29 +706,29 @@
                     android:text="   Current Street Address *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_currstreet"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_currstreet" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_currstreet"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_currstreet" />
 
                 <LinearLayout
-                    android:id="@+id/cons_mea1f"
+                    android:id="@+id/cons_tcl1f"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="65dp"
                     android:orientation="horizontal"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_currstreet"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_currstreet"
                     tools:ignore="MissingConstraints">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cons_mea1g"
+                        android:id="@+id/cons_tcl1g"
                         android:layout_width="155dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_mea_currcity"
+                            android:id="@+id/tv_tcl_currcity"
                             style="@style/Input"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -800,11 +740,11 @@
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="17dp"
-                            app:layout_constraintTop_toTopOf="@id/cons_mea1g"
+                            app:layout_constraintTop_toTopOf="@id/cons_tcl1g"
                             tools:ignore="MissingConstraints,NotSibling" />
 
                         <Spinner
-                            android:id="@+id/spinner_mea_currcity"
+                            android:id="@+id/spinner_tcl_currcity"
                             style="@style/Widget.AppCompat.Spinner.DropDown"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -814,7 +754,7 @@
                             android:theme="@style/ThemeOverlay.AppCompat.Light"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_currcity" />
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_currcity" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -825,19 +765,19 @@
                             android:text="   Curr City *  "
                             android:textColor="@color/light_gray"
                             android:textSize="15dp"
-                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_currcity"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_currcity" />
+                            app:layout_constraintLeft_toLeftOf="@id/tv_tcl_currcity"
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_currcity" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cons_mea1h"
+                        android:id="@+id/cons_tcl1h"
                         android:layout_width="155dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_mea_currbrgy"
+                            android:id="@+id/tv_tcl_currbrgy"
                             style="@style/Input"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -849,11 +789,11 @@
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="17dp"
-                            app:layout_constraintTop_toTopOf="@id/cons_mea1h"
+                            app:layout_constraintTop_toTopOf="@id/cons_tcl1h"
                             tools:ignore="MissingConstraints,NotSibling" />
 
                         <Spinner
-                            android:id="@+id/spinner_mea_currbrgy"
+                            android:id="@+id/spinner_tcl_currbrgy"
                             style="@style/Widget.AppCompat.Spinner.DropDown"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -863,7 +803,7 @@
                             android:theme="@style/ThemeOverlay.AppCompat.Light"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_currbrgy" />
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_currbrgy" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -874,14 +814,14 @@
                             android:text="   Curr Brgy *  "
                             android:textColor="@color/light_gray"
                             android:textSize="15dp"
-                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_currbrgy"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_currbrgy" />
+                            app:layout_constraintLeft_toLeftOf="@id/tv_tcl_currbrgy"
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_currbrgy" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 
-                <CheckBox android:id="@+id/checkbox_mea_sameaddress"
+                <CheckBox android:id="@+id/checkbox_tcl_sameddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Same Current and Permanent Address"
@@ -889,7 +829,7 @@
                     android:layout_marginTop="10dp"
                     android:textColor="@color/theme_darkgray"
                     android:buttonTint="@color/theme_darkgray"
-                    app:layout_constraintTop_toBottomOf="@id/cons_mea1f"
+                    app:layout_constraintTop_toBottomOf="@id/cons_tcl1f"
                     tools:ignore="MissingConstraints" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -899,10 +839,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/cons_mea1b"
+                app:layout_constraintTop_toBottomOf="@id/cons_tcl1b"
                 tools:ignore="NotSibling">
                 <EditText
-                    android:id="@+id/et_mea_permstreet"
+                    android:id="@+id/et_tcl_permstreet"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -925,29 +865,29 @@
                     android:text="   Permanent Street Address *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_permstreet"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_permstreet" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_permstreet"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_permstreet" />
 
                 <LinearLayout
-                    android:id="@+id/cons_mea1j"
+                    android:id="@+id/cons_tcl1j"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="65dp"
                     android:orientation="horizontal"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_permstreet"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_permstreet"
                     tools:ignore="MissingConstraints">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cons_mea1k"
+                        android:id="@+id/cons_tcl1k"
                         android:layout_width="155dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_mea_permcity"
+                            android:id="@+id/tv_tcl_permcity"
                             style="@style/Input"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -959,11 +899,11 @@
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="17dp"
-                            app:layout_constraintTop_toTopOf="@id/cons_mea1k"
+                            app:layout_constraintTop_toTopOf="@id/cons_tcl1k"
                             tools:ignore="MissingConstraints,NotSibling" />
 
                         <Spinner
-                            android:id="@+id/spinner_mea_permcity"
+                            android:id="@+id/spinner_tcl_permcity"
                             style="@style/Widget.AppCompat.Spinner.DropDown"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -973,7 +913,7 @@
                             android:theme="@style/ThemeOverlay.AppCompat.Light"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_permcity" />
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_permcity" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -984,19 +924,19 @@
                             android:text="   Perm City *  "
                             android:textColor="@color/light_gray"
                             android:textSize="15dp"
-                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_permcity"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_permcity" />
+                            app:layout_constraintLeft_toLeftOf="@id/tv_tcl_permcity"
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_permcity" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cons_mea1l"
+                        android:id="@+id/cons_tcl1l"
                         android:layout_width="155dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_mea_permbrgy"
+                            android:id="@+id/tv_tcl_permbrgy"
                             style="@style/Input"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -1008,11 +948,11 @@
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="17dp"
-                            app:layout_constraintTop_toTopOf="@id/cons_mea1l"
+                            app:layout_constraintTop_toTopOf="@id/cons_tcl1l"
                             tools:ignore="MissingConstraints,NotSibling" />
 
                         <Spinner
-                            android:id="@+id/spinner_mea_permbrgy"
+                            android:id="@+id/spinner_tcl_permbrgy"
                             style="@style/Widget.AppCompat.Spinner.DropDown"
                             android:layout_width="155dp"
                             android:layout_height="47dp"
@@ -1022,7 +962,7 @@
                             android:theme="@style/ThemeOverlay.AppCompat.Light"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_permbrgy" />
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_permbrgy" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -1033,8 +973,8 @@
                             android:text="   Perm Brgy *  "
                             android:textColor="@color/light_gray"
                             android:textSize="15dp"
-                            app:layout_constraintLeft_toLeftOf="@id/tv_mea_permbrgy"
-                            app:layout_constraintTop_toTopOf="@id/tv_mea_permbrgy" />
+                            app:layout_constraintLeft_toLeftOf="@id/tv_tcl_permbrgy"
+                            app:layout_constraintTop_toTopOf="@id/tv_tcl_permbrgy" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1063,7 +1003,7 @@
                 tools:ignore="MissingConstraints" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cons_mea1m"
+                android:id="@+id/cons_tcl1m"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/cons_perminfo"
@@ -1072,7 +1012,7 @@
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:id="@+id/et_mea_parentcg"
+                    android:id="@+id/et_tcl_parentcg"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -1084,7 +1024,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/cons_mea1m"
+                    app:layout_constraintTop_toTopOf="@id/cons_tcl1m"
                     tools:ignore="MissingConstraints" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -1095,11 +1035,11 @@
                     android:text="   Parent/Caregiver *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_parentcg"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_parentcg" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_parentcg"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_parentcg" />
 
                 <EditText
-                    android:id="@+id/et_mea_parentcgContact"
+                    android:id="@+id/et_tcl_parentcgContact"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -1111,7 +1051,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_parentcg" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_parentcg" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1121,11 +1061,11 @@
                     android:text="   Contact No. *   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_parentcgContact"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_parentcgContact" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_parentcgContact"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_parentcgContact" />
 
                 <EditText
-                    android:id="@+id/et_mea_hcpn"
+                    android:id="@+id/et_tcl_hcpn"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -1137,7 +1077,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_parentcgContact" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_parentcgContact" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1147,11 +1087,11 @@
                     android:text="   HCPN   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_hcpn"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_hcpn" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_hcpn"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_hcpn" />
 
                 <EditText
-                    android:id="@+id/et_mea_ilhz"
+                    android:id="@+id/et_tcl_ilhz"
                     style="@style/Input"
                     android:layout_width="320dp"
                     android:layout_height="47dp"
@@ -1163,7 +1103,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_hcpn" />
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_hcpn" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1173,8 +1113,8 @@
                     android:text="   ILHZ   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="@id/et_mea_ilhz"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_ilhz" />
+                    app:layout_constraintLeft_toLeftOf="@id/et_tcl_ilhz"
+                    app:layout_constraintTop_toTopOf="@id/et_tcl_ilhz" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1193,7 +1133,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_meas_back0"
+            android:id="@+id/btn_tcl_back0"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
@@ -1209,7 +1149,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next2"
+            android:id="@+id/btn_tcl_next2"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
