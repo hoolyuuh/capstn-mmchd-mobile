@@ -727,15 +727,15 @@ public class AddtclActivity extends AppCompatActivity {
             datePickerDialog.show(); }
         });
 
-        this.next3 = findViewById(R.id.btn_tcl_next3);
-        this.back1 = findViewById(R.id.btn_tcl_back1);
+        this.submit = findViewById(R.id.btn_tcl_submit);
+        this.back2 = findViewById(R.id.btn_tcl_back2);
 
-        back1.setOnClickListener(new View.OnClickListener() {
+        back2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { pageOne(); }
+            public void onClick(View view) { pageTwo(); }
         });
 
-        next3.setOnClickListener(new View.OnClickListener() {
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 page3 = true;
