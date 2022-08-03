@@ -143,7 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Add a Measles Case (CIF)"
+            android:text="Add a Measles Case"
             android:textColor="@color/theme_blue"
             android:textSize="26dp" />
     </LinearLayout>
@@ -516,6 +516,7 @@
                     android:text="   Indigenous Group   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="@id/et_mea_indigenous"
                     app:layout_constraintTop_toTopOf="@id/et_mea_indigenous" />
 
@@ -1187,7 +1188,7 @@
         android:layout_marginBottom="30dp"
         android:gravity="end"
         android:orientation="horizontal"
-        app:flow_horizontalAlign="end"
+        android:flow_horizontalAlign="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints">
