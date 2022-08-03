@@ -457,6 +457,7 @@
                             tools:ignore="MissingConstraints" >
                         </CheckBox>
                         <EditText
+                            android:visibility="gone"
                             android:id="@+id/et_mea_rfLOthers"
                             style="@style/Input"
                             android:layout_width="75dp"
@@ -541,6 +542,7 @@
                             tools:ignore="MissingConstraints" >
                         </CheckBox>
                         <EditText
+                            android:visibility="gone"
                             android:id="@+id/et_mea_rfCOthers"
                             style="@style/Input"
                             android:layout_width="75dp"
@@ -642,6 +644,7 @@
                             tools:ignore="MissingConstraints" >
                         </CheckBox>
                         <EditText
+                            android:visibility="gone"
                             android:id="@+id/et_mea_rfHOthers"
                             style="@style/Input"
                             android:layout_width="75dp"
@@ -796,6 +799,7 @@
                             tools:ignore="MissingConstraints" >
                         </CheckBox>
                         <EditText
+                            android:visibility="gone"
                             android:id="@+id/et_mea_rfOOthers"
                             style="@style/Input"
                             android:layout_width="75dp"
