@@ -456,7 +456,6 @@
                     android:text="   Indigenous Group   "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="@id/et_tcl_indigenous"
                     app:layout_constraintTop_toTopOf="@id/et_tcl_indigenous" />
 
