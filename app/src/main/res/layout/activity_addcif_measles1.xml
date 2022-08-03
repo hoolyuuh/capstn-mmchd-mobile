@@ -1188,7 +1188,6 @@
         android:layout_marginBottom="30dp"
         android:gravity="end"
         android:orientation="horizontal"
-        android:flow_horizontalAlign="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints">

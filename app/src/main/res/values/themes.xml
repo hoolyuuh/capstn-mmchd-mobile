@@ -15,7 +15,6 @@
     </style>
 
     <style name="Theme.CovID.Fullscreen" parent="Theme.CovID">
-        <item name="android:actionBarStyle">@style/Widget.Theme.CovID.ActionBar.Fullscreen</item>
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowBackground">@null</item>
     </style>
