@@ -16,4 +16,8 @@
         <item name="strokeWidth">1dp</item>
     </style>
 
+    <style name="Spinner" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/theme_darkgray</item>
+    </style>
+
 </resources>

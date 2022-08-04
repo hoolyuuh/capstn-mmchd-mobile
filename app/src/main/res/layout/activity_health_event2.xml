@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/theme_cream"
+    android:theme="@style/ThemeOverlay.CovID.FullscreenContainer">
+    tools:context=".AddHealthEventActivity">
+
+    <LinearLayout
+        android:id="@+id/ebs_bars2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <View
+            android:id="@+id/vi_ebs_bar"
+            android:layout_width="87dp"
+            android:layout_height="5.1dp"
+            android:background="@drawable/bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="40.8dp"
+            android:layout_marginLeft="35.6dp"
+            android:outlineSpotShadowColor="@color/black"
+            android:outlineAmbientShadowColor="@color/black"
+            tools:ignore="MissingConstraints"/>
+
+        <View
+            android:layout_width="87dp"
+            android:layout_height="5.1dp"
+            android:background="@drawable/bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="40.8dp"
+            android:layout_marginLeft="10dp"
+            android:outlineSpotShadowColor="@color/black"
+            android:outlineAmbientShadowColor="@color/black"
+            android:backgroundTint="@color/theme_blue"
+            tools:ignore="MissingConstraints"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35.6dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ebs_bars2"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ebs_bars2"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/tv_ebs_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vi_ebs_bar"
+                android:text="Source Details"
+                app:layout_constraintLeft_toLeftOf="@id/vi_ebs_bar"
+                android:textSize="13dp"
+                android:textColor="@color/theme_green"
+                android:layout_marginTop="2dp"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vi_ebs_bar"
+                android:text="Event Details"
+                app:layout_constraintLeft_toRightOf="@id/tv_ebs_1"
+                android:textSize="13dp"
+                android:textColor="@color/theme_green"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="14dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ebs_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/vi_ebs_bar"
+            android:text="Add a Health Event"
+            app:layout_constraintLeft_toLeftOf="@id/vi_ebs_bar"
+            android:textSize="30dp"
+            android:textColor="@color/theme_blue"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/worksans_semibold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ebs_header"
+            android:text="Please fill up with complete and correct information."
+            app:layout_constraintLeft_toLeftOf="@id/ebs_header"
+            android:textSize="13dp"
+            android:textColor="@color/theme_green"
+            android:layout_marginTop="3dp"
+            android:letterSpacing="0.03"/>
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="85dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ebs_bars2"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ti_ebs_event_details"
+                style="@style/Input"
+                android:layout_width="320dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/inputbox"
+                android:focusable="false"
+                android:inputType="text"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="-10dp"
+                android:background="@color/theme_cream"
+                android:text="   Health Event *  "
+                android:textColor="@color/light_gray"
+                android:textSize="15dp"
+                app:layout_constraintLeft_toLeftOf="@id/ti_ebs_event_details"
+                app:layout_constraintTop_toTopOf="@id/ti_ebs_event_details" />
+
+            <EditText
+                android:id="@+id/ti_ebs_street"
+                style="@style/Input"
+                android:layout_width="320dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="33dp"
+                android:background="@drawable/inputbox"
+                android:inputType="text"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ti_ebs_event_details" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="-10dp"
+                android:background="@color/theme_cream"
+                android:text="   Street / House No. *  "
+                android:textColor="@color/light_gray"
+                android:textSize="15dp"
+                app:layout_constraintLeft_toLeftOf="@id/ti_ebs_street"
+                app:layout_constraintTop_toTopOf="@id/ti_ebs_street" />
+
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:flow_horizontalAlign="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btn_ebs_back0"
+            style="@style/NoCorner"
+            android:layout_width="95dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/theme_cream"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Back"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/theme_blue"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/btn_ebs_next0"
+            style="@style/NoCorner"
+            android:layout_width="95dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="45dp"
+            android:backgroundTint="#346083"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Next"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFBEE"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

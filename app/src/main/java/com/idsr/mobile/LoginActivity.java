@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 else {
 //                    User user = callUserLog();
 //                    if(user.getUserType()==0) sendAdminToken();
-                    startActivity(new Intent(LoginActivity.this, AddcaseActivity.class));
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 }
             }
         });

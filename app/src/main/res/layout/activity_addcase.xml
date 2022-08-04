@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Case Investigation Form (CIF)"
+            android:text="Category I (CIF)"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:fontFamily="@font/worksans_semibold"
@@ -69,6 +69,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
         <Button
             android:id="@+id/add_rabies"
@@ -93,6 +94,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
     </LinearLayout>
 
@@ -110,7 +112,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Case Report Form (CRF)"
+            android:text="Category II (CRF)"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:fontFamily="@font/worksans_semibold"
@@ -129,6 +131,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
         <Button
             android:id="@+id/add_cholera"
@@ -141,6 +144,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
         <Button
             android:id="@+id/add_leptospirosis"
@@ -153,6 +157,7 @@
             android:textColor="@color/theme_blue"
             android:background="#f2f2f2"
             style="?android:attr/borderlessButtonStyle"
+            android:stateListAnimator="@null"
             />
 
 

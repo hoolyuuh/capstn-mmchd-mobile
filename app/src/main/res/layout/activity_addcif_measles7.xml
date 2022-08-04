@@ -9,7 +9,7 @@
     tools:context=".AddcifMeaslesActivity">
 
     <LinearLayout
-        android:id="@+id/measlesBars"
+        android:id="@+id/measlesBars7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -17,13 +17,12 @@
         tools:ignore="MissingConstraints">
 
         <View
-            android:id="@+id/measlesBar1"
             android:layout_width="28dp"
             android:layout_height="5.1dp"
             android:layout_marginLeft="35.6dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_blue"
+            android:backgroundTint="@color/theme_green"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -33,8 +32,84 @@
         <View
             android:layout_width="28dp"
             android:layout_height="5.1dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_blue"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
             android:background="@drawable/bar"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
@@ -44,74 +119,7 @@
         <View
             android:layout_width="28dp"
             android:layout_height="5.1dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="6dp"
             android:background="@drawable/bar"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
@@ -125,14 +133,14 @@
         android:layout_marginLeft="35.6dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars"
+        app:layout_constraintTop_toBottomOf="@id/measlesBars7"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Patient Record"
+            android:text="Outcome"
             android:textColor="@color/theme_green"
             android:textSize="13dp" />
 
@@ -147,197 +155,128 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/measlesinput1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="36dp"
         android:layout_marginTop="125dp"
-        android:layout_marginRight="36dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="85dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
         android:scrollbars="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        app:layout_constraintTop_toBottomOf="@id/measlesBars7"
+        app:layout_constraintVertical_bias="0.0">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_mea7a"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
             <EditText
-                android:id="@+id/ti_mea_lastname"
+                android:id="@+id/et_mea_outcome"
                 style="@style/Input"
                 android:layout_width="320dp"
-                android:layout_height="47dp"
+                android:layout_height="1.5dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/inputbox"
                 android:inputType="text"
-                android:textSize="18dp"
                 android:textColor="@color/black"
+                android:textSize="18dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/cons_mea7a"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="-10dp"
                 android:background="@color/theme_cream"
-                android:text="   Last Name *   "
+                android:text="   Select the outcome *  "
                 android:textColor="@color/light_gray"
                 android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/ti_mea_lastname"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_lastname" />
+                app:layout_constraintLeft_toLeftOf="@id/et_mea_outcome"
+                app:layout_constraintTop_toTopOf="@id/et_mea_outcome" />
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/radiogroup_mea_outcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/et_mea_outcome"
+                tools:ignore="MissingConstraints">
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_outcomeAlive"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Alive"
+                    android:textColor="@color/theme_darkgray" />
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_outcomeDead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Dead"
+                    android:textColor="@color/theme_darkgray" />
+                <EditText
+                    android:visibility="invisible"
+                    android:id="@+id/et_mea_datedied"
+                    style="@style/Input"
+                    android:layout_width="113dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="-31dp"
+                    android:layout_marginLeft="85dp"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:background="@drawable/inputbox"
+                    android:focusable="false"
+                    android:inputType="date"
+                    android:hint="Date Died"
+                    android:textColorHint="@color/theme_gray"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/radiobutton_mea_outcomeDead" />
+            </RadioGroup>
 
             <EditText
-                android:id="@+id/ti_mea_firstname"
+                android:id="@+id/et_mea_finaldiagnosis"
                 style="@style/Input"
                 android:layout_width="320dp"
                 android:layout_height="47dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/inputbox"
-                android:inputType="text"
-                android:textSize="18dp"
+                android:inputType="textCapCharacters"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
+                android:textSize="18dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_lastname" />
+                app:layout_constraintTop_toBottomOf="@id/radiogroup_mea_outcome"
+                tools:ignore="NotSibling" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="-10dp"
                 android:background="@color/theme_cream"
-                android:text="   First Name *   "
+                android:text="   Final Diagnosis *   "
                 android:textColor="@color/light_gray"
                 android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/ti_mea_firstname"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_firstname" />
-
-            <EditText
-                android:id="@+id/ti_mea_middlename"
-                style="@style/Input"
-                android:layout_width="320dp"
-                android:layout_height="47dp"
-                android:layout_marginTop="70dp"
-                android:background="@drawable/inputbox"
-                android:inputType="text"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_firstname" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
-                android:background="@color/theme_cream"
-                android:text="   Middle Name *   "
-                android:textColor="@color/light_gray"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/ti_mea_middlename"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_middlename" />
-
-            <EditText
-                android:id="@+id/ti_mea_birthdate"
-                style="@style/Input"
-                android:layout_width="320dp"
-                android:layout_height="47dp"
-                android:layout_marginTop="70dp"
-                android:background="@drawable/inputbox"
-                android:focusable="false"
-                android:inputType="text"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_middlename" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
-                android:background="@color/theme_cream"
-                android:text="   Birthdate *  "
-                android:textColor="@color/light_gray"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/ti_mea_birthdate"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_birthdate" />
-
-            <EditText
-                android:id="@+id/ti_mea_sex"
-                style="@style/Input"
-                android:layout_width="320dp"
-                android:layout_height="47dp"
-                android:layout_marginTop="70dp"
-                android:background="@drawable/inputbox"
-                android:inputType="text"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_birthdate" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
-                android:background="@color/theme_cream"
-                android:text="   Sex *  "
-                android:textColor="@color/light_gray"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/ti_mea_sex"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_sex" />
-
-            <EditText
-                android:id="@+id/ti_mea_phone"
-                style="@style/Input"
-                android:layout_width="320dp"
-                android:layout_height="47dp"
-                android:layout_marginTop="70dp"
-                android:background="@drawable/inputbox"
-                android:inputType="text"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_sex" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
-                android:background="@color/theme_cream"
-                android:text="   Phone *  "
-                android:textColor="@color/light_gray"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/ti_mea_phone"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_phone" />
-
-            <EditText
-                android:id="@+id/ti_mea_phone1"
-                style="@style/Input"
-                android:layout_width="320dp"
-                android:layout_height="47dp"
-                android:layout_marginTop="70dp"
-                android:background="@drawable/inputbox"
-                android:inputType="text"
-                android:textSize="18dp"
-                android:textColor="@color/black"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_phone" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
-                android:background="@color/theme_cream"
-                android:text="   Phone *  "
-                android:textColor="@color/light_gray"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/ti_mea_phone1"
-                app:layout_constraintTop_toTopOf="@id/ti_mea_phone1" />
+                app:layout_constraintLeft_toLeftOf="@id/et_mea_finaldiagnosis"
+                app:layout_constraintTop_toTopOf="@id/et_mea_finaldiagnosis" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -348,20 +287,19 @@
         android:layout_marginBottom="30dp"
         android:gravity="end"
         android:orientation="horizontal"
-        app:flow_horizontalAlign="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_meas_cancel"
+            android:id="@+id/btn_meas_back6"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_marginRight="15dp"
             android:backgroundTint="@color/theme_cream"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Cancel"
+            android:text="Back"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/theme_blue"
@@ -370,7 +308,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next1"
+            android:id="@+id/btn_meas_next8"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
