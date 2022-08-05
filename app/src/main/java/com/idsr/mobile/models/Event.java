@@ -10,6 +10,9 @@ public class Event {
 
 	public Event() {
 		this.eventStatus = new String("For Validation");
+		this.eventID = "";
+		this.addressID = "";
+
 	}
 
 	public String getEventID() {

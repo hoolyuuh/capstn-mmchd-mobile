@@ -48,7 +48,8 @@ public class APIClient {
         @POST("login")
         Call<LoginResponse> postLogin(@Body LoginJS login);
 
-
+        @POST("newEvent")
+        Call<ResponseBody> postAddEvent(@Body Event event);
 
         /* Template for query paths */
 
