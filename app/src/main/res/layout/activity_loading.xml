@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_cream"
+    tools:context=".AddcifMeaslesActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="180dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/tv_caseAddStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Loading..."
+                android:textColor="@color/theme_green"
+                android:textSize="24dp" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/layout_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:flow_horizontalAlign="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <Button
+                android:id="@+id/btn_home"
+                style="@style/NoCorner"
+                android:layout_width="125dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="15dp"
+                android:backgroundTint="@color/theme_cream"
+                android:fontFamily="@font/worksans_semibold"
+                android:text="Home"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/theme_blue"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <Button
+                android:id="@+id/btn_addanothercase"
+                style="@style/NoCorner"
+                android:layout_width="175dp"
+                android:layout_height="45dp"
+                android:backgroundTint="#346083"
+                android:fontFamily="@font/worksans_semibold"
+                android:text="Add another case"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#FFFBEE"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
+
+        <ProgressBar
+            android:id="@+id/loadingPanel"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:indeterminate="true" />
+        
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/imgCheckPanel"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/check"/>
+        
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_caseAddStatus1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        android:text="Please wait..."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/theme_green"
+        android:textSize="24dp" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

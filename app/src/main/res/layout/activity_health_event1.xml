@@ -259,7 +259,7 @@
                 style="@style/Input"
                 android:layout_width="320dp"
                 android:layout_height="47dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/inputbox"
                 android:focusable="false"
                 android:inputType="text"
