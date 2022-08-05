@@ -6,6 +6,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -32,6 +34,18 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.idsr.mobile.databinding.ActivityAddcifMeasles0Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles1Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles2Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles3Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles4Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles5Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles6Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles7Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles8Binding;
+import com.idsr.mobile.databinding.ActivityAddcifMeasles9Binding;
+import com.idsr.mobile.models.Case;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -60,6 +74,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private Button cancel, next1, back0, next2, back1, next3, back2, next4, back3, next5, back4, next6, back5, next7, back6, next8, back7, next9, back8, submit;
 
     private int userId;
+    private Bundle bundle;
+    private Case cases;
 
 //    page 0
     private AutoCompleteTextView autocompPatients;
@@ -159,6 +175,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 //        binding7 = ActivityAddcifMeasles7Binding.inflate(getLayoutInflater());
 //        binding8 = ActivityAddcifMeasles8Binding.inflate(getLayoutInflater());
 //        binding9 = ActivityAddcifMeasles9Binding.inflate(getLayoutInflater());
+        cases = new Case();
+        cases.setDiseaseID("DI-0000000000000");
         pageZero();
     }
 
@@ -228,7 +246,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.spinnerCurrCity = findViewById(R.id.spinner_mea_currcity);
         this.tvCurrBrgy = findViewById(R.id.tv_mea_currbrgy);
         this.spinnerCurrBrgy = findViewById(R.id.spinner_mea_currbrgy);
-        this.checkboxSameaddress = findViewById(R.id.checkbox_sameaddress);
+        this.checkboxSameaddress = findViewById(R.id.checkbox_mea_sameaddress);
         this.constPermanentAdd = findViewById(R.id.cons_perminfo);
         this.etPermStreet = findViewById(R.id.et_mea_permstreet);
         this.tvPermCity = findViewById(R.id.tv_mea_permcity);
@@ -241,6 +259,10 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.etHCPN = findViewById(R.id.et_mea_hcpn);
         this.etILHZ = findViewById(R.id.et_mea_ilhz);
 
+        // TODO: Initialize Data if Backpressed
+        if(page1){
+
+        }
 //        DATE
         this.etBirthdate.setOnClickListener(new View.OnClickListener() {@Override
             public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
@@ -518,6 +540,14 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.checkRfO11 = findViewById(R.id.checkbox_mea_rfO11);
         this.etRfHOthers = findViewById(R.id.et_mea_rfOOthers);
 
+        // TODO: Initialize Data if Backpressed
+        if(page2){
+            etAdmitdate.setText(admitdate);
+            etOnsetdate.setText(onsetdate);
+            etReportdate.setText(reportdate);
+            etReporter.setText(reporter);
+        }
+
         radioPatientAdmit.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -645,6 +675,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.etSymptoms = findViewById(R.id.et_mea_othersymptoms);
         this.etWorkingDiagnosis = findViewById(R.id.et_mea_workingdiagnosis);
 
+        // TODO: Initialize Data if Backpressed
+        if(page3){
+
+        }
+
         checkSymp1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
             if (b) etSymp1Date.setVisibility(View.VISIBLE); else etSymp1Date.setVisibility(View.INVISIBLE); } });
         checkSymp2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -720,6 +755,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.checkNoVaccReasOthers = findViewById(R.id.checkbox_novaccineOther);
         this.etNoVaccReasOther = findViewById(R.id.et_novaccineothers);
         this.radioVitA = findViewById(R.id.radiogroup_vitA);
+
+        // TODO: Initialize Data if Backpressed
+        if(page4){
+
+        }
 
         radioMeaslesVaccination.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -843,6 +883,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.etRubellaExposureOther = findViewById(R.id.et_rubellaexposureOther);
         this.radioOtherFeverRashes = findViewById(R.id.radiogroup_otherfeverrashes);
 
+        // TODO: Initialize Data if Backpressed
+        if(page5){
+
+        }
+
         radioTravelhistory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) findViewById(checkedId);
@@ -959,6 +1004,12 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addcif_measles6);
 
         this.radioSourceinfo = findViewById(R.id.radiogroup_mea_sourceinfo);
+
+        // TODO: Initialize Data if Backpressed
+        if(page6){
+
+        }
+
         radioSourceinfo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) findViewById(checkedId);
@@ -992,6 +1043,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.radioOutcome = findViewById(R.id.radiogroup_mea_outcome);
         this.etDatedied = findViewById(R.id.et_mea_datedied);
         this.etFinalDiagnosis = findViewById(R.id.et_mea_finaldiagnosis);
+
+        // TODO: Initialize Data if Backpressed
+        if(page7){
+
+        }
 
         radioOutcome.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -1061,6 +1117,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.etInvestigDate = findViewById(R.id.et_mea_resultInvestiDate);
         this.tvLabSelect = findViewById(R.id.tv_mea_labselect);
         this.spinnerLabSelect = findViewById(R.id.spinner_mea_labselect);
+
+        // TODO: Initialize Data if Backpressed
+        if(page8){
+
+        }
 
         radioLabResult.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -1198,6 +1259,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.lineargroup1 = findViewById(R.id.linear_mea_finalclass1);
         this.lineargroup2 = findViewById(R.id.linear_mea_finalclass2);
 
+        // TODO: Initialize Data if Backpressed
+        if(page9){
+
+        }
+
         imageDropdown1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1289,7 +1355,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 //As an example, display the message
                 Toast.makeText(view.getContext(), "Please wait for page to load", Toast.LENGTH_SHORT).show();
 
-                setContentView(R.layout.activity_loading);
+                setContentView(R.layout.activity_loadingpage);
 
                 // TODO: make function to submit the thingies
                 TextView tvCaseAddStatus = findViewById(R.id.tv_caseAddStatus);
@@ -1312,7 +1378,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                         buttonHome.setOnClickListener(new View.OnClickListener() { @Override
                             public void onClick(View view) {
                                 pageNine();
-//                            startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                            startActivity(new Intent(AddcifMeaslesActivity.this, HomeActivity.class));
                             }
                         });
                         buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override

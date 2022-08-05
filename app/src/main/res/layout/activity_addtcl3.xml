@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_cream"
+    tools:context=".AddtclActivity">
+
+    <LinearLayout
+        android:id="@+id/tclBars3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="5.1dp"
+            android:layout_marginLeft="35.6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_blue"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35.6dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tclBars3"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Immunization Information"
+            android:textColor="@color/theme_green"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Add Immunization Entry"
+            android:textColor="@color/theme_blue"
+            android:textSize="26dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="125dp"
+        android:layout_marginBottom="85dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tclBars3"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_tcl3a"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_bcg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/et_bcg"
+                        style="@style/Input"
+                        android:layout_width="320dp"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/inputbox"
+                        android:inputType="date"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cons_bcg" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/theme_cream"
+                        android:text="   BCG   "
+                        android:textColor="@color/light_gray"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@id/et_bcg"
+                        app:layout_constraintTop_toTopOf="@id/et_bcg" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_hepa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="MissingConstraints">
+
+                    <EditText
+                        android:id="@+id/et_tcl_hepa"
+                        style="@style/Input"
+                        android:layout_width="320dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/inputbox"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cons_hepa" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/theme_cream"
+                        android:text="   HEPA B1  "
+                        android:textColor="@color/light_gray"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@id/et_tcl_hepa"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_hepa" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_hepa"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_hepa"
+                        tools:ignore="MissingConstraints">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_hepa_within"
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_hepa_within"
+                                style="@style/Input"
+                                android:layout_width="155dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_hepa_within" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  within 24 hrs  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_hepa_within"
+                                app:layout_constraintTop_toTopOf="@id/et_hepa_within" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_hepa_more"
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/et_hepa_more"
+                                style="@style/Input"
+                                android:layout_width="155dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_hepa_more" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  more than 24 hrs  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_hepa_more"
+                                app:layout_constraintTop_toTopOf="@id/et_hepa_more" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_opv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="MissingConstraints">
+
+                    <EditText
+                        android:id="@+id/et_tcl_opv"
+                        style="@style/Input"
+                        android:layout_width="320dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/inputbox"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cons_opv" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/theme_cream"
+                        android:text="   OPV  "
+                        android:textColor="@color/light_gray"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@id/et_tcl_opv"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_opv" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_opv"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_opv"
+                        tools:ignore="MissingConstraints">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_opv_1"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_opv_1"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_opv_1" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  1  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_opv_1"
+                                app:layout_constraintTop_toTopOf="@id/et_opv_1" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_opv_2"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_opv_2"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_opv_2" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  2  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_opv_2"
+                                app:layout_constraintTop_toTopOf="@id/et_opv_2" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_opv_3"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_opv_3"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_opv_3" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  3  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_opv_3"
+                                app:layout_constraintTop_toTopOf="@id/et_opv_3" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_penta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="MissingConstraints">
+
+                    <EditText
+                        android:id="@+id/et_tcl_penta"
+                        style="@style/Input"
+                        android:layout_width="320dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/inputbox"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cons_penta" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/theme_cream"
+                        android:text="   PENTA   "
+                        android:textColor="@color/light_gray"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@id/et_tcl_penta"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_penta" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_penta"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_penta"
+                        tools:ignore="MissingConstraints">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_penta_1"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_penta_1"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_penta_1" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  1  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_penta_1"
+                                app:layout_constraintTop_toTopOf="@id/et_penta_1" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_penta_2"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_penta_2"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_penta_2" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  2  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_penta_2"
+                                app:layout_constraintTop_toTopOf="@id/et_penta_2" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_penta_3"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_penta_3"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_penta_3" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  3  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_penta_3"
+                                app:layout_constraintTop_toTopOf="@id/et_penta_3" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_pcv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="MissingConstraints">
+
+                    <EditText
+                        android:id="@+id/et_tcl_pcv"
+                        style="@style/Input"
+                        android:layout_width="320dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/inputbox"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cons_pcv" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/theme_cream"
+                        android:text="   PCV  "
+                        android:textColor="@color/light_gray"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@id/et_tcl_pcv"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_pcv" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_pcv"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_pcv"
+                        tools:ignore="MissingConstraints">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_pcv_1"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_pcv_1"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_pcv_1" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  1  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_pcv_1"
+                                app:layout_constraintTop_toTopOf="@id/et_pcv_1" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_pcv_2"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_pcv_2"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_pcv_2" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  2  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_pcv_2"
+                                app:layout_constraintTop_toTopOf="@id/et_pcv_2" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_pcv_3"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_pcv_3"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_pcv_3" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  3  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_pcv_3"
+                                app:layout_constraintTop_toTopOf="@id/et_pcv_3" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_mcv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="MissingConstraints">
+
+                    <EditText
+                        android:id="@+id/et_tcl_mcv"
+                        style="@style/Input"
+                        android:layout_width="320dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/inputbox"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cons_mcv" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/theme_cream"
+                        android:text="   MCV  "
+                        android:textColor="@color/light_gray"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@id/et_tcl_mcv"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_mcv" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_mcv"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_mcv"
+                        tools:ignore="MissingConstraints">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_mcv1"
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_mcv1"
+                                style="@style/Input"
+                                android:layout_width="155dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_mcv1" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  1 (AMV)  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_mcv1"
+                                app:layout_constraintTop_toTopOf="@id/et_mcv1" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_mcv2"
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content">
+                            <EditText
+                                android:id="@+id/et_mcv2"
+                                style="@style/Input"
+                                android:layout_width="155dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_mcv2" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  2 (MMR)  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_mcv2"
+                                app:layout_constraintTop_toTopOf="@id/et_mcv2" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_deng"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="MissingConstraints">
+
+                    <EditText
+                        android:id="@+id/et_tcl_deng"
+                        style="@style/Input"
+                        android:layout_width="320dp"
+                        android:layout_height="1.5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/inputbox"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/cons_deng" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@color/theme_cream"
+                        android:text="   Dengue  "
+                        android:textColor="@color/light_gray"
+                        android:textSize="15dp"
+                        app:layout_constraintLeft_toLeftOf="@id/et_tcl_deng"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_deng" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_deng"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/et_tcl_deng"
+                        tools:ignore="MissingConstraints">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_deng_1"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_deng_1"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_deng_1" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  1  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_deng_1"
+                                app:layout_constraintTop_toTopOf="@id/et_deng_1" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_deng_2"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_deng_2"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_deng_2" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  2  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_deng_2"
+                                app:layout_constraintTop_toTopOf="@id/et_deng_2" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cons_deng_3"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            app:layout_constraintLeft_toLeftOf="parent">
+                            <EditText
+                                android:id="@+id/et_deng_3"
+                                style="@style/Input"
+                                android:layout_width="100dp"
+                                android:layout_height="47dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/inputbox"
+                                android:focusable="false"
+                                android:inputType="date"
+                                android:textAllCaps="true"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/cons_deng_3" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="-10dp"
+                                android:background="@color/theme_cream"
+                                android:text="  3  "
+                                android:textColor="@color/light_gray"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="@id/et_deng_3"
+                                app:layout_constraintTop_toTopOf="@id/et_deng_3" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btn_tcl_back2"
+            style="@style/NoCorner"
+            android:layout_width="95dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/theme_cream"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Back"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/theme_blue"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/btn_tcl_submit"
+            style="@style/NoCorner"
+            android:layout_width="95dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="45dp"
+            android:backgroundTint="#346083"
+            android:fontFamily="@font/worksans_semibold"
+            android:text="Next"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFBEE"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

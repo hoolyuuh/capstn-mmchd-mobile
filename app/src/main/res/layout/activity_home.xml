@@ -20,25 +20,25 @@
             android:id="@+id/add_case"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add a case"
+            android:text="Add a Disease Case"
             tools:ignore="MissingConstraints" />
         <Button
             android:id="@+id/add_ebs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add EBS"
+            android:text="Add a Health Event"
             tools:ignore="MissingConstraints" />
         <Button
             android:id="@+id/add_tcl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add TCL"
+            android:text="Add Immunization Entry"
             tools:ignore="MissingConstraints" />
         <Button
             android:id="@+id/account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Account"
+            android:text="View Account"
             tools:ignore="MissingConstraints" />
     </LinearLayout>
 
