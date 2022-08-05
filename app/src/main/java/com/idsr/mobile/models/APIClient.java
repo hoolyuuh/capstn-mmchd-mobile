@@ -22,7 +22,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public class APIClient {
-    public static final String BASE_URL = "https://covid-progplan.herokuapp.com/api";
+    public static final String BASE_URL = "https://covid-progplan.herokuapp.com/api/";
     public Retrofit retrofit;
     public Gson gson;
     public static APIEndpointInterface APIservice;
