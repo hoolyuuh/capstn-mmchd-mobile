@@ -375,7 +375,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_ebs_back0"
+            android:id="@+id/btn_ebs_back1"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
@@ -391,7 +391,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_ebs_next0"
+            android:id="@+id/btn_ebs_next1"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"

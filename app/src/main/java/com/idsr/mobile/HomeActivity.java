@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         user = bundle.getParcelable("user");
 
-        Toast.makeText(HomeActivity.this, "Hello " + user.getUserName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(HomeActivity.this, "Hello " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
 
         this.findViewById(R.id.add_case).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,9 @@ public class HomeActivity extends AppCompatActivity {
         this.findViewById(R.id.add_ebs).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, AddHealthEventActivity.class));
+                Intent gotoAddEBS = new Intent(HomeActivity.this, AddHealthEventActivity.class);
+                gotoAddEBS.putExtras(bundle);
+                startActivity(gotoAddEBS);
             }
         });
 
