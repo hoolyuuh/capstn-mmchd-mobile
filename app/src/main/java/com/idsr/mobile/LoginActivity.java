@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.idsr.mobile.databinding.ActivityLoginBinding;
 import com.idsr.mobile.models.APIClient;
+import com.idsr.mobile.models.User;
 
 public class LoginActivity extends AppCompatActivity {
     private APIClient apiClient;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private String email, password;
     private Bundle bundle;
+    private User user;
 
     protected void onCreate(Bundle savedInstanceState) {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
@@ -49,7 +51,16 @@ public class LoginActivity extends AppCompatActivity {
                 else {
 //                    User user = callUserLog();
 //                    if(user.getUserType()==0) sendAdminToken();
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    // TODO: create login method
+                    //if(userIsFound)
+                    bundle.putParcelable("user", new User(ETemail.getText().toString(),"Sample Type", "Username"));
+                    Intent gotoHomeActivity = new Intent(LoginActivity.this, HomeActivity.class);
+                    gotoHomeActivity.putExtras(bundle);
+                    startActivity(gotoHomeActivity);
+                    /* else {
+                        Toast.makeText(LoginActivity.this, "Login credentials failed.", Toast.LENGTH_SHORT).show();
+                    }
+                     */
                 }
             }
         });
