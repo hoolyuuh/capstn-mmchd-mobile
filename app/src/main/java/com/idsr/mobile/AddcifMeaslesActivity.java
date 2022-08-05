@@ -1355,7 +1355,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 //As an example, display the message
                 Toast.makeText(view.getContext(), "Please wait for page to load", Toast.LENGTH_SHORT).show();
 
-                setContentView(R.layout.activity_loadingpage);
+                setContentView(R.layout.activity_loading);
 
                 // TODO: make function to submit the thingies
                 TextView tvCaseAddStatus = findViewById(R.id.tv_caseAddStatus);
