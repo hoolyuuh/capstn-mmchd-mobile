@@ -6,8 +6,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -34,17 +32,6 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.idsr.mobile.databinding.ActivityAddcifMeasles0Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles1Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles2Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles3Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles4Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles5Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles6Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles7Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles8Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles9Binding;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -1302,7 +1289,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 //As an example, display the message
                 Toast.makeText(view.getContext(), "Please wait for page to load", Toast.LENGTH_SHORT).show();
 
-                setContentView(R.layout.activity_loadingpage);
+                setContentView(R.layout.activity_loading);
 
                 // TODO: make function to submit the thingies
                 TextView tvCaseAddStatus = findViewById(R.id.tv_caseAddStatus);
