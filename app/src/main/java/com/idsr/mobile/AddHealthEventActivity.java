@@ -63,7 +63,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
 
 
     //Data
-    private Event healthEvent;
+    private Event event;
     private Bundle bundle;
     private User user;
 
@@ -75,8 +75,8 @@ public class AddHealthEventActivity extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
         user = bundle.getParcelable("user");
-        healthEvent = new Event();
-        healthEvent.setUserID(user.getUserID());
+        event = new Event();
+        event.setUserID(user.getUserID());
 
         page1();
     }
@@ -94,9 +94,9 @@ public class AddHealthEventActivity extends AppCompatActivity {
 
 //      TODO : Fill up on backpress
         if(page1){
-            ET_ReportSource.setText(healthEvent.getReportSource());
-            ET_CaptureDate.setText(healthEvent.getDateCaptured());
-            ET_CaptureTime.setText(healthEvent.getTimeCaptured());
+            ET_ReportSource.setText(event.getReportSource());
+            ET_CaptureDate.setText(event.getDateCaptured());
+            ET_CaptureTime.setText(event.getTimeCaptured());
             RG_Source.check(RG_source_checkedID);
         }
 
@@ -140,7 +140,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int i) {
                 RadioButton radioButton = (RadioButton) findViewById(i);
-                healthEvent.setSource(radioButton.getText().toString());
+                event.setSource(radioButton.getText().toString());
                 RG_source_checkedID = i;
 //                Toast.makeText(getBaseContext(), sex, Toast.LENGTH_SHORT).show();
             }
@@ -158,14 +158,14 @@ public class AddHealthEventActivity extends AppCompatActivity {
                 else ET_CaptureDate.setBackgroundResource(R.drawable.inputbox);
                 if (ET_CaptureTime.getText().toString().length() <= 0) { page1 = false; ET_CaptureTime.setBackgroundResource(R.drawable.inputbox_red); }
                 else ET_CaptureTime.setBackgroundResource(R.drawable.inputbox);
-                if (healthEvent.getSource() == null) { page1 = false; RG_Source.setBackgroundResource(R.color.theme_lightest_red); }
+                if (event.getSource() == null) { page1 = false; RG_Source.setBackgroundResource(R.color.theme_lightest_red); }
                 else RG_Source.setBackgroundResource(0);
 
                 if(!page1) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    healthEvent.setReportSource(ET_ReportSource.getText().toString());
-                    healthEvent.setDateCaptured(ET_CaptureDate.getText().toString());
-                    healthEvent.setTimeCaptured(ET_CaptureTime.getText().toString());
+                    event.setReportSource(ET_ReportSource.getText().toString());
+                    event.setDateCaptured(ET_CaptureDate.getText().toString());
+                    event.setTimeCaptured(ET_CaptureTime.getText().toString());
                     page2();
                 }
             }
@@ -226,14 +226,14 @@ public class AddHealthEventActivity extends AppCompatActivity {
         });
 
         if(page2) {
-            ET_EventDetails.setText(healthEvent.getEventDetails());
-            ET_Remarks.setText(healthEvent.getRemarks());
-            ET_NumCases.setText(healthEvent.getNumCases());
-            ET_NumDeaths.setText(healthEvent.getNumDeaths());
-            ET_HouseStreet.setText(healthEvent.getLocHouseStreet());
+            ET_EventDetails.setText(event.getEventDetails());
+            ET_Remarks.setText(event.getRemarks());
+            ET_NumCases.setText(event.getNumCases());
+            ET_NumDeaths.setText(event.getNumDeaths());
+            ET_HouseStreet.setText(event.getLocHouseStreet());
 
-            TV_City.setText(healthEvent.getLocCity());
-            TV_Brgy.setText(healthEvent.getLocBrgy());
+            TV_City.setText(event.getLocCity());
+            TV_Brgy.setText(event.getLocBrgy());
         }
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -267,16 +267,16 @@ public class AddHealthEventActivity extends AppCompatActivity {
 
                 if(!page2) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    healthEvent.setEventDetails(ET_EventDetails.getText().toString());
-                    healthEvent.setLocHouseStreet(ET_HouseStreet.getText().toString());
-                    healthEvent.setRemarks(ET_Remarks.getText().toString());
-                    healthEvent.setNumCases(ET_NumCases.getText().toString());
-                    healthEvent.setNumDeaths(ET_NumDeaths.getText().toString());
-                    healthEvent.setLocBrgy(TV_Brgy.getText().toString());
-                    healthEvent.setLocCity(TV_City.getText().toString());
+                    event.setEventDetails(ET_EventDetails.getText().toString());
+                    event.setLocHouseStreet(ET_HouseStreet.getText().toString());
+                    event.setRemarks(ET_Remarks.getText().toString());
+                    event.setNumCases(ET_NumCases.getText().toString());
+                    event.setNumDeaths(ET_NumDeaths.getText().toString());
+                    event.setLocBrgy(TV_Brgy.getText().toString());
+                    event.setLocCity(TV_City.getText().toString());
 
 //                    For testing purposes only
-                    Log.e("Values", healthEvent.toString());
+                    Log.e("Values", event.toString());
                     submit(view);
                 }
             }
@@ -331,7 +331,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
             Button buttonHome = findViewById(R.id.btn_home);
             Button buttonAddEvent = findViewById(R.id.btn_addanothercase);
 
-            Call<ResponseBody> call = apiClient.APIservice.postAddEvent(healthEvent);
+            Call<ResponseBody> call = apiClient.APIservice.postAddEvent(event);
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -352,8 +352,8 @@ public class AddHealthEventActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 page1 = false;
                                 page2 = false;
-                                healthEvent = new Event();
-                                healthEvent.setUserID(user.getUserID());
+                                event = new Event();
+                                event.setUserID(user.getUserID());
 
                                 page1();
                             }
@@ -377,7 +377,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
 
         //Handler for clicking on the inactive zone of the window
         popupView.setOnTouchListener(new View.OnTouchListener() { @Override
-        public boolean onTouch(View v, MotionEvent healthEvent) {
+        public boolean onTouch(View v, MotionEvent event) {
             //Close the window when clicked
             popupWindow.dismiss();
             return true; }
