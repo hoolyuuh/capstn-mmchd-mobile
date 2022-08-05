@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.idsr.mobile.databinding.ActivityLoginBinding;
 import com.idsr.mobile.models.APIClient;
 import com.idsr.mobile.models.APIModels.LoginJS;
+import com.idsr.mobile.models.APIModels.LoginResponse;
 import com.idsr.mobile.models.User;
 
 import java.io.IOException;
@@ -81,41 +82,30 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Please complete the form with correct information.", Toast.LENGTH_SHORT).show();
 
         else {
-//                    User user = callUserLog();
-//                    if(user.getUserType()==0) sendAdminToken();
-
-            //if(userIsFound)
-            bundle.putParcelable("user", new User(ETemail.getText().toString(),"Sample Type", "Username"));
-            Intent gotoHomeActivity = new Intent(LoginActivity.this, HomeActivity.class);
-            gotoHomeActivity.putExtras(bundle);
-            startActivity(gotoHomeActivity);
-                    /* else {
-                        Toast.makeText(LoginActivity.this, "Login credentials failed.", Toast.LENGTH_SHORT).show();
-                    }
-                     */
-
             // TODO: create login method with retrofit (current version is a placeholder)
-//            Call<User> call = apiClient.APIservice.postLogin(new LoginJS(email,password));
-//            call.enqueue(new Callback<User>() {
-//                @Override
-//                public void onResponse(Call<User> call, Response<User> response) {
-//                    try {
-//                        if (response.code() == 200) {
-//                            bundle.putParcelable("user", response.body());
-//                            Intent gotoHomeActivity = new Intent(LoginActivity.this, HomeActivity.class);
-//                            gotoHomeActivity.putExtras(bundle);
-//                            startActivity(gotoHomeActivity);
-//                        } else Toast.makeText(LoginActivity.this, response.errorBody().string(), Toast.LENGTH_LONG).show();
-//                    } catch (IOException e) {
-//                        Log.e("failedPostLogin", e.getMessage());
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<User> call, Throwable t) {
-//                    Log.e("failedPostLogin", t.getMessage());
-//                }
-//            });
+            Call<LoginResponse> call = apiClient.APIservice.postLogin(new LoginJS(email,password));
+            call.enqueue(new Callback<LoginResponse>() {
+                @Override
+                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                    try {
+                        if (response.code() == 200) {
+                            user = (User) response.body().getUser();
+//                            Log.d("Data", "User Name : " + response.body().getUser().getUserID());
+                            bundle.putParcelable("user", user);
+                            Intent gotoHomeActivity = new Intent(LoginActivity.this, HomeActivity.class);
+                            gotoHomeActivity.putExtras(bundle);
+                            startActivity(gotoHomeActivity);
+                        } else Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_LONG).show();
+                    } catch (Error e) {
+                        Log.e("failedPostLogin", e.getMessage());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LoginResponse> call, Throwable t) {
+                    Log.e("failedPostLogin", t.getMessage());
+                }
+            });
         }
     }
 }
