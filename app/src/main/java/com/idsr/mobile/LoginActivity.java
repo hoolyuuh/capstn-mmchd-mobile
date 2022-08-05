@@ -3,6 +3,7 @@ package com.idsr.mobile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.idsr.mobile.databinding.ActivityLoginBinding;
 import com.idsr.mobile.models.APIClient;
+import com.idsr.mobile.models.APIModels.LoginJS;
 import com.idsr.mobile.models.User;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private APIClient apiClient;
@@ -44,24 +53,10 @@ public class LoginActivity extends AppCompatActivity {
         this.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                email = ETemail.getText().toString();
+                password = ETpassword.getText().toString();
 
-                if (ETemail.getText().toString().isEmpty() || ETpassword.getText().toString().isEmpty())
-                    Toast.makeText(LoginActivity.this, "Please complete the form with correct information.", Toast.LENGTH_SHORT).show();
-
-                else {
-//                    User user = callUserLog();
-//                    if(user.getUserType()==0) sendAdminToken();
-                    // TODO: create login method
-                    //if(userIsFound)
-                    bundle.putParcelable("user", new User(ETemail.getText().toString(),"Sample Type", "Username"));
-                    Intent gotoHomeActivity = new Intent(LoginActivity.this, HomeActivity.class);
-                    gotoHomeActivity.putExtras(bundle);
-                    startActivity(gotoHomeActivity);
-                    /* else {
-                        Toast.makeText(LoginActivity.this, "Login credentials failed.", Toast.LENGTH_SHORT).show();
-                    }
-                     */
-                }
+                loginUser();
             }
         });
 
@@ -79,5 +74,48 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void loginUser(){
+        if (email.isEmpty() || password.isEmpty())
+            Toast.makeText(LoginActivity.this, "Please complete the form with correct information.", Toast.LENGTH_SHORT).show();
+
+        else {
+//                    User user = callUserLog();
+//                    if(user.getUserType()==0) sendAdminToken();
+
+            //if(userIsFound)
+            bundle.putParcelable("user", new User(ETemail.getText().toString(),"Sample Type", "Username"));
+            Intent gotoHomeActivity = new Intent(LoginActivity.this, HomeActivity.class);
+            gotoHomeActivity.putExtras(bundle);
+            startActivity(gotoHomeActivity);
+                    /* else {
+                        Toast.makeText(LoginActivity.this, "Login credentials failed.", Toast.LENGTH_SHORT).show();
+                    }
+                     */
+
+            // TODO: create login method with retrofit (current version is a placeholder)
+//            Call<User> call = apiClient.APIservice.postLogin(new LoginJS(email,password));
+//            call.enqueue(new Callback<User>() {
+//                @Override
+//                public void onResponse(Call<User> call, Response<User> response) {
+//                    try {
+//                        if (response.code() == 200) {
+//                            bundle.putParcelable("user", response.body());
+//                            Intent gotoHomeActivity = new Intent(LoginActivity.this, HomeActivity.class);
+//                            gotoHomeActivity.putExtras(bundle);
+//                            startActivity(gotoHomeActivity);
+//                        } else Toast.makeText(LoginActivity.this, response.errorBody().string(), Toast.LENGTH_LONG).show();
+//                    } catch (IOException e) {
+//                        Log.e("failedPostLogin", e.getMessage());
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<User> call, Throwable t) {
+//                    Log.e("failedPostLogin", t.getMessage());
+//                }
+//            });
+        }
     }
 }
