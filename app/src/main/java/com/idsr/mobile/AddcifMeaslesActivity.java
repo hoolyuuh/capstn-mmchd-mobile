@@ -6,8 +6,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -166,10 +164,6 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        onBackPressed() {
-//            startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
-//        }
-
 //        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
 //        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
 //        binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
@@ -183,6 +177,50 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         cases = new Case();
         cases.setDiseaseID("DI-0000000000000");
         pageZero();
+    }
+
+    public void onBackPressed(View view) {
+        backhome(view);
+    }
+
+    public void backhome(View view) {
+        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.activity_popup_backhome, null);
+
+        //Specify the length and width through constants
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+
+        //Make Inactive Items Outside Of PopupWindow
+        boolean focusable = true;
+
+        //Create a window with our parameters
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        //Set the location of the window on the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        Button buttonCancel = popupView.findViewById(R.id.btn_home_cancel);
+        Button buttonConfirm = popupView.findViewById(R.id.btn_home_confirm);
+        buttonCancel.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View v) {
+            popupWindow.dismiss();
+        }
+        });
+        buttonConfirm.setOnClickListener(new View.OnClickListener() { @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+            }
+        });
+
+        //Handler for clicking on the inactive zone of the window
+        popupView.setOnTouchListener(new View.OnTouchListener() { @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            //Close the window when clicked
+            popupWindow.dismiss();
+            return true; }
+        });
     }
 
     public void pageZero() {
@@ -1332,7 +1370,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
     public void submit(View view) {
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.activity_confirm_popup, null);
+        View popupView = inflater.inflate(R.layout.activity_popup_submitcase, null);
 
         //Specify the length and width through constants
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -1347,8 +1385,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-        Button buttonCancel = popupView.findViewById(R.id.btn_cancel);
-        Button buttonConfirm = popupView.findViewById(R.id.btn_confirm);
+        Button buttonCancel = popupView.findViewById(R.id.btn_submit_cancel);
+        Button buttonConfirm = popupView.findViewById(R.id.btn_submit_confirm);
         buttonCancel.setOnClickListener(new View.OnClickListener() { @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
