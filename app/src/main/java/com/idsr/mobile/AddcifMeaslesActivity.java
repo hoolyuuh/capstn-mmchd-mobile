@@ -162,6 +162,11 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        onBackPressed() {
+//            startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+//        }
+
 //        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
 //        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
 //        binding2 = ActivityAddcifMeasles2Binding.inflate(getLayoutInflater());
@@ -205,7 +210,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
             }
         });
     }
