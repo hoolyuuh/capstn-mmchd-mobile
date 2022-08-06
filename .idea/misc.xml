@@ -38,13 +38,14 @@
         <entry key="app/src/main/res/layout/activity_health_event3.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_loadingpage.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.12454710144927536" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16119221411192214" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

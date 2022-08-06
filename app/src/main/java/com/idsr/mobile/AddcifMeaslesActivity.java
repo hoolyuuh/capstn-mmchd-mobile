@@ -179,6 +179,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         pageZero();
     }
 
+    // TODO: fix how the function works. It's supposed to do the backhome function, but it does its default back page
+    // After this works, can copy paste this and the backhome function to all other activity form classes (CIF CRF TCL EBS)
     public void onBackPressed(View view) {
         backhome(view);
     }
