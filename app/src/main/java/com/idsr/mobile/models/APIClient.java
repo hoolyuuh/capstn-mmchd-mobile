@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.idsr.mobile.models.APIModels.EventJs;
 import com.idsr.mobile.models.APIModels.LoginJS;
 import com.idsr.mobile.models.APIModels.LoginResponse;
 
@@ -49,7 +50,7 @@ public class APIClient {
         Call<LoginResponse> postLogin(@Body LoginJS login);
 
         @POST("newEvent")
-        Call<ResponseBody> postAddEvent(@Body Event event);
+        Call<ResponseBody> postAddEvent(@Body EventJs event);
 
         /* Template for query paths */
 

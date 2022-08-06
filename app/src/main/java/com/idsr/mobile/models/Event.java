@@ -3,10 +3,22 @@ package com.idsr.mobile.models;
 import java.util.Date;
 
 public class Event {
-	private String eventID, userID, addressID, eventStatus, source, reportSource, eventDetails, remarks;
-	private String numCases, numDeaths;
-	private String dateCaptured, timeCaptured, dateReported;
-	private String locHouseStreet, locCity, locBrgy;
+	private String eventID;
+	private String userID;
+	private String addressID;
+	private String eventStatus;
+	private String source;
+	private String reportSource;
+	private String eventDetails;
+	private String remarks;
+	private String numCases;
+	private String numDeaths;
+	private String dateCaptured;
+	private String timeCaptured;
+	private String dateReported;
+	private String locHouseStreet;
+	private String locCity;
+	private String locBrgy;
 
 	public Event() {
 		this.eventStatus = new String("For Validation");
