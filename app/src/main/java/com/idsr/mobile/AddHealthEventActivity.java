@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -197,6 +198,9 @@ public class AddHealthEventActivity extends AppCompatActivity {
 
         this.submit = findViewById(R.id.btn_ebs_submit);
         this.back2 = findViewById(R.id.btn_ebs_back1);
+
+        // fix capitalizations
+        ET_HouseStreet.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 
         ArrayAdapter<CharSequence> adapterCity=ArrayAdapter.createFromResource(this, R.array.city, android.R.layout.simple_spinner_item);
         adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_item);
