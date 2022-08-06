@@ -5,8 +5,10 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.idsr.mobile.models.APIModels.LoginJS;
+import com.idsr.mobile.models.APIModels.LoginResponse;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,24 +24,32 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public class APIClient {
-    public static final String BASE_URL = "https://covid-progplan.herokuapp.com/api/";
+    public static final String BASE_URL = "https://capstn-mmchd.herokuapp.com/api/";
     public Retrofit retrofit;
     public Gson gson;
     public static APIEndpointInterface APIservice;
 
     public APIClient() {
-        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").setLenient().create();
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-//        APIservice = retrofit.create(APIEndpoint.class);
+        gson = new GsonBuilder()
+                .setDateFormat(DateFormat.FULL)
+                .setLenient()
+                .create();
+        retrofit = new Retrofit
+                .Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        APIservice = retrofit.create(APIEndpointInterface.class);
     }
 
     public interface APIEndpointInterface {
         Call<ResponseBody> getTest();
 
-        @POST("/api/login")
-        Call<User> postLogin(@Body LoginJS login);
+        @POST("login")
+        Call<LoginResponse> postLogin(@Body LoginJS login);
 
-
+        @POST("newEvent")
+        Call<ResponseBody> postAddEvent(@Body Event event);
 
         /* Template for query paths */
 
