@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Case {
 	private String caseID;
-	private String patientID;
 	private String diseaseID;
 	private String reportedBy;
 	private String caseLevel;
@@ -14,9 +13,10 @@ public class Case {
 	private Date dateOnset;
 	private String reporterName;
 	private String reporterContact;
+	private String investigatorLab;
+	private String investigatorName;
 	private String investigatorContact;
 	private String finalDiagnosis;
-	private String investigatorLab;
 	private String CRFID;
 
 	public Case() {
@@ -28,14 +28,6 @@ public class Case {
 
 	public void setCaseID(String caseID) {
 		this.caseID = caseID;
-	}
-
-	public String getPatientID() {
-		return patientID;
-	}
-
-	public void setPatientID(String patientID) {
-		this.patientID = patientID;
 	}
 
 	public String getDiseaseID() {
@@ -110,6 +102,22 @@ public class Case {
 		this.reporterContact = reporterContact;
 	}
 
+	public String getInvestigatorLab() {
+		return investigatorLab;
+	}
+
+	public void setInvestigatorLab(String investigatorLab) {
+		this.investigatorLab = investigatorLab;
+	}
+
+	public String getInvestigatorName() {
+		return investigatorName;
+	}
+
+	public void setInvestigatorName(String investigatorName) {
+		this.investigatorName = investigatorName;
+	}
+
 	public String getInvestigatorContact() {
 		return investigatorContact;
 	}
@@ -124,14 +132,6 @@ public class Case {
 
 	public void setFinalDiagnosis(String finalDiagnosis) {
 		this.finalDiagnosis = finalDiagnosis;
-	}
-
-	public String getInvestigatorLab() {
-		return investigatorLab;
-	}
-
-	public void setInvestigatorLab(String investigatorLab) {
-		this.investigatorLab = investigatorLab;
 	}
 
 	public String getCRFID() {

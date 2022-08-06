@@ -45,9 +45,14 @@ import com.idsr.mobile.databinding.ActivityAddcifMeasles6Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles7Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles8Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles9Binding;
+import com.idsr.mobile.models.CaseFormData;
 import com.idsr.mobile.models.Case;
+import com.idsr.mobile.models.Patient;
+import com.idsr.mobile.models.RiskFactors;
+import com.idsr.mobile.models.CaseData;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class AddcifMeaslesActivity extends AppCompatActivity {
@@ -75,7 +80,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
     private int userId;
     private Bundle bundle;
-    private Case cases;
+    private CaseFormData formData;
 
 //    page 0
     private AutoCompleteTextView autocompPatients;
@@ -151,7 +156,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private Spinner spinnerLabSpecimen, spinnerLabSelect;
     private EditText etCollectdate, etReceivedate, etresultMeasles, etresultRubella, etresultVirus, etresultPRC, etInvestigator, etInvestigContact, etInvestigDate;
 
-    private String labresult="", labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, invesitgatorContact, invesitgateDate, labselected;
+    private String labresult="", labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, investigatorContact, investigateDate, labselected;
 
 //    page 9
     private RadioGroup radioFinalClassif;
@@ -175,8 +180,6 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 //        binding7 = ActivityAddcifMeasles7Binding.inflate(getLayoutInflater());
 //        binding8 = ActivityAddcifMeasles8Binding.inflate(getLayoutInflater());
 //        binding9 = ActivityAddcifMeasles9Binding.inflate(getLayoutInflater());
-        cases = new Case();
-        cases.setDiseaseID("DI-0000000000000");
         pageZero();
     }
 
@@ -1237,8 +1240,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                     resultVirus = etresultVirus.getText().toString();
                     resultPRC = etresultPRC.getText().toString();
                     investigator = etInvestigator.getText().toString();
-                    invesitgatorContact = etInvestigContact.getText().toString();
-                    invesitgateDate = etInvestigDate.getText().toString();
+                    investigatorContact = etInvestigContact.getText().toString();
+                    investigateDate = etInvestigDate.getText().toString();
                     labselected = tvLabSelect.getText().toString();
 
                     pageNine();
@@ -1366,10 +1369,158 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 Button buttonHome = findViewById(R.id.btn_home);
                 Button buttonAddCase = findViewById(R.id.btn_addanothercase);
 
+                // CASES
+                Case cases = new Case();
+                cases.setDiseaseID("DI-0000000000000");
+                cases.setReportedBy(String reportedBy);
+                cases.setCaseLevel(String caseLevel);
+                cases.setReportDate(reportdate);
+                cases.setInvestigationDate(investigateDate);
+                cases.setDateAdmitted(admitdate);
+                cases.setDateOnset(onsetdate);
+                cases.setReporterName(reporter);
+                cases.setReporterContact(null);
+                cases.setInvestigatorLab(labselected);
+                cases.setInvestigatorName(investigator);
+                cases.setInvestigatorContact(investigatorContact);
+                cases.setFinalDiagnosis(String finalDiagnosis);
+                cases.setCRFID(null);
+
+                // PATIENTS
+                Patient patient = new Patient();
+                // TODO: autofill patient
+                patient.setPatientID(null);
+                // phone
+                patient.setEpiID(null);
+                patient.setLastName(lastName);
+                patient.setFirstName(firstName);
+                patient.setMidName(middleName);
+                patient.setCurrHouseStreet(currStreet);
+                patient.setCurrBrgy(currBrgy);
+                patient.setCurrCity(currCity);
+                patient.setPermHouseStreet(permStreet);
+                patient.setPermBrgy(permBrgy);
+                patient.setPermCity(permCity);
+                patient.setSex(sex);
+                patient.setBirthdate(birthdate);
+                patient.setAgeNo(int ageNo);
+                patient.setAgeType("year");
+                patient.setAdmitStatus(patientAdmit);
+                patient.setCivilStatus(civilstatus);
+                patient.setOccupation(occupation);
+                patient.setOccuLoc(occuloc);
+                patient.setOccuStreet(occuStreet);
+                patient.setOccuCity(occuCity);
+                patient.setOccuBrgy(occuBrgy);
+                patient.setGuardianName(parentCg);
+                patient.setGuardianContact(parentCgContact);
+                patient.setIndGroup(indigenousgroup);
+                patient.setPregWeeks(pregnancy);
+                patient.setHCPN(HCPN);
+                patient.setILHZ(ILHZ);
+
+                // RISK FACTORS
+                RiskFactors riskFactors = new RiskFactors();
+                riskFactors.setLSmoking(checkRfL2.isChecked());
+                riskFactors.setLAlcoholism(checkRfL3.isChecked());
+                riskFactors.setLDrugUse(checkRfL4.isChecked());
+                riskFactors.setLPhysicalInactivity(checkRfL5.isChecked());
+                if (checkRfL6.isChecked()) {
+                    riskFactors.setLOthers(etRfLOthers.getText().toString());
+                } else {
+                    riskFactors.setLOthers("");
+                }
+                riskFactors.setCAsthma(checkRfC2.isChecked());
+                riskFactors.setCHereditary(checkRfC3.isChecked());
+                if (checkRfC4.isChecked()) {
+                    riskFactors.setCOthers(etRfCOthers.getText().toString());
+                } else {
+                    riskFactors.setCOthers("");
+                }
+                riskFactors.setHDiabetes(checkRfH2.isChecked());
+                riskFactors.setHHeartDisease(checkRfH3.isChecked());
+                riskFactors.setHHypertension(checkRfH4.isChecked());
+                riskFactors.setHObesity(checkRfH5.isChecked());
+                if (checkRfH6.isChecked()) {
+                    riskFactors.setHOthers(etRfHOthers.getText().toString());
+                } else {
+                    riskFactors.setHOthers("");
+                }
+                riskFactors.setOAirPollution(checkRfO2.isChecked());
+                riskFactors.setOCleanWater(checkRfO3.isChecked());
+                riskFactors.setOFlooding(checkRfO4.isChecked());
+                riskFactors.setOHealthFacility(checkRfO5.isChecked());
+                riskFactors.setOHealthEdu(checkRfO6.isChecked());
+                riskFactors.setOPoverty(checkRfO7.isChecked());
+                riskFactors.setOShelter(checkRfO8.isChecked());
+                riskFactors.setOWasteMgmt(checkRfO9.isChecked());
+                riskFactors.setOVacCoverage(checkRfO10.isChecked());
+                if (checkRfO11.isChecked()) {
+                    riskFactors.setOOthers(etRfOOthers.getText().toString());
+                } else {
+                    riskFactors.setOOthers("");
+                }
+
+                // CASE DATA
+                CaseData caseData = new CaseData();
+                symp1date, symp2date, checkSymp1, checkSymp2, checkSymp3, checkSymp4, checkSymp5, checkSymp6, checkSymp7, checkSymp8
+                caseData.setPatientAdmitted(String patientAdmitted);
+                caseData.setSympFever(String sympFever);
+                caseData.setSympRash(String sympRash);
+                caseData.setSympLymph(Boolean sympLymph);
+                caseData.setSympCough(Boolean sympCough);
+                caseData.setSympKoplik(Boolean sympKoplik);
+                caseData.setSympRunnynose(Boolean sympRunnynose);
+                caseData.setSympRedeye(Boolean sympRedeye);
+                caseData.setSympArthrisis(Boolean sympArthrisis);
+                caseData.setComplications(complications);
+                caseData.setOtherSymptoms(symptoms);
+                caseData.setDiagnosis(workingdiagnosis);
+                caseData.setMCVaccine(vaccinationStatus);
+                caseData.setMCVmv(vaccineMV);
+                caseData.setMCVmr(vaccineMR);
+                caseData.setMCVmmr(vaccineMMR);
+                caseData.setMCVlastDoseDate(vaccineLastDoseDate);
+                caseData.setMCVvalidation(vaccinationValidity);
+                caseData.setMCVCampaign(vaccineCampaign);
+                caseData.setNoMCVreason(novaccineReasonOther);
+                caseData.setVitA(vitA);
+                caseData.setTravelHistory(travelHistory);
+                caseData.setTravelHistoryPlace(travelPlace);
+                caseData.setTravelHistoryDate(travelDate);
+                caseData.setTravelDaysRashOnset(rashOnset);
+                caseData.setExpContactMeasles(measlesContact);
+                caseData.setExpContactRubella(rubellaContact);
+                caseData.setExpContactName(rubellaContactName);
+                caseData.setExpContactPlace(rubellaContactPlace);
+                caseData.setExpContactDate(rubellaContactTravelDate);
+                caseData.setExpPlaceType(rubellaExposure);
+                caseData.setOtherCommunityCases(otherKnownFeverRash);
+                caseData.setLabSpecimen(labspecimen);
+                caseData.setLabDateCollected(collectdate);
+                caseData.setLabDateSent(Date labDateSent); // labresult
+                caseData.setLabDateReceived(receivedate);
+                caseData.setLabMeaslesResult(resultMeasle);
+                caseData.setLabRubellaResult(resultRubella);
+                caseData.setLabVirusResult(resultVirus);
+                caseData.setLabPCRResult(resultPRC);
+                caseData.setFinalClassification(finalClassification);
+                caseData.setSourceInfection(sourceinfo);
+                caseData.setOutcome(outcome);
+                caseData.setDateDied(datedied);
+                caseData.setFinalDiagnosis(finaldiagnosis);
+
+                // prepping form data before sending to retrofit
+                formData = new CaseFormData();
+                formData.setCases(cases);
+                formData.setPatient(patient);
+                formData.setRiskFactors(riskFactors);
+                formData.setCaseData(caseData);
+
                 int i = 900000000;
-                while (i>= -900000000) {
+                while (i >= -900000000) {
                     i -= 1;
-                    if (i== -900000000) {
+                    if (i == -900000000) {
                         loadingpanel.setVisibility(View.GONE);
                         imgCheck.setVisibility(View.VISIBLE);
                         layoutDone.setVisibility(View.VISIBLE);
