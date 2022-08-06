@@ -19,21 +19,19 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/titleText"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Do you confirm to submit this form?"
+                android:text="Are you sure you want to go home?"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="-10dp"
                 android:padding="10dp"/>
             <TextView
-                android:id="@+id/subText"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You can review your input by selecting 'CANCEL'"
+                android:text="If you go back, all data in this form will be lost."
                 android:textSize="15sp"
                 android:layout_marginTop="-5dp"
                 android:padding="10dp"/>
@@ -53,13 +51,13 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btn_cancel"
+                        android:id="@+id/btn_home_cancel"
                         android:layout_width="125dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="Cancel" />
                     <Button
-                        android:id="@+id/btn_confirm"
+                        android:id="@+id/btn_home_confirm"
                         android:layout_width="125dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
