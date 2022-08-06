@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.google.api.client.repackaged.com.google.common.base.Strings;
 import com.idsr.mobile.models.APIClient;
+import com.idsr.mobile.models.APIModels.EventJs;
 import com.idsr.mobile.models.APIModels.LoginJS;
 import com.idsr.mobile.models.APIModels.LoginResponse;
 import com.idsr.mobile.models.Event;
@@ -331,7 +332,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
             Button buttonHome = findViewById(R.id.btn_home);
             Button buttonAddEvent = findViewById(R.id.btn_addanothercase);
 
-            Call<ResponseBody> call = apiClient.APIservice.postAddEvent(event);
+            Call<ResponseBody> call = apiClient.APIservice.postAddEvent(new EventJs(event));
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
