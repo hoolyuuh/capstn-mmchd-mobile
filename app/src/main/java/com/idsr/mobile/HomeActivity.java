@@ -27,14 +27,14 @@ public class HomeActivity extends AppCompatActivity {
 
         Toast.makeText(HomeActivity.this, "Hello " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
 
-        this.findViewById(R.id.add_case).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.new_disease_case).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, AddcaseActivity.class));
             }
         });
 
-        this.findViewById(R.id.add_ebs).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.new_health_event).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent gotoAddEBS = new Intent(HomeActivity.this, AddHealthEventActivity.class);
@@ -43,7 +43,23 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        this.findViewById(R.id.add_tcl).setOnClickListener(new View.OnClickListener() {
+        this.findViewById(R.id.new_immunization).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, AddtclActivity.class));
+            }
+        });
+
+        // TODO
+        this.findViewById(R.id.user_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, AddtclActivity.class));
+            }
+        });
+
+        // TODO
+        this.findViewById(R.id.user_account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, AddtclActivity.class));
