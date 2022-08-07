@@ -297,7 +297,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
 
     public void submit(View view) {
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.activity_confirm_popup, null);
+        View popupView = inflater.inflate(R.layout.activity_popup_submitcase, null);
 
         //Specify the length and width through constants
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -312,8 +312,8 @@ public class AddHealthEventActivity extends AppCompatActivity {
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-        Button buttonCancel = popupView.findViewById(R.id.btn_cancel);
-        Button buttonConfirm = popupView.findViewById(R.id.btn_confirm);
+        Button buttonCancel = popupView.findViewById(R.id.btn_submit_cancel);
+        Button buttonConfirm = popupView.findViewById(R.id.btn_submit_confirm);
         buttonCancel.setOnClickListener(new View.OnClickListener() { @Override
         public void onClick(View v) {
             popupWindow.dismiss();

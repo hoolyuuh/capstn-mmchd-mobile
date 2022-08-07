@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category I (CIF)"
+            android:text="Category I"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:fontFamily="@font/worksans_semibold"
@@ -112,7 +112,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category II (CRF)"
+            android:text="Category II"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:fontFamily="@font/worksans_semibold"

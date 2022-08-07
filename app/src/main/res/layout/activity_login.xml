@@ -7,7 +7,6 @@
     android:background="@drawable/loginblank"
     tools:context=".LoginActivity">
 
-
     <EditText
         android:id="@+id/ti_email"
         android:inputType="text"
@@ -15,9 +14,8 @@
         android:layout_height="47dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="390dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="275dp"
         android:textSize="18dp"
         android:textColor="@color/light_gray"
         android:background="@drawable/inputbox"
@@ -44,8 +42,8 @@
         android:layout_height="47dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="320dp"
+        app:layout_constraintTop_toBottomOf="@id/ti_email"
+        android:layout_marginTop="25dp"
         android:textSize="18dp"
         android:textColor="@color/light_gray"
         style="@style/Input"
@@ -79,8 +77,8 @@
         android:layout_height="65dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="230dp"
+        app:layout_constraintTop_toBottomOf="@id/ti_password"
+        android:layout_marginTop="30dp"
         style="@style/NoCorner"
         android:backgroundTint="@color/theme_blue"
         android:text="Login"
