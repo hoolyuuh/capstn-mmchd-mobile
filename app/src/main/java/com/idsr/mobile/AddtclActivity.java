@@ -673,7 +673,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etBCG.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etBCG.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etHepa1.setOnClickListener(new View.OnClickListener() { @Override
@@ -682,7 +684,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etHepa1.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etHepa1.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etHep2.setOnClickListener(new View.OnClickListener() { @Override
@@ -691,7 +695,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etHep2.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etHep2.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etOpv1.setOnClickListener(new View.OnClickListener() { @Override
@@ -700,7 +706,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etOpv1.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etOpv1.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etOpv2.setOnClickListener(new View.OnClickListener() { @Override
@@ -709,7 +717,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etOpv2.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etOpv2.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etOpv3.setOnClickListener(new View.OnClickListener() { @Override
@@ -718,7 +728,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etOpv3.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etOpv3.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etPenta1.setOnClickListener(new View.OnClickListener() { @Override
@@ -727,7 +739,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etPenta1.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etPenta1.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etPenta2.setOnClickListener(new View.OnClickListener() { @Override
@@ -736,7 +750,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etPenta2.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etPenta2.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etPenta3.setOnClickListener(new View.OnClickListener() { @Override
@@ -745,7 +761,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etPenta3.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etPenta3.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etPcv1.setOnClickListener(new View.OnClickListener() { @Override
@@ -754,7 +772,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etPcv1.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etPcv1.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etPcv2.setOnClickListener(new View.OnClickListener() { @Override
@@ -763,7 +783,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etPcv2.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etPcv2.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etPcv3.setOnClickListener(new View.OnClickListener() { @Override
@@ -772,7 +794,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etPcv3.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etPcv3.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etMcv1.setOnClickListener(new View.OnClickListener() { @Override
@@ -781,7 +805,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etMcv1.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etMcv1.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etMcv2.setOnClickListener(new View.OnClickListener() { @Override
@@ -790,7 +816,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etMcv2.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etMcv2.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etDeng1.setOnClickListener(new View.OnClickListener() { @Override
@@ -799,7 +827,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etDeng1.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etDeng1.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etDeng2.setOnClickListener(new View.OnClickListener() { @Override
@@ -808,7 +838,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etDeng2.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etDeng2.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etDeng3.setOnClickListener(new View.OnClickListener() { @Override
@@ -817,7 +849,9 @@ public class AddtclActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etDeng3.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    etDeng3.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
 
