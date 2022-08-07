@@ -276,7 +276,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                onBackPressed();
             }
         });
     }

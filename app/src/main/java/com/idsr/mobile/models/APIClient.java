@@ -11,7 +11,6 @@ import com.idsr.mobile.models.APIModels.LoginResponse;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -52,8 +51,11 @@ public class APIClient {
         @POST("newEvent")
         Call<ResponseBody> postAddEvent(@Body EventJs event);
 
+        @GET("getPatients")
+        Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
         /* Template for query paths */
 
+//        @GET("getPatients")
     }
 
     /* This is NOT to be called anywhere in the application. This is only a template to
@@ -76,5 +78,25 @@ public class APIClient {
                 Log.e("callGetTest", t.getMessage());
             }
         });
+    }
+
+    public ArrayList<Patient> getPatientAutofillTest(String userID, String userOnly) {
+        Call<ArrayList<Patient>> call = APIservice.getPatientAutofill(userID,"false");
+        ArrayList<Patient> patients = new ArrayList<Patient>();
+
+        call.enqueue(new Callback<ArrayList<Patient>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Patient>> call, Response<ArrayList<Patient>> response){
+                Log.e("TestingAPI", "Got here");
+                patients.addAll(response.body());
+                Log.e("callGetTest", patients.get(0).getFirstName());
+            }
+            @Override
+            public void onFailure(Call<ArrayList<Patient>> call, Throwable t) {
+                Log.e("callGetTest", t.getMessage());
+            }
+        });
+
+        return patients;
     }
 }

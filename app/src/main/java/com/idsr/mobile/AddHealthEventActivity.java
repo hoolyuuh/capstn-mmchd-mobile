@@ -109,7 +109,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddHealthEventActivity.this,
                         new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
                             ET_CaptureDate.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
-                                    Strings.padStart(Integer.toString(monthOfYear),2,'0') + "-" +
+                                    Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
                                     Strings.padStart(Integer.toString(dayOfMonth),2,'0')
                             );} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
