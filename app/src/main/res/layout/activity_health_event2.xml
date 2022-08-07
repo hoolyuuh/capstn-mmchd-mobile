@@ -162,6 +162,7 @@
                 android:layout_marginTop="33dp"
                 android:background="@drawable/inputbox"
                 android:inputType="text"
+                android:textAllCaps="true"
                 android:textSize="18dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
