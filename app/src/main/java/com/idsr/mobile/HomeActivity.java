@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.idsr.mobile.databinding.ActivityAddtcl0Binding;
 import com.idsr.mobile.databinding.ActivityHomeBinding;
+import com.idsr.mobile.models.APIClient;
 import com.idsr.mobile.models.User;
 
 public class HomeActivity extends AppCompatActivity {
@@ -46,7 +47,9 @@ public class HomeActivity extends AppCompatActivity {
         this.findViewById(R.id.new_immunization).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, AddtclActivity.class));
+                Intent goToAddImmun = new Intent(HomeActivity.this, AddtclActivity.class);
+                goToAddImmun.putExtras(bundle);
+                startActivity(goToAddImmun);
             }
         });
 

@@ -6,6 +6,16 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="../../../.gradle/caches/transforms-2/files-2.1/1545d05330b91959e9302573f67dc81d/appcompat-1.4.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1953125" />
         <entry key="../../../Library/Android/sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles0.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles1.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles2.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles3.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles4.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles5.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles6.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles7.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles8.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Neal/AndroidStudioProjects/capstn-mmchd-mobile/app/src/main/res/layout/activity_addcif_measles9.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/drawable/dropdownbox.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/inputbox.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/inputbox_red.xml" value="0.12" />
@@ -26,32 +36,23 @@
         <entry key="app/src/main/res/layout/activity_addcif_measles8.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_addcif_measles9.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_addcifmeasles4.xml" value="0.25378112792968754" />
-        <entry key="app/src/main/res/layout/activity_addcrf_dengue3.xml" value="0.13697916666666668" />
-        <entry key="app/src/main/res/layout/activity_addcrf_dengue4.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_addcrf_dengue5.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_addcrf_dengue6.xml" value="0.17" />
-        <entry key="app/src/main/res/layout/activity_addcrf_dengue7.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_addtcl0.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_addtcl1.xml" value="0.2506655883789063" />
-        <entry key="app/src/main/res/layout/activity_addtcl2.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/activity_addtcl0.xml" value="0.2692194620768229" />
+        <entry key="app/src/main/res/layout/activity_addtcl1.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_addtcl2.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_addtcl3.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_backhome_popup.xml" value="0.28125" />
         <entry key="app/src/main/res/layout/activity_confim_popup.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_confirm_popup.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_health_event1.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_health_event2.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_health_event3.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_loading.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_loadingpage.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.12454710144927536" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16119221411192214" />
       </map>
     </option>
   </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
