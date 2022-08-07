@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -49,7 +50,16 @@ import com.idsr.mobile.models.Patient;
 import com.idsr.mobile.models.RiskFactors;
 import com.idsr.mobile.models.CaseData;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -130,7 +140,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private RadioGroup radioVitA;
 
     private String vaccinationStatus="", vaccineMV, vaccineMR, vaccineMMR, vaccineLastDoseDate, vaccinationValidity="", vaccineCampaign="", novaccineReasonOther="", vitA="";
-    // TODO: no vaxx reason initializaton, not sure also how theyre stored
+    private ArrayList<String> noVaccReasons = new ArrayList<>();
 
 //    page 5
     private RadioGroup radioTravelhistory, radioRashOnset, radioMeaslesContact, radioRubellaContact, radioRubellaExposure, radioOtherFeverRashes;
@@ -905,7 +915,16 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                     vaccineMMR = etVaccineMMR.getText().toString();
                     vaccineLastDoseDate = etVaccineLastDoseDate.getText().toString();
                     vaccinationValidity = etVaccineValidityOthers.getText().toString();
-                    // TODO: no vaxx reason retrieve, use ischeck()
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas1.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas2.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas3.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas4.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas5.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas6.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas7.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas8.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReas9.isChecked()));
+                    noVaccReasons.add(Boolean.toString(checkNoVaccReasOthers.isChecked()));
                     novaccineReasonOther = etNoVaccReasOther.getText().toString();
                     // vitA also set onclick
 
@@ -1399,7 +1418,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
-        buttonConfirm.setOnClickListener(new View.OnClickListener() { @Override
+        buttonConfirm.setOnClickListener(new View.OnClickListener() { @SuppressLint("NewApi")
+        @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
                 //As an example, display the message
@@ -1417,18 +1437,16 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 Button buttonAddCase = findViewById(R.id.btn_addanothercase);
 
                 // converting string to date
-                SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-                // formatter.parse("");
 
                 // CASES
                 Case cases = new Case();
                 cases.setDiseaseID("DI-0000000000000");
-                cases.setReportedBy(String reportedBy);
-                cases.setCaseLevel(String caseLevel);
-                cases.setReportDate(formatter.parse(reportdate));
-                cases.setInvestigationDate(formatter.parse(investigateDate));
-                cases.setDateAdmitted(formatter.parse(admitdate));
-                cases.setDateOnset(formatter.parse(onsetdate));
+                cases.setReportedBy(reportedBy);
+                cases.setCaseLevel(finalClassification);
+                cases.setReportDate(reportdate);
+                cases.setInvestigationDate(investigateDate);
+                cases.setDateAdmitted(admitdate);
+                cases.setDateOnset(onsetdate);
                 cases.setReporterName(reporter);
                 cases.setReporterContact(null);
                 cases.setInvestigatorLab(labselected);
@@ -1453,8 +1471,16 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 patient.setPermBrgy(permBrgy);
                 patient.setPermCity(permCity);
                 patient.setSex(sex);
-                patient.setBirthdate(formatter.parse(birthdate));
-                patient.setAgeNo(int ageNo);
+                patient.setBirthdate(birthdate);
+
+                try {
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                    Date date = formatter.parse(birthdate);
+                    patient.setAgeNo(Math.toIntExact(ChronoUnit.YEARS.between((Temporal) date, LocalDate.now(ZoneId.of("GMT+8")))));
+                } catch (ParseException e) {
+                    Log.d("ParseException", "Got an exception in converting birthdate! " + e);
+                    patient.setAgeNo(30);
+                }
                 patient.setAgeType("year");
                 patient.setAdmitStatus(patientAdmit);
                 patient.setCivilStatus(civilstatus);
@@ -1514,11 +1540,10 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
                 // CASE DATA
                 CaseData caseData = new CaseData();
-                symp1date, symp2date
-                checkSymp1, checkSymp2 // check db
-                caseData.setPatientAdmitted(String patientAdmitted);
-                caseData.setSympFever(String sympFever);
-                caseData.setSympRash(String sympRash);
+                // checkSymp1, checkSymp2
+                caseData.setPatientAdmitted(patientAdmit);
+                caseData.setSympFever(symp1date);
+                caseData.setSympRash(symp2date);
                 caseData.setSympLymph(checkSymp3.isChecked());
                 caseData.setSympCough(checkSymp4.isChecked());
                 caseData.setSympKoplik(checkSymp5.isChecked());
@@ -1532,26 +1557,26 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 caseData.setMCVmv(vaccineMV);
                 caseData.setMCVmr(vaccineMR);
                 caseData.setMCVmmr(vaccineMMR);
-                caseData.setMCVlastDoseDate(formatter.parse(vaccineLastDoseDate));
+                caseData.setMCVlastDoseDate(vaccineLastDoseDate);
                 caseData.setMCVvalidation(vaccinationValidity);
                 caseData.setMCVCampaign(vaccineCampaign);
-                caseData.setNoMCVreason(novaccineReasonOther);
+                caseData.setNoMCVreason(noVaccReasons);
                 caseData.setVitA(vitA);
                 caseData.setTravelHistory(travelHistory);
                 caseData.setTravelHistoryPlace(travelPlace);
-                caseData.setTravelHistoryDate(formatter.parse(travelDate));
+                caseData.setTravelHistoryDate(travelDate);
                 caseData.setTravelDaysRashOnset(rashOnset);
                 caseData.setExpContactMeasles(measlesContact);
                 caseData.setExpContactRubella(rubellaContact);
                 caseData.setExpContactName(rubellaContactName);
                 caseData.setExpContactPlace(rubellaContactPlace);
-                caseData.setExpContactDate(formatter.parse(rubellaContactTravelDate));
+                caseData.setExpContactDate(rubellaContactTravelDate);
                 caseData.setExpPlaceType(rubellaExposure);
                 caseData.setOtherCommunityCases(otherKnownFeverRash);
                 caseData.setLabSpecimen(labspecimen);
-                caseData.setLabDateCollected(formatter.parse(collectdate));
-                caseData.setLabDateSent(Date labDateSent); // labresult
-                caseData.setLabDateReceived(formatter.parse(receivedate));
+                caseData.setLabDateCollected(collectdate);
+                caseData.setLabDateSent(labresult);
+                caseData.setLabDateReceived(receivedate);
                 caseData.setLabMeaslesResult(resultMeasle);
                 caseData.setLabRubellaResult(resultRubella);
                 caseData.setLabVirusResult(resultVirus);
@@ -1559,7 +1584,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 caseData.setFinalClassification(finalClassification);
                 caseData.setSourceInfection(sourceinfo);
                 caseData.setOutcome(outcome);
-                caseData.setDateDied(formatter.parse(datedied));
+                caseData.setDateDied(datedied);
                 caseData.setFinalDiagnosis(finaldiagnosis);
 
                 // prepping form data before sending to retrofit

@@ -1,7 +1,5 @@
 package com.idsr.mobile.models;
 
-import java.util.Date;
-
 public class Patient {
 	private String patientID;
 	private String epiID;
@@ -17,7 +15,7 @@ public class Patient {
 	private String permBrgy;
 	private String permCity;
 	private String sex;
-	private Date birthdate;
+	private String birthdate;
 	private int ageNo;
 	private String ageType;
 	private String admitStatus;
@@ -134,11 +132,11 @@ public class Patient {
 		this.sex = sex;
 	}
 
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 

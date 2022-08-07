@@ -1,7 +1,6 @@
 package com.idsr.mobile.models;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CaseData {
 	private String patientAdmitted;
@@ -22,7 +21,7 @@ public class CaseData {
 	private String MCVmv;
 	private String MCVmr;
 	private String MCVmmr;
-	private Date MCVlastDoseDate;
+	private String MCVlastDoseDate;
 	private String MCVvalidation;
 	private String MCVCampaign;
 	private ArrayList<String> noMCVreason;
@@ -30,20 +29,20 @@ public class CaseData {
 	// page 4
 	private String travelHistory;
 	private String travelHistoryPlace;
-	private Date travelHistoryDate;
+	private String travelHistoryDate;
 	private String travelDaysRashOnset;
 	private String expContactMeasles;
 	private String expContactRubella;
 	private String expContactName;
 	private String expContactPlace;
-	private Date expContactDate;
+	private String expContactDate;
 	private String expPlaceType;
 	private String otherCommunityCases;
 	// page 5
 	private String labSpecimen;
-	private Date labDateCollected;
-	private Date labDateSent;
-	private Date labDateReceived;
+	private String labDateCollected;
+	private String labDateSent;
+	private String labDateReceived;
 	private String labMeaslesResult;
 	private String labRubellaResult;
 	private String labVirusResult;
@@ -52,7 +51,7 @@ public class CaseData {
 	private String finalClassification;
 	private String sourceInfection;
 	private String outcome;
-	private Date dateDied;
+	private String dateDied;
 	private String finalDiagnosis;
 
 	public CaseData() {
@@ -122,7 +121,7 @@ public class CaseData {
 		this.MCVmmr = MCVmmr;
 	}
 
-	public void setMCVlastDoseDate(Date MCVlastDoseDate) {
+	public void setMCVlastDoseDate(String MCVlastDoseDate) {
 		this.MCVlastDoseDate = MCVlastDoseDate;
 	}
 
@@ -150,7 +149,7 @@ public class CaseData {
 		this.travelHistoryPlace = travelHistoryPlace;
 	}
 
-	public void setTravelHistoryDate(Date travelHistoryDate) {
+	public void setTravelHistoryDate(String travelHistoryDate) {
 		this.travelHistoryDate = travelHistoryDate;
 	}
 
@@ -174,7 +173,7 @@ public class CaseData {
 		this.expContactPlace = expContactPlace;
 	}
 
-	public void setExpContactDate(Date expContactDate) {
+	public void setExpContactDate(String expContactDate) {
 		this.expContactDate = expContactDate;
 	}
 
@@ -190,15 +189,15 @@ public class CaseData {
 		this.labSpecimen = labSpecimen;
 	}
 
-	public void setLabDateCollected(Date labDateCollected) {
+	public void setLabDateCollected(String labDateCollected) {
 		this.labDateCollected = labDateCollected;
 	}
 
-	public void setLabDateSent(Date labDateSent) {
+	public void setLabDateSent(String labDateSent) {
 		this.labDateSent = labDateSent;
 	}
 
-	public void setLabDateReceived(Date labDateReceived) {
+	public void setLabDateReceived(String labDateReceived) {
 		this.labDateReceived = labDateReceived;
 	}
 
@@ -230,7 +229,7 @@ public class CaseData {
 		this.outcome = outcome;
 	}
 
-	public void setDateDied(Date dateDied) {
+	public void setDateDied(String dateDied) {
 		this.dateDied = dateDied;
 	}
 
