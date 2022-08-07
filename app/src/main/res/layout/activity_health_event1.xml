@@ -299,7 +299,7 @@
             android:layout_marginRight="15dp"
             android:backgroundTint="@color/theme_cream"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Back"
+            android:text="Cancel"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/theme_blue"

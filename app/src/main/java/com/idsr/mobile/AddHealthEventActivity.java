@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 
 import com.google.api.client.repackaged.com.google.common.base.Strings;
 import com.idsr.mobile.models.APIClient;
+import com.idsr.mobile.models.APIModels.EventJs;
 import com.idsr.mobile.models.APIModels.LoginJS;
 import com.idsr.mobile.models.APIModels.LoginResponse;
 import com.idsr.mobile.models.Event;
@@ -197,6 +199,9 @@ public class AddHealthEventActivity extends AppCompatActivity {
         this.submit = findViewById(R.id.btn_ebs_submit);
         this.back2 = findViewById(R.id.btn_ebs_back1);
 
+        // fix capitalizations
+        ET_HouseStreet.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+
         ArrayAdapter<CharSequence> adapterCity=ArrayAdapter.createFromResource(this, R.array.city, android.R.layout.simple_spinner_item);
         adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_item);
         S_City.setAdapter(adapterCity);
@@ -292,7 +297,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
 
     public void submit(View view) {
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.activity_confirm_popup, null);
+        View popupView = inflater.inflate(R.layout.activity_popup_submitcase, null);
 
         //Specify the length and width through constants
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -307,8 +312,8 @@ public class AddHealthEventActivity extends AppCompatActivity {
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-        Button buttonCancel = popupView.findViewById(R.id.btn_cancel);
-        Button buttonConfirm = popupView.findViewById(R.id.btn_confirm);
+        Button buttonCancel = popupView.findViewById(R.id.btn_submit_cancel);
+        Button buttonConfirm = popupView.findViewById(R.id.btn_submit_confirm);
         buttonCancel.setOnClickListener(new View.OnClickListener() { @Override
         public void onClick(View v) {
             popupWindow.dismiss();
@@ -331,7 +336,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
             Button buttonHome = findViewById(R.id.btn_home);
             Button buttonAddEvent = findViewById(R.id.btn_addanothercase);
 
-            Call<ResponseBody> call = apiClient.APIservice.postAddEvent(event);
+            Call<ResponseBody> call = apiClient.APIservice.postAddEvent(new EventJs(event));
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
