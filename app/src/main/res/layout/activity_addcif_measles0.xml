@@ -140,11 +140,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:fontFamily="@font/worksans_semibold"
             android:text="Add a Measles Case"
             android:textColor="@color/theme_blue"
-            android:textSize="30dp" />
+            android:textSize="26dp" />
     </LinearLayout>
 
     <AutoCompleteTextView
