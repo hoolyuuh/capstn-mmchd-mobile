@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Add a Measles Case (CIF)"
+            android:text="Add a Measles Case"
             android:textColor="@color/theme_blue"
             android:textSize="26dp" />
     </LinearLayout>

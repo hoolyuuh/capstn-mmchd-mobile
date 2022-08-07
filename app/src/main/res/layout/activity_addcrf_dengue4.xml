@@ -2,14 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_cream"
-    tools:context=".AddcifMeaslesActivity">
+    tools:context=".AddcrfDengueActivity">
 
     <LinearLayout
-        android:id="@+id/measlesBars9"
+        android:id="@+id/dengueBars4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -17,7 +16,7 @@
         tools:ignore="MissingConstraints">
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginLeft="35.6dp"
             android:layout_marginRight="6dp"
@@ -30,7 +29,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -41,7 +40,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -52,7 +51,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -63,66 +62,41 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
             android:backgroundTint="@color/theme_blue"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -135,31 +109,33 @@
         android:layout_marginLeft="35.6dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars9"
+        app:layout_constraintTop_toBottomOf="@id/dengueBars4"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Final Classification"
+            android:text="Clinical Classification"
             android:textColor="@color/theme_green"
             android:textSize="13dp" />
 
         <TextView
+            android:id="@+id/dengue_header4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Add a Measles Case"
+            android:text="Add a Dengue Case"
             android:textColor="@color/theme_blue"
-            android:textSize="26dp" />
+            android:textSize="30dp" />
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/sv_den_4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="85dp"
         android:paddingLeft="36dp"
         android:paddingRight="36dp"
@@ -168,16 +144,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars9"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@id/dengueBars4"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_mea9a"
+            android:id="@+id/cons_den4a"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="50dp">
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp">
+
             <EditText
-                android:id="@+id/et_mea_finalclassif"
+                android:id="@+id/et_den_clinic_classif"
                 style="@style/Input"
                 android:layout_width="320dp"
                 android:layout_height="1.5dp"
@@ -188,20 +165,21 @@
                 android:textSize="18dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cons_mea9a"/>
+                app:layout_constraintTop_toTopOf="@id/cons_den4a"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="-10dp"
                 android:background="@color/theme_cream"
-                android:text="   Select the final classification *  "
+                android:text="   Clinical Classification *  "
                 android:textColor="@color/light_gray"
                 android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/et_mea_finalclassif"
-                app:layout_constraintTop_toTopOf="@id/et_mea_finalclassif" />
+                app:layout_constraintLeft_toLeftOf="@id/et_den_clinic_classif"
+                app:layout_constraintTop_toTopOf="@id/et_den_clinic_classif" />
+
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/radiogroup_mea_finalclassif"
+                android:id="@+id/radiogroup_den_clinic_classif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -210,117 +188,87 @@
                 android:orientation="vertical"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/et_mea_finalclassif"
+                app:layout_constraintTop_toTopOf="@id/et_den_clinic_classif"
                 tools:ignore="MissingConstraints">
+                <RadioButton
+                    android:id="@+id/radiobutton_den_woWarning"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Dengue Without Warning Signs"
+                    android:textColor="@color/theme_darkgray" />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/theme_cream"
+                    android:text="Person with acute febrile illness of 2-7 days duration plus two of the following:
+                                    headache, body malaise, myalgia, anthralgia, retro-orbital pain,
+                                    anorexia, nausea, vomiting, diarrhea, flushed skin, skin rash"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    app:layout_constraintTop_toBottomOf="@id/radiobutton_den_woWarning" />
 
-                <LinearLayout
-                    android:id="@+id/linear_mea_finalclass1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical">
-                    <ImageButton
-                        android:id="@+id/image_mea_expand1"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="right"
-                        android:layout_marginTop="2dp"
-                        android:background="@drawable/arrow_down"
-                        />
-                    <RadioButton
-                        android:id="@+id/radiobutton_mea_finalclassif1"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="-32dp"
-                        android:buttonTint="@color/theme_darkgray"
-                        android:text="Alive"
-                        android:textColor="@color/theme_darkgray" />
-                    <TextView
-                        android:id="@+id/tv_mea_expand1"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="2dp"
-                        android:paddingLeft="32dp"
-                        android:paddingRight="5dp"
-                        android:text="ALIHEBIUEYBEIUBEU"
-                        android:textColor="@color/light_gray"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1.5dp"
-                        android:background="@drawable/bar"
-                        android:backgroundTint="@color/theme_gray"
-                        android:outlineAmbientShadowColor="@color/black"
-                        android:outlineSpotShadowColor="@color/black"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingConstraints" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/linear_mea_finalclass2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical">
-                    <ImageButton
-                        android:id="@+id/image_mea_expand2"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="right"
-                        android:layout_marginTop="2dp"
-                        android:background="@drawable/arrow_down"
-                        />
-                    <RadioButton
-                        android:id="@+id/radiobutton_mea_finalclassif2"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="-32dp"
-                        android:buttonTint="@color/theme_darkgray"
-                        android:text="Alive"
-                        android:textColor="@color/theme_darkgray" />
-                    <TextView
-                        android:id="@+id/tv_mea_expand2"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="2dp"
-                        android:paddingLeft="32dp"
-                        android:paddingRight="5dp"
-                        android:text="ALIHEBIUEYBEIUBEU"
-                        android:textColor="@color/light_gray"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1.5dp"
-                        android:background="@drawable/bar"
-                        android:backgroundTint="@color/theme_gray"
-                        android:outlineAmbientShadowColor="@color/black"
-                        android:outlineSpotShadowColor="@color/black"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingConstraints" />
-                </LinearLayout>
+                <RadioButton
+                    android:id="@+id/radiobutton_den_wWarning"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Dengue With Warning Signs"
+                    android:textColor="@color/theme_darkgray" />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/theme_cream"
+                    android:text="Person with acute febrile illness of 2-7 days duration with any of the following:
+                                   abdominal pain, persistent vomiting, clinical fluid accumulation, mucosal bleeding, lethargy, restlessness, liver enlargement, increase in HCT with rapid decrease in platelet."
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    app:layout_constraintTop_toBottomOf="@id/radiobutton_den_wWarning" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton_den_severe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Severe Dengue (strict observation)"
+                    android:textColor="@color/theme_darkgray" />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/theme_cream"
+                    android:text="Dengue with atleast one of the ff: Severe Plasma Leakage, Severe Bleeding, Severe Organ Involvement."
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    app:layout_constraintTop_toBottomOf="@id/radiobutton_den_severe" />
 
             </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -333,7 +281,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_meas_back8"
+            android:id="@+id/btn_den_back4"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
@@ -349,14 +297,14 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_submit"
+            android:id="@+id/btn_den_next5"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
             android:layout_marginRight="45dp"
             android:backgroundTint="#346083"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Submit"
+            android:text="Next"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#FFFBEE"

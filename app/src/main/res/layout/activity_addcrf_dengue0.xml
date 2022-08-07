@@ -2,14 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_cream"
-    tools:context=".AddcifMeaslesActivity">
+    tools:context=".AddcrfDengueActivity">
 
     <LinearLayout
-        android:id="@+id/measlesBars6"
+        android:id="@+id/dengueBars0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -17,12 +16,12 @@
         tools:ignore="MissingConstraints">
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginLeft="35.6dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
+            android:backgroundTint="@color/theme_blue"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -30,73 +29,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_green"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:backgroundTint="@color/theme_blue"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -106,7 +39,7 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -116,7 +49,47 @@
             tools:ignore="MissingConstraints" />
 
         <View
-            android:layout_width="28dp"
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
@@ -132,31 +105,33 @@
         android:layout_marginLeft="35.6dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars6"
+        app:layout_constraintTop_toBottomOf="@id/dengueBars0"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Information Source"
+            android:text="Select Week and Search Patient"
             android:textColor="@color/theme_green"
             android:textSize="13dp" />
 
         <TextView
+            android:id="@+id/dengue_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Add a Measles Case"
+            android:text="Add a Dengue Case"
             android:textColor="@color/theme_blue"
-            android:textSize="26dp" />
+            android:textSize="30dp" />
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/sv_den_0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="85dp"
         android:paddingLeft="36dp"
         android:paddingRight="36dp"
@@ -165,94 +140,97 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/measlesBars6"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@id/dengueBars0"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_mea6a"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="50dp">
-            <EditText
-                android:id="@+id/et_mea_sourceinfo"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/den_week_cont"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_den_week"
+                    style="@style/Input"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="15dp"
+                    android:paddingLeft="6dp"
+                    android:background="@drawable/inputbox"
+                    android:inputType="text"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    app:layout_constraintTop_toTopOf="@id/den_week_cont"
+                    tools:ignore="MissingConstraints,NotSibling" />
+
+                <Spinner
+                    android:id="@+id/spinner_den_week"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
+                    android:layout_width="320dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="7dp"
+                    android:spinnerMode="dropdown"
+                    android:textColor="#FFFBEE"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_den_week" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@color/theme_cream"
+                    android:text="   Report Week *  "
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    app:layout_constraintLeft_toLeftOf="@id/tv_den_week"
+                    app:layout_constraintTop_toTopOf="@id/tv_den_week" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <AutoCompleteTextView
+                android:id="@+id/autocomp_den_searchpatient"
                 style="@style/Input"
                 android:layout_width="320dp"
-                android:layout_height="1.5dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="80dp"
                 android:background="@drawable/inputbox"
                 android:inputType="text"
-                android:textColor="@color/black"
                 android:textSize="18dp"
+                android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cons_mea6a"/>
+                app:layout_constraintTop_toTopOf="parent" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="-10dp"
                 android:background="@color/theme_cream"
-                android:text="   Select source of information *  "
+                android:text="   Type Patient Name   "
                 android:textColor="@color/light_gray"
                 android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/et_mea_sourceinfo"
-                app:layout_constraintTop_toTopOf="@id/et_mea_sourceinfo" />
-            <RadioGroup
-                android:id="@+id/radiogroup_mea_sourceinfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/et_mea_sourceinfo"
-                tools:ignore="MissingConstraints">
-                <RadioButton
-                    android:id="@+id/radiobutton_mea_sourceinfo1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="2dp"
-                    android:buttonTint="@color/theme_darkgray"
-                    android:text="Endemic"
-                    android:textColor="@color/theme_darkgray" />
-                <RadioButton
-                    android:id="@+id/radiobutton_mea_sourceinfo2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="1dp"
-                    android:buttonTint="@color/theme_darkgray"
-                    android:text="Imported"
-                    android:textColor="@color/theme_darkgray" />
-                <RadioButton
-                    android:id="@+id/radiobutton_mea_sourceinfo3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="1dp"
-                    android:buttonTint="@color/theme_darkgray"
-                    android:text="Import-related"
-                    android:textColor="@color/theme_darkgray" />
-                <RadioButton
-                    android:id="@+id/radiobutton_mea_sourceinfo4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="1dp"
-                    android:buttonTint="@color/theme_darkgray"
-                    android:text="Unknown"
-                    android:textColor="@color/theme_darkgray" />
-            </RadioGroup>
+                app:layout_constraintLeft_toLeftOf="@id/autocomp_den_searchpatient"
+                app:layout_constraintTop_toTopOf="@id/autocomp_den_searchpatient" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -265,14 +243,14 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_meas_back5"
+            android:id="@+id/btn_meas_cancel"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
             android:layout_marginRight="15dp"
             android:backgroundTint="@color/theme_cream"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Back"
+            android:text="Cancel"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/theme_blue"
@@ -281,7 +259,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next7"
+            android:id="@+id/btn_meas_next1"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"

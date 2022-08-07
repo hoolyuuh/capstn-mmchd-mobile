@@ -1,18 +1,22 @@
 package com.idsr.mobile.models;
 
-import java.util.Date;
-
 public class Patient {
 	private String patientID;
 	private String epiID;
 	private String lastName;
 	private String firstName;
 	private String midName;
-	private String caddressID;
-	private String paddressID;
+	// private String caddressID;
+	// private String paddressID;
+	private String currHouseStreet;
+	private String currBrgy;
+	private String currCity;
+	private String permHouseStreet;
+	private String permBrgy;
+	private String permCity;
 	private String sex;
 	private String birthDate;
-	private int agoNo;
+	private int ageNo;
 	private String ageType;
 	private String admitStatus;
 	private String civilStatus;
@@ -83,20 +87,52 @@ public class Patient {
 		this.midName = midName;
 	}
 
-	public String getCaddressID() {
-		return caddressID;
+	public String getCurrHouseStreet() {
+		return currHouseStreet;
 	}
 
-	public void setCaddressID(String caddressID) {
-		this.caddressID = caddressID;
+	public void setCurrHouseStreet(String currHouseStreet) {
+		this.currHouseStreet = currHouseStreet;
 	}
 
-	public String getPaddressID() {
-		return paddressID;
+	public String getCurrBrgy() {
+		return currBrgy;
 	}
 
-	public void setPaddressID(String paddressID) {
-		this.paddressID = paddressID;
+	public void setCurrBrgy(String currBrgy) {
+		this.currBrgy = currBrgy;
+	}
+
+	public String getCurrCity() {
+		return currCity;
+	}
+
+	public void setCurrCity(String currCity) {
+		this.currCity = currCity;
+	}
+
+	public String getPermHouseStreet() {
+		return permHouseStreet;
+	}
+
+	public void setPermHouseStreet(String permHouseStreet) {
+		this.permHouseStreet = permHouseStreet;
+	}
+
+	public String getPermBrgy() {
+		return permBrgy;
+	}
+
+	public void setPermBrgy(String permBrgy) {
+		this.permBrgy = permBrgy;
+	}
+
+	public String getPermCity() {
+		return permCity;
+	}
+
+	public void setPermCity(String permCity) {
+		this.permCity = permCity;
 	}
 
 	public String getSex() {
@@ -115,12 +151,12 @@ public class Patient {
 		this.birthDate = birthDate;
 	}
 
-	public int getAgoNo() {
-		return agoNo;
+	public int getAgeNo() {
+		return ageNo;
 	}
 
-	public void setAgoNo(int agoNo) {
-		this.agoNo = agoNo;
+	public void setAgeNo(int ageNo) {
+		this.ageNo = ageNo;
 	}
 
 	public String getAgeType() {
@@ -163,12 +199,28 @@ public class Patient {
 		this.occuLoc = occuLoc;
 	}
 
-	public String getOccuAddrID() {
-		return occuAddrID;
+	public String getOccuStreet() {
+		return occuStreet;
 	}
 
-	public void setOccuAddrID(String occuAddrID) {
-		this.occuAddrID = occuAddrID;
+	public void setOccuStreet(String occuStreet) {
+		this.occuStreet = occuStreet;
+	}
+
+	public String getOccuCity() {
+		return occuCity;
+	}
+
+	public void setOccuCity(String occuCity) {
+		this.occuCity = occuCity;
+	}
+
+	public String getOccuBrgy() {
+		return occuBrgy;
+	}
+
+	public void setOccuBrgy(String occuBrgy) {
+		this.occuBrgy = occuBrgy;
 	}
 
 	public String getGuardianName() {

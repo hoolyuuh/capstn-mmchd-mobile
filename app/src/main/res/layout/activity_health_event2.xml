@@ -22,6 +22,7 @@
             android:background="@drawable/bar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:backgroundTint="@color/theme_green"
             android:layout_marginTop="40.8dp"
             android:layout_marginLeft="35.6dp"
             android:outlineSpotShadowColor="@color/black"
