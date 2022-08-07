@@ -26,18 +26,13 @@ public class Patient {
 	private String occuCity;
 	private String occuBrgy;
 	private String occuAddrID;
+	private String occuStreet;
 	private String guardianName;
 	private String guardianContact;
 	private String indGroup;
 	private String pregWeeks;
 	private String HCPN;
 	private String ILHZ;
-	private String currHouseStreet;
-	private String currBrgy;
-	private String currCity;
-	private String permHouseStreet;
-	private String permBrgy;
-	private String permCity;
 	private String updatedDate;
 
 	public Patient() {
@@ -271,54 +266,6 @@ public class Patient {
 		this.ILHZ = ILHZ;
 	}
 
-	public String getCurrHouseStreet() {
-		return currHouseStreet;
-	}
-
-	public void setCurrHouseStreet(String currHouseStreet) {
-		this.currHouseStreet = currHouseStreet;
-	}
-
-	public String getCurrBrgy() {
-		return currBrgy;
-	}
-
-	public void setCurrBrgy(String currBrgy) {
-		this.currBrgy = currBrgy;
-	}
-
-	public String getCurrCity() {
-		return currCity;
-	}
-
-	public void setCurrCity(String currCity) {
-		this.currCity = currCity;
-	}
-
-	public String getPermHouseStreet() {
-		return permHouseStreet;
-	}
-
-	public void setPermHouseStreet(String permHouseStreet) {
-		this.permHouseStreet = permHouseStreet;
-	}
-
-	public String getPermBrgy() {
-		return permBrgy;
-	}
-
-	public void setPermBrgy(String permBrgy) {
-		this.permBrgy = permBrgy;
-	}
-
-	public String getPermCity() {
-		return permCity;
-	}
-
-	public void setPermCity(String permCity) {
-		this.permCity = permCity;
-	}
-
 	public String getUpdatedDate() {
 		return updatedDate;
 	}
@@ -333,21 +280,5 @@ public class Patient {
 
 	public void setOccuHouseStreet(String occuHouseStreet) {
 		this.occuHouseStreet = occuHouseStreet;
-	}
-
-	public String getOccuCity() {
-		return occuCity;
-	}
-
-	public void setOccuCity(String occuCity) {
-		this.occuCity = occuCity;
-	}
-
-	public String getOccuBrgy() {
-		return occuBrgy;
-	}
-
-	public void setOccuBrgy(String occuBrgy) {
-		this.occuBrgy = occuBrgy;
 	}
 }
