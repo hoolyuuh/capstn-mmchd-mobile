@@ -85,7 +85,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private AutoCompleteTextView autocompPatients;
 
 //    page 1
-    private EditText etLastname, etMiddlename, etFirstname, etBirthdate, etPhone, etPregantweeks, etIndigenousgroup;
+    private EditText etLastname, etMiddlename, etFirstname, etBirthdate, /*etPhone,*/ etPregantweeks, etIndigenousgroup;
     private RadioGroup radioSex, radioPregnancy;
     private TextView tvCivilStatus, tvOccuCity, tvOccuBrgy, tvCurrCity, tvCurrBrgy, tvPermCity, tvPermBrgy;
     private Spinner spinnerCivilstatus, spinnerOccuCity, spinnerOccuBrgy, spinnerCurrCity, spinnerCurrBrgy, spinnerPermCity, spinnerPermBrgy;
@@ -94,7 +94,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private EditText etOccupation, etOcculoc, etOccuStreet, etCurrStreet, etPermStreet, etParentCg, etParentCgContact, etHCPN, etILHZ;
 
     private String lastName, firstName, middleName, birthdate, sex = "", pregnancy = "", civilstatus, indigenousgroup;
-    private String phone, parentCgContact;
+    private String /*phone,*/ parentCgContact;
     private String occupation, occuloc, occuStreet, occuCity, occuBrgy, currStreet, currCity, currBrgy;
     private Boolean sameCurrPermAddress = false;
     private String permStreet, permCity, permBrgy;
@@ -278,7 +278,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.radioSex = (RadioGroup) findViewById(R.id.radiogroup_sex);
         this.radioPregnancy = (RadioGroup) findViewById(R.id.radiogroup_pregnancy);
         this.etPregantweeks = findViewById(R.id.et_mea_pregweeks);
-        this.etPhone = findViewById(R.id.et_mea_phone);
+        // this.etPhone = findViewById(R.id.et_mea_phone);
         this.tvCivilStatus = findViewById(R.id.tv_mea_civilstatus);
         this.spinnerCivilstatus = findViewById(R.id.spinner_mea_civilstatus);
         this.etIndigenousgroup = findViewById(R.id.et_mea_indigenous);
@@ -472,8 +472,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 else radioSex.setBackgroundResource(0);
                 if (pregnancy.length() <= 0 && etPregantweeks.length() <= 0) { page1 = page1 & false; radioPregnancy.setBackgroundResource(R.color.theme_lightest_red); }
                 else radioPregnancy.setBackgroundResource(0);
-                if (etPhone.getText().toString().length() <= 0) { page1 = page1 & false; etPhone.setBackgroundResource(R.drawable.inputbox_red); }
+                /* if (etPhone.getText().toString().length() <= 0) { page1 = page1 & false; etPhone.setBackgroundResource(R.drawable.inputbox_red); }
                 else etPhone.setBackgroundResource(R.drawable.inputbox);
+                */
                 if (tvCivilStatus.getText().toString().length() <= 0) { page1 = page1 & false; tvCivilStatus.setBackgroundResource(R.drawable.inputbox_red); tvCivilStatus.setPadding(55,50,55,20); }
                 else { tvCivilStatus.setBackgroundResource(R.drawable.inputbox); tvCivilStatus.setPadding(55,50,55,20); }
 
@@ -516,7 +517,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                     birthdate = etBirthdate.getText().toString();
                     // sex & pregnancy above in radio onclick, but preg weeks below
                     if (pregnancy.length()==0) pregnancy = etPregantweeks.getText().toString();
-                    phone = etPhone.getText().toString();
+                    // phone = etPhone.getText().toString();
                     civilstatus = tvCivilStatus.getText().toString();
                     indigenousgroup = etIndigenousgroup.getText().toString();
                     occupation = etOccupation.getText().toString();
