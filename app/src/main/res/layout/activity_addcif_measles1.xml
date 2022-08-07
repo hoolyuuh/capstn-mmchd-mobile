@@ -425,7 +425,7 @@
                         android:textColor="@color/theme_darkgray" />
                 </RadioGroup>
 
-                <EditText
+                <!--EditText
                     android:id="@+id/et_mea_phone"
                     style="@style/Input"
                     android:layout_width="320dp"
@@ -449,7 +449,7 @@
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="@id/et_mea_phone"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_phone" />
+                    app:layout_constraintTop_toTopOf="@id/et_mea_phone" /-->
 
                 <TextView
                     android:id="@+id/tv_mea_civilstatus"
@@ -465,7 +465,7 @@
                     android:textSize="18dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/et_mea_phone" />
+                    app:layout_constraintTop_toTopOf="@id/et_mea_pregnancy" />
 
                 <Spinner
                     android:id="@+id/spinner_mea_civilstatus"

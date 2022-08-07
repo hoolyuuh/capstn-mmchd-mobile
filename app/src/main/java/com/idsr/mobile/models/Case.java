@@ -1,22 +1,20 @@
 package com.idsr.mobile.models;
 
-import java.util.Date;
-
 public class Case {
 	private String caseID;
-	private String patientID;
 	private String diseaseID;
 	private String reportedBy;
 	private String caseLevel;
-	private Date reportDate;
-	private Date investigationDate;
-	private Date dateAdmitted;
-	private Date dateOnset;
+	private String reportDate;
+	private String investigationDate;
+	private String dateAdmitted;
+	private String dateOnset;
 	private String reporterName;
 	private String reporterContact;
+	private String investigatorLab;
+	private String investigatorName;
 	private String investigatorContact;
 	private String finalDiagnosis;
-	private String investigatorLab;
 	private String CRFID;
 
 	public Case() {
@@ -28,14 +26,6 @@ public class Case {
 
 	public void setCaseID(String caseID) {
 		this.caseID = caseID;
-	}
-
-	public String getPatientID() {
-		return patientID;
-	}
-
-	public void setPatientID(String patientID) {
-		this.patientID = patientID;
 	}
 
 	public String getDiseaseID() {
@@ -62,35 +52,35 @@ public class Case {
 		this.caseLevel = caseLevel;
 	}
 
-	public Date getReportDate() {
+	public String getReportDate() {
 		return reportDate;
 	}
 
-	public void setReportDate(Date reportDate) {
+	public void setReportDate(String reportDate) {
 		this.reportDate = reportDate;
 	}
 
-	public Date getInvestigationDate() {
+	public String getInvestigationDate() {
 		return investigationDate;
 	}
 
-	public void setInvestigationDate(Date investigationDate) {
+	public void setInvestigationDate(String investigationDate) {
 		this.investigationDate = investigationDate;
 	}
 
-	public Date getDateAdmitted() {
+	public String getDateAdmitted() {
 		return dateAdmitted;
 	}
 
-	public void setDateAdmitted(Date dateAdmitted) {
+	public void setDateAdmitted(String dateAdmitted) {
 		this.dateAdmitted = dateAdmitted;
 	}
 
-	public Date getDateOnset() {
+	public String getDateOnset() {
 		return dateOnset;
 	}
 
-	public void setDateOnset(Date dateOnset) {
+	public void setDateOnset(String dateOnset) {
 		this.dateOnset = dateOnset;
 	}
 
@@ -110,6 +100,22 @@ public class Case {
 		this.reporterContact = reporterContact;
 	}
 
+	public String getInvestigatorLab() {
+		return investigatorLab;
+	}
+
+	public void setInvestigatorLab(String investigatorLab) {
+		this.investigatorLab = investigatorLab;
+	}
+
+	public String getInvestigatorName() {
+		return investigatorName;
+	}
+
+	public void setInvestigatorName(String investigatorName) {
+		this.investigatorName = investigatorName;
+	}
+
 	public String getInvestigatorContact() {
 		return investigatorContact;
 	}
@@ -124,14 +130,6 @@ public class Case {
 
 	public void setFinalDiagnosis(String finalDiagnosis) {
 		this.finalDiagnosis = finalDiagnosis;
-	}
-
-	public String getInvestigatorLab() {
-		return investigatorLab;
-	}
-
-	public void setInvestigatorLab(String investigatorLab) {
-		this.investigatorLab = investigatorLab;
 	}
 
 	public String getCRFID() {
