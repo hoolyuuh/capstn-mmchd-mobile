@@ -8,7 +8,7 @@
     tools:context=".AddcrfDengueActivity">
 
     <LinearLayout
-        android:id="@+id/dengueBars3"
+        android:id="@+id/dengueBars5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -25,6 +25,28 @@
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
@@ -80,26 +102,6 @@
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="35dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="35dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
     </LinearLayout>
 
     <LinearLayout
@@ -108,19 +110,19 @@
         android:layout_marginLeft="35.6dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dengueBars3"
+        app:layout_constraintTop_toBottomOf="@id/dengueBars5"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Vaccination History"
+            android:text="Outcome"
             android:textColor="@color/theme_green"
             android:textSize="13dp" />
 
         <TextView
-            android:id="@+id/dengue_header3"
+            android:id="@+id/dengue_header5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -131,7 +133,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/sv_den_3"
+        android:id="@+id/sv_den_5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="150dp"
@@ -143,17 +145,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dengueBars3"
+        app:layout_constraintTop_toBottomOf="@id/dengueBars5"
         app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_den3a"
+            android:id="@+id/cons_den5a"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="30dp">
-
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
             <EditText
-                android:id="@+id/et_den_vaxxed"
+                android:id="@+id/et_den_outcome"
                 style="@style/Input"
                 android:layout_width="320dp"
                 android:layout_height="1.5dp"
@@ -164,21 +165,20 @@
                 android:textSize="18dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cons_den3a"/>
+                app:layout_constraintTop_toTopOf="@id/cons_den5a"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="-10dp"
                 android:background="@color/theme_cream"
-                android:text="   Vaccinated with Dengue Vaccine *  "
+                android:text="   Select the outcome *  "
                 android:textColor="@color/light_gray"
                 android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/et_den_vaxxed"
-                app:layout_constraintTop_toTopOf="@id/et_den_vaxxed" />
-
+                app:layout_constraintLeft_toLeftOf="@id/et_den_outcome"
+                app:layout_constraintTop_toTopOf="@id/et_den_outcome" />
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/radiogroup_den_vaxxed"
+                android:id="@+id/radiogroup_den_outcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -187,32 +187,31 @@
                 android:orientation="vertical"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/et_den_vaxxed"
+                app:layout_constraintTop_toTopOf="@id/et_den_outcome"
                 tools:ignore="MissingConstraints">
                 <RadioButton
-                    android:id="@+id/radiobutton_den_vaxxedNo"
+                    android:id="@+id/radiobutton_den_outcomeAlive"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="20dp"
                     android:buttonTint="@color/theme_darkgray"
-                    android:text="No"
+                    android:text="Alive"
                     android:textColor="@color/theme_darkgray" />
                 <RadioButton
-                    android:id="@+id/radiobutton_den_vaxxedYes"
+                    android:id="@+id/radiobutton_den_outcomeDead"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:buttonTint="@color/theme_darkgray"
-                    android:text="Yes"
+                    android:text="Dead"
                     android:textColor="@color/theme_darkgray" />
-
                 <EditText
                     android:visibility="invisible"
-                    android:id="@+id/et_den_vaxxedFirstDate"
+                    android:id="@+id/et_den_dateDied"
                     style="@style/Input"
-                    android:layout_width="200dp"
+                    android:layout_width="150dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="-31dp"
                     android:layout_marginLeft="85dp"
@@ -221,37 +220,42 @@
                     android:background="@drawable/inputbox"
                     android:focusable="false"
                     android:inputType="date"
-                    android:hint="First Vaxx Date"
+                    android:hint="Date Died"
                     android:textColorHint="@color/theme_gray"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/radiobutton_den_consultYes" />
-
-                <EditText
-                    android:visibility="invisible"
-                    android:id="@+id/et_den_vaxxedLastDate"
-                    style="@style/Input"
-                    android:layout_width="200dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="85dp"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="6dp"
-                    android:background="@drawable/inputbox"
-                    android:focusable="false"
-                    android:inputType="date"
-                    android:hint="Last Vaxx Date"
-                    android:textColorHint="@color/theme_gray"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_den_vaxxedFirstDate" />
+                    app:layout_constraintTop_toTopOf="@id/radiobutton_den_outcomeDead" />
             </RadioGroup>
+
+            <EditText
+                android:id="@+id/et_den_finaldiagnosis"
+                style="@style/Input"
+                android:layout_width="320dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/inputbox"
+                android:inputType="textCapCharacters"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radiogroup_den_outcome"
+                tools:ignore="NotSibling" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="-10dp"
+                android:background="@color/theme_cream"
+                android:text="   Final Diagnosis *   "
+                android:textColor="@color/light_gray"
+                android:textSize="15dp"
+                app:layout_constraintLeft_toLeftOf="@id/et_den_finaldiagnosis"
+                app:layout_constraintTop_toTopOf="@id/et_den_finaldiagnosis" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -270,7 +274,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_den_back3"
+            android:id="@+id/btn_den_back4"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
@@ -286,7 +290,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next4"
+            android:id="@+id/btn_den_next5"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"

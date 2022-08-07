@@ -838,14 +838,14 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_meas_cancel"
+            android:id="@+id/btn_den_back2"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
             android:layout_marginRight="15dp"
             android:backgroundTint="@color/theme_cream"
             android:fontFamily="@font/worksans_semibold"
-            android:text="Cancel"
+            android:text="Back"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/theme_blue"
@@ -854,7 +854,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next1"
+            android:id="@+id/btn_meas_next3"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
