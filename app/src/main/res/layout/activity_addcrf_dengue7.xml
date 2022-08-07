@@ -8,7 +8,7 @@
     tools:context=".AddcrfDengueActivity">
 
     <LinearLayout
-        android:id="@+id/dengueBars5"
+        android:id="@+id/dengueBars7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -77,27 +77,29 @@
             android:layout_height="5.1dp"
             android:layout_marginRight="6dp"
             android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
+            android:backgroundTint="@color/theme_green"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="35dp"
+            android:layout_height="5.1dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/bar"
             android:backgroundTint="@color/theme_blue"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="35dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
-            android:outlineAmbientShadowColor="@color/black"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <View
-            android:layout_width="35dp"
-            android:layout_height="5.1dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/bar"
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -110,19 +112,19 @@
         android:layout_marginLeft="35.6dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dengueBars5"
+        app:layout_constraintTop_toBottomOf="@id/dengueBars7"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Outcome"
+            android:text="Case Classification"
             android:textColor="@color/theme_green"
             android:textSize="13dp" />
 
         <TextView
-            android:id="@+id/dengue_header5"
+            android:id="@+id/dengue_header7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -133,7 +135,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/sv_den_5"
+        android:id="@+id/sv_den_7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="150dp"
@@ -145,16 +147,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dengueBars5"
+        app:layout_constraintTop_toBottomOf="@id/dengueBars7"
         app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_den5a"
+            android:id="@+id/cons_den7a"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="50dp">
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp">
+
             <EditText
-                android:id="@+id/et_den_outcome"
+                android:id="@+id/et_den_case_classif"
                 style="@style/Input"
                 android:layout_width="320dp"
                 android:layout_height="1.5dp"
@@ -165,20 +168,21 @@
                 android:textSize="18dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cons_den5a"/>
+                app:layout_constraintTop_toTopOf="@id/cons_den7a"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="-10dp"
                 android:background="@color/theme_cream"
-                android:text="   Select the outcome *  "
+                android:text="   Select Case Classification *  "
                 android:textColor="@color/light_gray"
                 android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/et_den_outcome"
-                app:layout_constraintTop_toTopOf="@id/et_den_outcome" />
+                app:layout_constraintLeft_toLeftOf="@id/et_den_case_classif"
+                app:layout_constraintTop_toTopOf="@id/et_den_case_classif" />
+
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/radiogroup_den_outcome"
+                android:id="@+id/radiogroup_den_case_classif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -187,75 +191,78 @@
                 android:orientation="vertical"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/et_den_outcome"
+                app:layout_constraintTop_toTopOf="@id/et_den_case_classif"
                 tools:ignore="MissingConstraints">
                 <RadioButton
-                    android:id="@+id/radiobutton_den_outcomeAlive"
-                    android:layout_width="80dp"
+                    android:id="@+id/radiobutton_den_suspect"
+                    android:clickable="true"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="20dp"
                     android:buttonTint="@color/theme_darkgray"
-                    android:text="Alive"
+                    android:text="Suspect"
                     android:textColor="@color/theme_darkgray" />
+                <TextView
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/theme_cream"
+                    android:text="A previously well person with acute febrile illness of 2-7 days duration with clinical signs and symptoms of dengue"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    app:layout_constraintTop_toBottomOf="@id/radiobutton_den_suspect" />
+
+
                 <RadioButton
-                    android:id="@+id/radiobutton_den_outcomeDead"
+                    android:id="@+id/radiobutton_den_probable"
+                    android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:buttonTint="@color/theme_darkgray"
-                    android:text="Dead"
+                    android:text="Probable"
                     android:textColor="@color/theme_darkgray" />
-                <EditText
-                    android:visibility="invisible"
-                    android:id="@+id/et_den_dateDied"
-                    style="@style/Input"
-                    android:layout_width="150dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="-31dp"
-                    android:layout_marginLeft="85dp"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="6dp"
-                    android:background="@drawable/inputbox"
-                    android:focusable="false"
-                    android:inputType="date"
-                    android:hint="Date Died"
-                    android:textColorHint="@color/theme_gray"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
+                <TextView
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/theme_cream"
+                    android:text="A suspected case with positive dengue IgM antibody test"
+                    android:textColor="@color/light_gray"
                     android:textSize="15dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/radiobutton_den_outcomeDead" />
-            </RadioGroup>
+                    android:textStyle="italic"
+                    app:layout_constraintTop_toBottomOf="@id/radiobutton_den_probable" />
 
-            <EditText
-                android:id="@+id/et_den_finaldiagnosis"
-                style="@style/Input"
-                android:layout_width="320dp"
-                android:layout_height="47dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/inputbox"
-                android:inputType="textCapCharacters"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/radiogroup_den_outcome"
-                tools:ignore="NotSibling" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-10dp"
-                android:background="@color/theme_cream"
-                android:text="   Other Remarks *   "
-                android:textColor="@color/light_gray"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toLeftOf="@id/et_den_finaldiagnosis"
-                app:layout_constraintTop_toTopOf="@id/et_den_finaldiagnosis" />
+                <RadioButton
+                    android:id="@+id/radiobutton_den_confirmed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Confirmed"
+                    android:textColor="@color/theme_darkgray" />
+                <TextView
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/theme_cream"
+                    android:text="Viral culture isolation, or Polymerase Chain Reaction (PCR), or Dengue NS1 antigen test"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    app:layout_constraintTop_toBottomOf="@id/radiobutton_den_confirmed" />
+
+            </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -274,7 +281,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_den_back5"
+            android:id="@+id/btn_den_back7"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
@@ -290,7 +297,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_den_next6"
+            android:id="@+id/btn_den_next8"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
