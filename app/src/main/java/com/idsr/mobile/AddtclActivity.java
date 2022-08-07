@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -29,13 +30,30 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.api.client.repackaged.com.google.common.base.Strings;
 import com.idsr.mobile.databinding.ActivityAddtcl0Binding;
+import com.idsr.mobile.models.APIClient;
+import com.idsr.mobile.models.APIModels.LoginJS;
+import com.idsr.mobile.models.APIModels.LoginResponse;
+import com.idsr.mobile.models.Event;
+import com.idsr.mobile.models.Patient;
+import com.idsr.mobile.models.User;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Objects;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.idsr.mobile.models.APIClient.APIservice;
+
 public class AddtclActivity extends AppCompatActivity {
     private ActivityAddtcl0Binding binding;
+
+    private APIClient apiClient;
 
     private Boolean page1 = Boolean.FALSE;
     private Boolean page2 = Boolean.FALSE;
@@ -63,6 +81,8 @@ public class AddtclActivity extends AppCompatActivity {
     private String permStreet, permCity, permBrgy;
     private String parentCg, HCPN, ILHZ;
 
+    private int RG_tcl_sex_checkedID;
+    private int RG_tcl_pregnant_checkedID;
     //    page 2
     private RadioGroup radioPatientAdmit;
     private EditText etAdmitdate, etOnsetdate, etReportdate, etReporter;
@@ -80,31 +100,48 @@ public class AddtclActivity extends AppCompatActivity {
 
     private String BCG, Hepa1, Hep2, Opv1, Opv2, Opv3, Penta1, Penta2, Penta3, Pcv1, Pcv2, Pcv3, Mcv1, Mcv2, Deng1, Deng2, Deng3;
 
+//  Data
+//    private TCL tcl;
+    private Bundle bundle;
+    private User user;
+    private ArrayList<Patient> patientArrayList;
+    private Patient patient;
+    private boolean existingpatient = false;
+    private ArrayList<String> patientnames;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        apiClient = new APIClient();
+        bundle = getIntent().getExtras();
+        user = bundle.getParcelable("user");
+//        event = new Event();
+//        event.setUserID(user.getUserID());
+        patient = new Patient();
+
         pageZero();
     }
 
     private void pageZero() {
         setContentView(R.layout.activity_addtcl0);
 
-        String[] patientnames =  {
-                "Hello, Android - Ed Burnette",
-                "Professional Android 2 App Dev - Reto Meier",
-        };
+        patientnames = new ArrayList<>();
+
         ArrayAdapter<String> adapterPatients = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,patientnames);
         this.autocompPatients = (AutoCompleteTextView)findViewById(R.id.autocomp_tcl_searchpatient);
         autocompPatients.setThreshold(1);
         autocompPatients.setAdapter(adapterPatients);
+
         autocompPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                patientInfoFill(autocompPatients.getText().toString());
+                patientInfoFill(patientnames.indexOf(autocompPatients.getText().toString()));
                 pageTwo();
             }
         });
 
+        getPatientAutofill(adapterPatients);
         this.next1 = findViewById(R.id.btn_tcl_next1);
         this.cancel = findViewById(R.id.btn_tcl_cancel);
         next1.setOnClickListener(new View.OnClickListener() {
@@ -121,8 +158,13 @@ public class AddtclActivity extends AppCompatActivity {
         });
     }
 
-    public void patientInfoFill(String patient) {
+    public void patientInfoFill(int i) {
         // TODO: get patient info
+        patient = patientArrayList.get(i);
+        page1 = true;
+        existingpatient = true;
+
+        Log.e("patientInfoFill", "Patient Name: " + patientArrayList.get(i).getFirstName());
     }
 
     public void pageOne() {
@@ -135,7 +177,7 @@ public class AddtclActivity extends AppCompatActivity {
         this.radioSex = (RadioGroup) findViewById(R.id.radiogroup_sex);
         this.radioPregnancy = (RadioGroup) findViewById(R.id.radiogroup_pregnancy);
         this.etPregantweeks = findViewById(R.id.et_tcl_pregweeks);
-        this.etPhone = findViewById(R.id.et_tcl_phone);
+//        this.etPhone = findViewById(R.id.et_tcl_phone);
         this.tvCivilStatus = findViewById(R.id.tv_tcl_civilstatus);
         this.spinnerCivilstatus = findViewById(R.id.spinner_tcl_civilstatus);
         this.etIndigenousgroup = findViewById(R.id.et_tcl_indigenous);
@@ -165,13 +207,61 @@ public class AddtclActivity extends AppCompatActivity {
         this.etHCPN = findViewById(R.id.et_tcl_hcpn);
         this.etILHZ = findViewById(R.id.et_tcl_ilhz);
 
+        // if completed page
+        if(page1) {
+            etLastname.setText(patient.getLastName());
+            etFirstname.setText(patient.getFirstName());
+            etMiddlename.setText(patient.getMidName());
+            etBirthdate.setText(patient.getBirthdate().substring(0,10));
+            radioSex.check(RG_tcl_sex_checkedID);
+            if(patient.getSex().equals("MALE"))
+                radioSex.check(R.id.radiobutton_male);
+            else radioSex.check(R.id.radiobutton_female);
+//            TODO: Fix pregnancy initialization(i can't figure this out at all, been trying for hours)
+//            if(!patient.getPregWeeks().isEmpty()) {
+//                if(patient.getPregWeeks().equals("0"))
+//                    radioPregnancy.check(R.id.radiobutton_notpreg);
+//                else{
+//                    radioPregnancy.check(R.id.radiobutton_preg);
+//                    etPregantweeks.setText(patient.getPregWeeks());
+//                    etPregantweeks.setTextIsSelectable(true);
+//                }
+//            }
+//            else{
+//                radioPregnancy.check(R.id.radiobutton_preg);
+//                etPregantweeks.setText(patient.getPregWeeks());
+//                etPregantweeks.setTextIsSelectable(true);
+//            }
+
+            tvCivilStatus.setText(patient.getCivilStatus());
+            etIndigenousgroup.setText(patient.getIndGroup());
+
+            etOccupation.setText(patient.getOccupation());
+            etOcculoc.setText(patient.getOccuLoc());
+            etOccuStreet.setText(patient.getOccuHouseStreet());
+            tvOccuBrgy.setText(patient.getOccuBrgy());
+            tvOccuCity.setText(patient.getOccuCity());
+            etCurrStreet.setText(patient.getCurrHouseStreet());
+            tvCurrCity.setText(patient.getCurrCity());
+            tvCurrBrgy.setText(patient.getCurrBrgy());
+            etPermStreet.setText(patient.getPermHouseStreet());
+            tvPermCity.setText(patient.getPermCity());
+            tvPermBrgy.setText(patient.getPermBrgy());
+
+            etParentCgContact.setText(patient.getGuardianContact());
+            etParentCg.setText(patient.getGuardianName());
+            etHCPN.setText(patient.getHCPN());
+            etILHZ.setText(patient.getILHZ());
+        }
 //        DATE
         this.etBirthdate.setOnClickListener(new View.OnClickListener() {@Override
         public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etBirthdate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etBirthdate.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
 
@@ -182,6 +272,7 @@ public class AddtclActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int i) {
                 RadioButton radioButton = (RadioButton) findViewById(i);
                 sex = radioButton.getText().toString();
+                RG_tcl_sex_checkedID = i;
 //                Toast.makeText(getBaseContext(), sex, Toast.LENGTH_SHORT).show();
             }
         });
@@ -196,6 +287,8 @@ public class AddtclActivity extends AppCompatActivity {
                     etPregantweeks.setTextIsSelectable(false);
                 }
                 else etPregantweeks.setTextIsSelectable(true);
+
+                RG_tcl_pregnant_checkedID = i;
             }
         });
 
@@ -325,8 +418,8 @@ public class AddtclActivity extends AppCompatActivity {
                 else radioSex.setBackgroundResource(0);
                 if (pregnancy.length() <= 0 && etPregantweeks.length() <= 0) { page1 = page1 & false; radioPregnancy.setBackgroundResource(R.color.theme_lightest_red); }
                 else radioPregnancy.setBackgroundResource(0);
-                if (etPhone.getText().toString().length() <= 0) { page1 = page1 & false; etPhone.setBackgroundResource(R.drawable.inputbox_red); }
-                else etPhone.setBackgroundResource(R.drawable.inputbox);
+//                if (etPhone.getText().toString().length() <= 0) { page1 = page1 & false; etPhone.setBackgroundResource(R.drawable.inputbox_red); }
+//                else etPhone.setBackgroundResource(R.drawable.inputbox);
                 if (tvCivilStatus.getText().toString().length() <= 0) { page1 = page1 & false; tvCivilStatus.setBackgroundResource(R.drawable.inputbox_red); tvCivilStatus.setPadding(55,50,55,20); }
                 else { tvCivilStatus.setBackgroundResource(R.drawable.inputbox); tvCivilStatus.setPadding(55,50,55,20); }
 
@@ -361,33 +454,35 @@ public class AddtclActivity extends AppCompatActivity {
                 if (etParentCgContact.getText().toString().length() <= 0) { page1 = page1 & false; etParentCgContact.setBackgroundResource(R.drawable.inputbox_red); }
                 else etParentCgContact.setBackgroundResource(R.drawable.inputbox);
 
-                if (!page1) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                if(existingpatient == true) pageTwo();
+                else if (!page1) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    lastName = etLastname.getText().toString();
-                    firstName = etFirstname.getText().toString();
-                    middleName = etMiddlename.getText().toString();
-                    birthdate = etBirthdate.getText().toString();
+                    patient.setLastName(etLastname.getText().toString());
+                    patient.setFirstName(etFirstname.getText().toString());
+                    patient.setMidName(etMiddlename.getText().toString());
+                    patient.setBirthdate(etBirthdate.getText().toString());
+                    patient.setSex(sex);
                     // sex & pregnancy above in radio onclick, but preg weeks below
-                    if (pregnancy.length()==0) pregnancy = etPregantweeks.getText().toString();
-                    phone = etPhone.getText().toString();
-                    civilstatus = tvCivilStatus.getText().toString();
-                    indigenousgroup = etIndigenousgroup.getText().toString();
-                    occupation = etOccupation.getText().toString();
-                    occuloc = etOcculoc.getText().toString();
-                    occuStreet = etOccuStreet.getText().toString();
-                    occuCity = tvOccuCity.getText().toString();
-                    occuBrgy = tvOccuBrgy.getText().toString();
-                    currStreet = etCurrStreet.getText().toString();
-                    currCity = tvCurrCity.getText().toString();
-                    currBrgy = tvCurrBrgy.getText().toString();
+                    if (pregnancy.length()==0) patient.setPregWeeks(pregnancy);
+//                    phone = (etPhone.getText().toString());
+                    patient.setCivilStatus(tvCivilStatus.getText().toString());
+                    patient.setIndGroup(etIndigenousgroup.getText().toString());
+                    patient.setOccupation(etOccupation.getText().toString());
+                    patient.setOccuLoc(etOcculoc.getText().toString());
+                    patient.setOccuHouseStreet(etOccuStreet.getText().toString());
+                    patient.setOccuCity(tvOccuCity.getText().toString());
+                    patient.setOccuBrgy(tvOccuBrgy.getText().toString());
+                    patient.setCurrHouseStreet(etCurrStreet.getText().toString());
+                    patient.setCurrCity(tvCurrCity.getText().toString());
+                    patient.setCurrBrgy(tvCurrBrgy.getText().toString());
                     // sameCurrPermAddress set in checkbox onclick
-                    permStreet = etPermStreet.getText().toString();
-                    permCity = tvPermCity.getText().toString();
-                    permBrgy = tvPermBrgy.getText().toString();
-                    parentCg = etParentCg.getText().toString();
-                    parentCgContact = etParentCgContact.getText().toString();
-                    HCPN = etHCPN.getText().toString();
-                    ILHZ = etILHZ.getText().toString();
+                    patient.setPermHouseStreet(etPermStreet.getText().toString());
+                    patient.setPermCity(tvPermCity.getText().toString());
+                    patient.setPermBrgy(tvPermBrgy.getText().toString());
+                    patient.setGuardianName(etParentCg.getText().toString());
+                    patient.setGuardianContact(etParentCgContact.getText().toString());
+                    patient.setHCPN(etHCPN.getText().toString());
+                    patient.setILHZ(etILHZ.getText().toString());
 
                     pageTwo();
                 }
@@ -841,24 +936,69 @@ public class AddtclActivity extends AppCompatActivity {
 
     public int getBrgy(String city) {
         switch (city) {
-            case "CALOOCAN CITY": return R.array.caloocan;
-            case "LAS PIÑAS CITY": return R.array.laspinas;
-            case "MAKATI CITY": return R.array.makati;
-            case "MALABON CITY": return R.array.malabon;
-            case "MANDALUYONG CITY": return R.array.mandaluyong;
-            case "MANILA CITY": return R.array.manila;
-            case "MARIKINA CITY": return R.array.marikina;
-            case "MUNTINLUPA CITY": return R.array.muntinlupa;
-            case "NAVOTAS CITY": return R.array.navotas;
-            case "PARAÑAQUE CITY": return R.array.paranaque;
-            case "PASAY CITY": return R.array.pasay;
-            case "PASIG CITY": return R.array.pasig;
-            case "QUEZON CITY": return R.array.quezon;
-            case "SAN JUAN CITY": return R.array.sanjuan;
-            case "TAGUIG CITY": return R.array.taguig;
-            case "VALENZUELA CITY": return R.array.valenzuela;
-            default: return 0;
+            case "CALOOCAN CITY":
+                return R.array.caloocan;
+            case "LAS PIÑAS CITY":
+                return R.array.laspinas;
+            case "MAKATI CITY":
+                return R.array.makati;
+            case "MALABON CITY":
+                return R.array.malabon;
+            case "MANDALUYONG CITY":
+                return R.array.mandaluyong;
+            case "MANILA CITY":
+                return R.array.manila;
+            case "MARIKINA CITY":
+                return R.array.marikina;
+            case "MUNTINLUPA CITY":
+                return R.array.muntinlupa;
+            case "NAVOTAS CITY":
+                return R.array.navotas;
+            case "PARAÑAQUE CITY":
+                return R.array.paranaque;
+            case "PASAY CITY":
+                return R.array.pasay;
+            case "PASIG CITY":
+                return R.array.pasig;
+            case "QUEZON CITY":
+                return R.array.quezon;
+            case "SAN JUAN CITY":
+                return R.array.sanjuan;
+            case "TAGUIG CITY":
+                return R.array.taguig;
+            case "VALENZUELA CITY":
+                return R.array.valenzuela;
+            default:
+                return 0;
         }
+    }
+
+    private void getPatientAutofill(ArrayAdapter<String> adapter) {
+        patientnames.clear();
+
+        Call<ArrayList<Patient>> call = apiClient.APIservice.getPatientAutofill(user.getUserID(),"false");
+        patientArrayList = new ArrayList<Patient>();
+
+        call.enqueue(new Callback<ArrayList<Patient>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Patient>> call, Response<ArrayList<Patient>> response){
+                patientArrayList.addAll(response.body());
+
+                for(int i = 0; i < patientArrayList.size(); i++) {
+                    patientnames.add(patientArrayList.get(i).getFirstName() + " " + patientArrayList.get(i).getMidName() + " " + patientArrayList.get(i).getLastName());
+                }
+
+                Log.e("getPatientAutofill", "Data Loaded");
+                adapter.addAll(patientnames);
+                adapter.notifyDataSetChanged();
+                Log.e("getPatientAutofill", "Dataset Changed");
+            }
+            @Override
+            public void onFailure(Call<ArrayList<Patient>> call, Throwable t) {
+                Log.e("getPatientAutofill", t.getMessage());
+            }
+        });
+
     }
 
 }
