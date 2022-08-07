@@ -44,11 +44,13 @@ import com.idsr.mobile.databinding.ActivityAddcifMeasles6Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles7Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles8Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles9Binding;
+import com.idsr.mobile.models.APIClient;
 import com.idsr.mobile.models.CaseFormData;
 import com.idsr.mobile.models.Case;
 import com.idsr.mobile.models.Patient;
 import com.idsr.mobile.models.RiskFactors;
 import com.idsr.mobile.models.CaseData;
+import com.idsr.mobile.models.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -87,7 +89,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private Boolean page9 = Boolean.FALSE;
     private Button cancel, next1, back0, next2, back1, next3, back2, next4, back3, next5, back4, next6, back5, next7, back6, next8, back7, next9, back8, submit;
 
-    private int userId;
+    private APIClient apiClient;
+    private String userId;
     private Bundle bundle;
     private CaseFormData formData;
 
@@ -179,6 +182,10 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        apiClient = new APIClient();
+
+        bundle = getIntent().getExtras();
+        userId = ((User) bundle.getParcelable("user")).getUserID();
 
 //        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
 //        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
@@ -1441,7 +1448,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 // CASES
                 Case cases = new Case();
                 cases.setDiseaseID("DI-0000000000000");
-                cases.setReportedBy(reportedBy);
+                cases.setReportedBy(userId);
                 cases.setCaseLevel(finalClassification);
                 cases.setReportDate(reportdate);
                 cases.setInvestigationDate(investigateDate);
