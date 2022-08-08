@@ -2,6 +2,8 @@ package com.idsr.mobile.models;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.idsr.mobile.models.APIModels.EventJs;
@@ -50,6 +52,9 @@ public class APIClient {
 
         @POST("newEvent")
         Call<ResponseBody> postAddEvent(@Body EventJs event);
+
+        @POST("newCase")
+        Call<ResponseBody> postNewCase(@Body CaseFormData formData, @Nullable @Body String CRFID);
 
         @GET("getPatients")
         Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);

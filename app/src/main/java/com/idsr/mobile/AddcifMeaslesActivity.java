@@ -52,6 +52,7 @@ import com.idsr.mobile.models.RiskFactors;
 import com.idsr.mobile.models.CaseData;
 import com.idsr.mobile.models.User;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -65,6 +66,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddcifMeaslesActivity extends AppCompatActivity {
 //    private ActivityAddcifMeasles0Binding binding0;
@@ -90,11 +96,15 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private Button cancel, next1, back0, next2, back1, next3, back2, next4, back3, next5, back4, next6, back5, next7, back6, next8, back7, next9, back8, submit;
 
     private APIClient apiClient;
-    private String userId;
+    private User user;
     private Bundle bundle;
     private CaseFormData formData;
+    private ArrayList<Patient> patientArrayList;
+    private Patient patient;
+    private boolean existingpatient = false;
+    private ArrayList<String> patientnames;
 
-//    page 0
+    //    page 0
     private AutoCompleteTextView autocompPatients;
 
 //    page 1
@@ -184,7 +194,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         apiClient = new APIClient();
 
         bundle = getIntent().getExtras();
-        userId = ((User) bundle.getParcelable("user")).getUserID();
+        user = bundle.getParcelable("user");
 
 //        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
 //        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
@@ -246,22 +256,22 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     public void pageZero() {
         setContentView(R.layout.activity_addcif_measles0);
 
-        String[] patientnames =  {
-            "Hello, Android - Ed Burnette",
-            "Professional Android 2 App Dev - Reto Meier",
-        };
+        patientnames = new ArrayList<>();
+
         ArrayAdapter<String> adapterPatients = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,patientnames);
         this.autocompPatients = (AutoCompleteTextView)findViewById(R.id.autocomp_mea_searchpatient);
         autocompPatients.setThreshold(1);
         autocompPatients.setAdapter(adapterPatients);
+
         autocompPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                patientInfoFill(autocompPatients.getText().toString());
+                patientInfoFill(patientnames.indexOf(autocompPatients.getText().toString()));
                 pageTwo();
             }
         });
 
+        getPatientAutofill(adapterPatients);
         this.next1 = findViewById(R.id.btn_meas_next1);
         this.cancel = findViewById(R.id.btn_meas_cancel);
         next1.setOnClickListener(new View.OnClickListener() {
@@ -278,8 +288,13 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         });
     }
 
-    public void patientInfoFill(String patient) {
+    public void patientInfoFill(int i) {
         // TODO: get patient info
+        patient = patientArrayList.get(i);
+        page1 = true;
+        existingpatient = true;
+
+        Log.e("patientInfoFill", "Patient Name: " + patientArrayList.get(i).getFirstName());
     }
 
     public void pageOne() {
@@ -1460,7 +1475,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 // CASES
                 Case cases = new Case();
                 cases.setDiseaseID("DI-0000000000000");
-                cases.setReportedBy(userId);
+                cases.setReportedBy(user.getUserID());
                 cases.setCaseLevel(finalClassification);
                 cases.setReportDate(reportdate);
                 cases.setInvestigationDate(investigateDate);
@@ -1613,28 +1628,39 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 formData.setRiskFactors(riskFactors);
                 formData.setCaseData(caseData);
 
-                int i = 900000000;
-                while (i >= -900000000) {
-                    i -= 1;
-                    if (i == -900000000) {
-                        loadingpanel.setVisibility(View.GONE);
-                        imgCheck.setVisibility(View.VISIBLE);
-                        layoutDone.setVisibility(View.VISIBLE);
-                        tvCaseAddStatus.setText("Case successfully submitted!");
-
-                        buttonHome.setOnClickListener(new View.OnClickListener() { @Override
-                            public void onClick(View view) {
-                                pageNine();
-                            startActivity(new Intent(AddcifMeaslesActivity.this, HomeActivity.class));
+                Call<ResponseBody> call = apiClient.APIservice.postNewCase(formData,null);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        try {
+                            Log.d("postNewCase", "Submitted, " + response.body().string());
+                            if (response.code() == 200) {
+                                loadingpanel.setVisibility(View.GONE);
+                                imgCheck.setVisibility(View.VISIBLE);
+                                layoutDone.setVisibility(View.VISIBLE);
+                                tvCaseAddStatus.setText("Case successfully submitted!");
+                                buttonHome.setOnClickListener(new View.OnClickListener() { @Override
+                                    public void onClick(View view) {
+                                        pageNine();
+                                        startActivity(new Intent(AddcifMeaslesActivity.this, HomeActivity.class));
+                                    }
+                                });
+                                buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override
+                                    public void onClick(View view) {
+                                        // startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                                        finish();
+                                    }
+                                });
                             }
-                        });
-                        buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override
-                            public void onClick(View view) {
-                                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
-                            }
-                        });
+                        } catch (IOException e) {
+                            Log.d("postNewCase", "IOException? " + e.getMessage());
+                        }
                     }
-                }
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.e("postNewCase", t.getMessage());
+                    }
+                });
             }
         });
 
@@ -1667,5 +1693,32 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             case "VALENZUELA CITY": return R.array.valenzuela;
             default: return 0;
         }
+    }
+
+    private void getPatientAutofill(ArrayAdapter<String> adapter) {
+        patientnames.clear();
+
+        Call<ArrayList<Patient>> call = apiClient.APIservice.getPatientAutofill(user.getUserID(),"false");
+        patientArrayList = new ArrayList<Patient>();
+
+        call.enqueue(new Callback<ArrayList<Patient>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Patient>> call, Response<ArrayList<Patient>> response){
+                patientArrayList.addAll(response.body());
+
+                for(int i = 0; i < patientArrayList.size(); i++) {
+                    patientnames.add(patientArrayList.get(i).getFirstName() + " " + patientArrayList.get(i).getMidName() + " " + patientArrayList.get(i).getLastName());
+                }
+
+                Log.e("getPatientAutofill", "Data Loaded");
+                adapter.addAll(patientnames);
+                adapter.notifyDataSetChanged();
+                Log.e("getPatientAutofill", "Dataset Changed");
+            }
+            @Override
+            public void onFailure(Call<ArrayList<Patient>> call, Throwable t) {
+                Log.e("getPatientAutofill", t.getMessage());
+            }
+        });
     }
 }
