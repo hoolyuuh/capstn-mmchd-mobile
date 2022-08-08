@@ -144,9 +144,49 @@ public class AddtclActivity extends AppCompatActivity {
             }
         });
 
-
-
         pageZero();
+    }
+
+    @Override
+    public void onBackPressed() {
+        View view = findViewById(android.R.id.content).getRootView();
+        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.activity_popup_backhome, null);
+
+        // Specify the length and width through constants
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+        // Make Inactive Items Outside Of PopupWindow
+        boolean focusable = true;
+        // Create a window with our parameters
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        // Set the location of the window on the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        Button buttonCancel = popupView.findViewById(R.id.btn_home_cancel);
+        Button buttonConfirm = popupView.findViewById(R.id.btn_home_confirm);
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                finish();
+            }
+        });
+        // Handler for clicking on the inactive zone of the window
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //Close the window when clicked
+                popupWindow.dismiss();
+                return true;
+            }
+        });
     }
 
     private void pageZero() {
