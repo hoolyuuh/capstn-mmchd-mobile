@@ -30,12 +30,24 @@ public class AddcaseActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         user = bundle.getParcelable("user");
 
+        // Add CIF Activity
         this.findViewById(R.id.add_measles).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToCIF = new Intent(AddcaseActivity.this, AddcifMeaslesActivity.class);
                 goToCIF.putExtras(bundle);
                 startActivity(goToCIF);
+                finish();
+            }
+        });
+
+        // Add CRF Activity
+        this.findViewById(R.id.add_dengue).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToCRF = new Intent(AddcaseActivity.this, AddcrfDengueActivity.class);
+                goToCRF.putExtras(bundle);
+                startActivity(goToCRF);
                 finish();
             }
         });

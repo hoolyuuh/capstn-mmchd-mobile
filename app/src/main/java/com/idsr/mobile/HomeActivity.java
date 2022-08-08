@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Toast.makeText(HomeActivity.this, "Hello " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
 
+        // CIF + CRF Activity
         this.findViewById(R.id.new_disease_case).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        // Health Event Activity
         this.findViewById(R.id.new_health_event).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        // TCL Activity
         this.findViewById(R.id.new_immunization).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // TODO
+        // Logout Action
         this.findViewById(R.id.user_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // TODO
+        // User Account Activity
         this.findViewById(R.id.user_account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
