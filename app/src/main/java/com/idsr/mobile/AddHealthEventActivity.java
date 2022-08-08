@@ -323,7 +323,7 @@ public class AddHealthEventActivity extends AppCompatActivity {
                     event.setLocCity(TV_City.getText().toString());
 
 //                    For testing purposes only
-                    Log.e("Values", event.toString());
+//                    Log.e("Values", event.toString());
                     submit(view);
                 }
             }
