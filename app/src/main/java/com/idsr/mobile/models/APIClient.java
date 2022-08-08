@@ -2,6 +2,8 @@ package com.idsr.mobile.models;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.idsr.mobile.models.APIModels.EventJs;
@@ -50,14 +52,23 @@ public class APIClient {
         @POST("login")
         Call<LoginResponse> postLogin(@Body LoginJS login);
 
+        @GET("getPatients")
+        Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
+
         @POST("newEvent")
         Call<ResponseBody> postAddEvent(@Body EventJs event);
+
+        @POST("newCase")
+        Call<ResponseBody> postNewCase(@Body CaseFormData formData, @Nullable @Body String CRFID);
 
         @POST("newImmuProgEntry")
         Call<ResponseBody> postAddNewProgEntry(@Body TCLJS tcljs);
 
-        @GET("getPatients")
-        Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
+        @GET("getMobCRFs")
+        Call<ArrayList<String>> getMobileCRFs(@Query("userID") String userID);
+
+        @POST("postMobCRF")
+        Call<ResponseBody> postMobCRF(@Body CaseFormData formData, @Nullable @Body String CRFID);
 
         @GET("getTCL")
         Call<TCLResponse> getTCLID(@Query("userID") String userID, @Query("diseaseID") String diseaseID);

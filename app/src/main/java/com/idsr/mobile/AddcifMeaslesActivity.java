@@ -34,6 +34,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.api.client.repackaged.com.google.common.base.Strings;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles0Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles1Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles2Binding;
@@ -52,6 +53,7 @@ import com.idsr.mobile.models.RiskFactors;
 import com.idsr.mobile.models.CaseData;
 import com.idsr.mobile.models.User;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -65,6 +67,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddcifMeaslesActivity extends AppCompatActivity {
 //    private ActivityAddcifMeasles0Binding binding0;
@@ -90,14 +97,18 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private Button cancel, next1, back0, next2, back1, next3, back2, next4, back3, next5, back4, next6, back5, next7, back6, next8, back7, next9, back8, submit;
 
     private APIClient apiClient;
-    private String userId;
+    private User user;
     private Bundle bundle;
     private CaseFormData formData;
+    private ArrayList<Patient> patientArrayList;
+    private Patient patient;
+    private boolean existingpatient = false;
+    private ArrayList<String> patientnames;
 
-//    page 0
+    //    page 0
     private AutoCompleteTextView autocompPatients;
 
-//    page 1
+    //    page 1
     private EditText etLastname, etMiddlename, etFirstname, etBirthdate, /*etPhone,*/ etPregantweeks, etIndigenousgroup;
     private RadioGroup radioSex, radioPregnancy;
     private TextView tvCivilStatus, tvOccuCity, tvOccuBrgy, tvCurrCity, tvCurrBrgy, tvPermCity, tvPermBrgy;
@@ -113,7 +124,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String permStreet, permCity, permBrgy;
     private String parentCg, HCPN, ILHZ;
 
-//    page 2
+    //    page 2
     private RadioGroup radioPatientAdmit;
     private EditText etAdmitdate, etOnsetdate, etReportdate, etReporter;
     private CheckBox checkRfL1, checkRfL2, checkRfL3, checkRfL4, checkRfL5, checkRfL6;
@@ -125,7 +136,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String patientAdmit = "", admitdate, onsetdate, reportdate, reporter;
     private int riskfactors = 0;
 
-//    page 3
+    //    page 3
     private EditText etSymp1Date, etSymp2Date;
     private CheckBox checkSymp1, checkSymp2, checkSymp3, checkSymp4, checkSymp5, checkSymp6, checkSymp7, checkSymp8;
     private EditText etComplications, etSymptoms, etWorkingDiagnosis;
@@ -133,7 +144,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String symp1date, symp2date, complications, symptoms, workingdiagnosis;
     // TODO: symptoms initialize, idk how symptoms are stored
 
-//    page 4
+    //    page 4
     private RadioGroup radioMeaslesVaccination;
     private LinearLayout constVaccinated, constUnvaccinated;
     private EditText etVaccineMV, etVaccineMR, etVaccineMMR, etVaccineLastDoseDate, etVaccineValidityOthers;
@@ -145,23 +156,23 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String vaccinationStatus="", vaccineMV, vaccineMR, vaccineMMR, vaccineLastDoseDate, vaccinationValidity="", vaccineCampaign="", novaccineReasonOther="", vitA="";
     private ArrayList<String> noVaccReasons = new ArrayList<>();
 
-//    page 5
+    //    page 5
     private RadioGroup radioTravelhistory, radioRashOnset, radioMeaslesContact, radioRubellaContact, radioRubellaExposure, radioOtherFeverRashes;
     private ConstraintLayout consWithTravelHistory, consConfirmedRubella;
     private EditText etTravelPlace, etTravelDate, etRubellaContactName, etRubellaContactPlace, etRubellaTravelDate, etRubellaExposureOther;
 
     private String travelHistory="", travelPlace, travelDate, rashOnset="", measlesContact="", rubellaContact="", rubellaContactName, rubellaContactPlace, rubellaContactTravelDate, rubellaExposure="", otherKnownFeverRash="";
 
-//    page 6
+    //    page 6
     private RadioGroup radioSourceinfo;
     private String sourceinfo="";
 
-//    page 7
+    //    page 7
     private RadioGroup radioOutcome;
     private EditText etDatedied, etFinalDiagnosis;
     private String outcome="", datedied, finaldiagnosis;
 
-//    page 8
+    //    page 8
     private RadioGroup radioLabResult;
     private ConstraintLayout consWithLabResult, consNoLabResult;
     private TextView tvLabspecimen, tvLabSelect;
@@ -170,7 +181,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
     private String labresult="", labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, investigatorContact, investigateDate, labselected;
 
-//    page 9
+    //    page 9
     private RadioGroup radioFinalClassif;
     private ImageButton imageDropdown1, imageDropdown2, imageDropdown3, imageDropdown4, imageDropdown5, imageDropdown6, imageDropdown7;
     private TextView textDropdown1, textDropdown2, textDropdown3, textDropdown4, textDropdown5, textDropdown6, textDropdown7;
@@ -184,7 +195,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         apiClient = new APIClient();
 
         bundle = getIntent().getExtras();
-        userId = ((User) bundle.getParcelable("user")).getUserID();
+        user = bundle.getParcelable("user");
 
 //        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
 //        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
@@ -199,71 +210,67 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         pageZero();
     }
 
-    // TODO: fix how the function works. It's supposed to do the backhome function, but it does its default back page
-    // After this works, can copy paste this and the backhome function to all other activity form classes (CIF CRF TCL EBS)
-    public void onBackPressed(View view) {
-        backhome(view);
-    }
-
-    public void backhome(View view) {
+    @Override
+    public void onBackPressed() {
+        View view = findViewById(android.R.id.content).getRootView();
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.activity_popup_backhome, null);
 
-        //Specify the length and width through constants
+        // Specify the length and width through constants
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
         int height = LinearLayout.LayoutParams.MATCH_PARENT;
-
-        //Make Inactive Items Outside Of PopupWindow
+        // Make Inactive Items Outside Of PopupWindow
         boolean focusable = true;
-
-        //Create a window with our parameters
+        // Create a window with our parameters
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        //Set the location of the window on the screen
+        // Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
         Button buttonCancel = popupView.findViewById(R.id.btn_home_cancel);
         Button buttonConfirm = popupView.findViewById(R.id.btn_home_confirm);
-        buttonCancel.setOnClickListener(new View.OnClickListener() { @Override
-        public void onClick(View v) {
-            popupWindow.dismiss();
-        }
-        });
-        buttonConfirm.setOnClickListener(new View.OnClickListener() { @Override
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
-                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
             }
         });
-
-        //Handler for clicking on the inactive zone of the window
-        popupView.setOnTouchListener(new View.OnTouchListener() { @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            //Close the window when clicked
-            popupWindow.dismiss();
-            return true; }
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                finish();
+            }
+        });
+        // Handler for clicking on the inactive zone of the window
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //Close the window when clicked
+                popupWindow.dismiss();
+                return true;
+            }
         });
     }
 
     public void pageZero() {
         setContentView(R.layout.activity_addcif_measles0);
 
-        String[] patientnames =  {
-            "Hello, Android - Ed Burnette",
-            "Professional Android 2 App Dev - Reto Meier",
-        };
+        patientnames = new ArrayList<>();
+
         ArrayAdapter<String> adapterPatients = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,patientnames);
         this.autocompPatients = (AutoCompleteTextView)findViewById(R.id.autocomp_mea_searchpatient);
         autocompPatients.setThreshold(1);
         autocompPatients.setAdapter(adapterPatients);
+
         autocompPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                patientInfoFill(autocompPatients.getText().toString());
+                patientInfoFill(patientnames.indexOf(autocompPatients.getText().toString()));
                 pageTwo();
             }
         });
 
+        getPatientAutofill(adapterPatients);
         this.next1 = findViewById(R.id.btn_meas_next1);
         this.cancel = findViewById(R.id.btn_meas_cancel);
         next1.setOnClickListener(new View.OnClickListener() {
@@ -280,8 +287,13 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         });
     }
 
-    public void patientInfoFill(String patient) {
+    public void patientInfoFill(int i) {
         // TODO: get patient info
+        patient = patientArrayList.get(i);
+        page1 = true;
+        existingpatient = true;
+
+        Log.e("patientInfoFill", "Patient Name: " + patientArrayList.get(i).getFirstName());
     }
 
     public void pageOne() {
@@ -333,8 +345,10 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
-                        new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                                etBirthdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                            etBirthdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                    Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                    Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
 
@@ -630,7 +644,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                             @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                                etAdmitdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                                etAdmitdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                        Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                        Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
         etOnsetdate.setOnClickListener(new View.OnClickListener() { @Override
@@ -639,7 +655,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etOnsetdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etOnsetdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
         etReportdate.setOnClickListener(new View.OnClickListener() { @Override
@@ -648,7 +666,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etReportdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etReportdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
 
@@ -715,8 +735,6 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                     onsetdate = etOnsetdate.getText().toString();
                     reportdate = etReportdate.getText().toString();
                     reporter = etReporter.getText().toString();
-                    // TODO: idk how to get risk factor
-
                     pageThree();
                 }
             }
@@ -757,7 +775,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etSymp1Date.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etSymp1Date.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
         etSymp2Date.setOnClickListener(new View.OnClickListener() { @Override
@@ -766,7 +786,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etSymp2Date.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etSymp2Date.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
 
@@ -846,7 +868,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() { @Override
                     public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etVaccineLastDoseDate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etVaccineLastDoseDate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
 
@@ -1006,7 +1030,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etTravelPlace.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etTravelPlace.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                    Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                    Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         this.etTravelDate.setOnClickListener(new View.OnClickListener() {@Override
@@ -1014,7 +1040,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etTravelDate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etTravelDate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                    Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                    Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
 
@@ -1137,7 +1165,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etDatedied.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etDatedied.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
 
@@ -1214,7 +1244,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etCollectdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etCollectdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etReceivedate.setOnClickListener(new View.OnClickListener() {@Override
@@ -1222,7 +1254,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etReceivedate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etReceivedate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etInvestigDate.setOnClickListener(new View.OnClickListener() {@Override
@@ -1230,7 +1264,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etInvestigDate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etInvestigDate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
 
@@ -1450,21 +1486,17 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
                 setContentView(R.layout.activity_loading);
 
-                // TODO: make function to submit the thingies
                 TextView tvCaseAddStatus = findViewById(R.id.tv_caseAddStatus);
                 ProgressBar loadingpanel = findViewById(R.id.loadingPanel);
                 ImageView imgCheck = findViewById(R.id.imgCheckPanel);
-
                 LinearLayout layoutDone = findViewById(R.id.layout_done);
                 Button buttonHome = findViewById(R.id.btn_home);
                 Button buttonAddCase = findViewById(R.id.btn_addanothercase);
 
-                // converting string to date
-
                 // CASES
                 Case cases = new Case();
                 cases.setDiseaseID("DI-0000000000000");
-                cases.setReportedBy(userId);
+                cases.setReportedBy(user.getUserID());
                 cases.setCaseLevel(finalClassification);
                 cases.setReportDate(reportdate);
                 cases.setInvestigationDate(investigateDate);
@@ -1479,45 +1511,49 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 cases.setCRFID(null);
 
                 // PATIENTS
-                Patient patient = new Patient();
+                Patient patientForm = new Patient();
                 // TODO: autofill patient
-                patient.setPatientID(null);
-                // phone
-                patient.setEpiID(null);
-                patient.setLastName(lastName);
-                patient.setFirstName(firstName);
-                patient.setMidName(middleName);
-                patient.setCurrHouseStreet(currStreet);
-                patient.setCurrBrgy(currBrgy);
-                patient.setCurrCity(currCity);
-                patient.setPermHouseStreet(permStreet);
-                patient.setPermBrgy(permBrgy);
-                patient.setPermCity(permCity);
-                patient.setSex(sex);
-                patient.setBirthdate(birthdate);
+                if (existingpatient) {
+                    patientForm = patient;
+                } else {
+                    patientForm.setPatientID(null);
+                    // phone
+                    patientForm.setEpiID(null);
+                    patientForm.setLastName(lastName);
+                    patientForm.setFirstName(firstName);
+                    patientForm.setMidName(middleName);
+                    patientForm.setCurrHouseStreet(currStreet);
+                    patientForm.setCurrBrgy(currBrgy);
+                    patientForm.setCurrCity(currCity);
+                    patientForm.setPermHouseStreet(permStreet);
+                    patientForm.setPermBrgy(permBrgy);
+                    patientForm.setPermCity(permCity);
+                    patientForm.setSex(sex);
+                    patientForm.setBirthdate(birthdate);
 
-                try {
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                    Date date = formatter.parse(birthdate);
-                    patient.setAgeNo(Math.toIntExact(ChronoUnit.YEARS.between((Temporal) date, LocalDate.now(ZoneId.of("GMT+8")))));
-                } catch (ParseException e) {
-                    Log.d("ParseException", "Got an exception in converting birthdate! " + e);
-                    patient.setAgeNo(30);
+                    try {
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                        Date date = formatter.parse(birthdate);
+                        patientForm.setAgeNo(Math.toIntExact(ChronoUnit.YEARS.between((Temporal) date, LocalDate.now(ZoneId.of("GMT+8")))));
+                    } catch (ParseException e) {
+                        Log.d("ParseException", "Got an exception in converting birthdate! " + e);
+                        patient.setAgeNo(30);
+                    }
+                    patientForm.setAgeType("year");
+                    patientForm.setAdmitStatus(patientAdmit);
+                    patientForm.setCivilStatus(civilstatus);
+                    patientForm.setOccupation(occupation);
+                    patientForm.setOccuLoc(occuloc);
+                    patientForm.setOccuStreet(occuStreet);
+                    patientForm.setOccuCity(occuCity);
+                    patientForm.setOccuBrgy(occuBrgy);
+                    patientForm.setGuardianName(parentCg);
+                    patientForm.setGuardianContact(parentCgContact);
+                    patientForm.setIndGroup(indigenousgroup);
+                    patientForm.setPregWeeks(pregnancy);
+                    patientForm.setHCPN(HCPN);
+                    patientForm.setILHZ(ILHZ);
                 }
-                patient.setAgeType("year");
-                patient.setAdmitStatus(patientAdmit);
-                patient.setCivilStatus(civilstatus);
-                patient.setOccupation(occupation);
-                patient.setOccuLoc(occuloc);
-                patient.setOccuStreet(occuStreet);
-                patient.setOccuCity(occuCity);
-                patient.setOccuBrgy(occuBrgy);
-                patient.setGuardianName(parentCg);
-                patient.setGuardianContact(parentCgContact);
-                patient.setIndGroup(indigenousgroup);
-                patient.setPregWeeks(pregnancy);
-                patient.setHCPN(HCPN);
-                patient.setILHZ(ILHZ);
 
                 // RISK FACTORS
                 RiskFactors riskFactors = new RiskFactors();
@@ -1617,28 +1653,39 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 formData.setRiskFactors(riskFactors);
                 formData.setCaseData(caseData);
 
-                int i = 900000000;
-                while (i >= -900000000) {
-                    i -= 1;
-                    if (i == -900000000) {
-                        loadingpanel.setVisibility(View.GONE);
-                        imgCheck.setVisibility(View.VISIBLE);
-                        layoutDone.setVisibility(View.VISIBLE);
-                        tvCaseAddStatus.setText("Case successfully submitted!");
-
-                        buttonHome.setOnClickListener(new View.OnClickListener() { @Override
-                            public void onClick(View view) {
-                                pageNine();
-                            startActivity(new Intent(AddcifMeaslesActivity.this, HomeActivity.class));
+                Call<ResponseBody> call = apiClient.APIservice.postNewCase(formData,null);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        try {
+                            Log.d("postNewCase", "Submitted, " + response.body().string());
+                            if (response.code() == 200) {
+                                loadingpanel.setVisibility(View.GONE);
+                                imgCheck.setVisibility(View.VISIBLE);
+                                layoutDone.setVisibility(View.VISIBLE);
+                                tvCaseAddStatus.setText("Case successfully submitted!");
+                                buttonHome.setOnClickListener(new View.OnClickListener() { @Override
+                                    public void onClick(View view) {
+                                        pageNine();
+                                        startActivity(new Intent(AddcifMeaslesActivity.this, HomeActivity.class));
+                                    }
+                                });
+                                buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override
+                                    public void onClick(View view) {
+                                        // startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                                        finish();
+                                    }
+                                });
                             }
-                        });
-                        buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override
-                            public void onClick(View view) {
-                                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
-                            }
-                        });
+                        } catch (IOException e) {
+                            Log.d("postNewCase", "IOException? " + e.getMessage());
+                        }
                     }
-                }
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.e("postNewCase", t.getMessage());
+                    }
+                });
             }
         });
 
@@ -1671,5 +1718,32 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             case "VALENZUELA CITY": return R.array.valenzuela;
             default: return 0;
         }
+    }
+
+    private void getPatientAutofill(ArrayAdapter<String> adapter) {
+        patientnames.clear();
+
+        Call<ArrayList<Patient>> call = apiClient.APIservice.getPatientAutofill(user.getUserID(),"false");
+        patientArrayList = new ArrayList<Patient>();
+
+        call.enqueue(new Callback<ArrayList<Patient>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Patient>> call, Response<ArrayList<Patient>> response){
+                patientArrayList.addAll(response.body());
+
+                for(int i = 0; i < patientArrayList.size(); i++) {
+                    patientnames.add(patientArrayList.get(i).getFirstName() + " " + patientArrayList.get(i).getMidName() + " " + patientArrayList.get(i).getLastName());
+                }
+
+                Log.e("getPatientAutofill", "Data Loaded");
+                adapter.addAll(patientnames);
+                adapter.notifyDataSetChanged();
+                Log.e("getPatientAutofill", "Dataset Changed");
+            }
+            @Override
+            public void onFailure(Call<ArrayList<Patient>> call, Throwable t) {
+                Log.e("getPatientAutofill", t.getMessage());
+            }
+        });
     }
 }
