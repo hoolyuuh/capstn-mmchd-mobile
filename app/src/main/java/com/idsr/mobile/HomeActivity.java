@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         this.findViewById(R.id.user_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, AddtclActivity.class));
+                finish();
             }
         });
 
@@ -65,7 +65,9 @@ public class HomeActivity extends AppCompatActivity {
         this.findViewById(R.id.user_account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, AddtclActivity.class));
+                Intent goToAccountActivity = new Intent(HomeActivity.this, AccountActivity.class);
+                goToAccountActivity.putExtras(bundle);
+                startActivity(goToAccountActivity);
             }
         });
     }

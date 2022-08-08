@@ -33,10 +33,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.api.client.repackaged.com.google.common.base.Strings;
 import com.idsr.mobile.databinding.ActivityAddtcl0Binding;
 import com.idsr.mobile.models.APIClient;
+import com.idsr.mobile.models.APIModels.EventJs;
 import com.idsr.mobile.models.APIModels.LoginJS;
 import com.idsr.mobile.models.APIModels.LoginResponse;
+import com.idsr.mobile.models.APIModels.TCLJS;
+import com.idsr.mobile.models.APIModels.TCLResponse;
 import com.idsr.mobile.models.Event;
+import com.idsr.mobile.models.Immunization;
 import com.idsr.mobile.models.Patient;
+import com.idsr.mobile.models.RiskFactors;
 import com.idsr.mobile.models.User;
 
 import java.util.ArrayList;
@@ -44,6 +49,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Objects;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -108,7 +114,9 @@ public class AddtclActivity extends AppCompatActivity {
     private Patient patient;
     private boolean existingpatient = false;
     private ArrayList<String> patientnames;
-
+    private RiskFactors riskFactors;
+    private Immunization immunisationData;
+    private String TCLIDString = "TCL ID: ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,9 +124,28 @@ public class AddtclActivity extends AppCompatActivity {
         apiClient = new APIClient();
         bundle = getIntent().getExtras();
         user = bundle.getParcelable("user");
+        riskFactors = new RiskFactors();
+        immunisationData = new Immunization();
 //        event = new Event();
 //        event.setUserID(user.getUserID());
-        patient = new Patient();
+
+        Call<TCLResponse> call = apiClient.APIservice.getTCLID(user.getUserID(), "DI-0000000000003");
+        call.enqueue(new Callback<TCLResponse>() {
+            @Override
+            public void onResponse(Call<TCLResponse> call, Response<TCLResponse> response){
+//                Log.e("TestingAPI", "Got here");
+//                Log.e("TestingAPI", "Contents: " + response.body().getTCL().getTCLID());
+                TCLIDString.substring(0,8);
+                TCLIDString = new String("TCLID: " + response.body().getTCL().getTCLID());
+                Log.e("TCLID", "TCLID: " + TCLIDString);
+            }
+            @Override
+            public void onFailure(Call<TCLResponse> call, Throwable t) {
+                Log.e("callGetTest", t.getMessage());
+            }
+        });
+
+
 
         pageZero();
     }
@@ -142,6 +169,10 @@ public class AddtclActivity extends AppCompatActivity {
         });
 
         getPatientAutofill(adapterPatients);
+
+        TextView id0= findViewById(R.id.tv_tcl_id0);
+        id0.setText(TCLIDString);
+
         this.next1 = findViewById(R.id.btn_tcl_next1);
         this.cancel = findViewById(R.id.btn_tcl_cancel);
         next1.setOnClickListener(new View.OnClickListener() {
@@ -207,6 +238,9 @@ public class AddtclActivity extends AppCompatActivity {
         this.etHCPN = findViewById(R.id.et_tcl_hcpn);
         this.etILHZ = findViewById(R.id.et_tcl_ilhz);
 
+        TextView id1= findViewById(R.id.tv_tcl_id1);
+        id1.setText(TCLIDString);
+
         // if completed page
         if(page1) {
             etLastname.setText(patient.getLastName());
@@ -238,7 +272,7 @@ public class AddtclActivity extends AppCompatActivity {
 
             etOccupation.setText(patient.getOccupation());
             etOcculoc.setText(patient.getOccuLoc());
-            etOccuStreet.setText(patient.getOccuHouseStreet());
+            etOccuStreet.setText(patient.getOccuStreet());
             tvOccuBrgy.setText(patient.getOccuBrgy());
             tvOccuCity.setText(patient.getOccuCity());
             etCurrStreet.setText(patient.getCurrHouseStreet());
@@ -469,7 +503,7 @@ public class AddtclActivity extends AppCompatActivity {
                     patient.setIndGroup(etIndigenousgroup.getText().toString());
                     patient.setOccupation(etOccupation.getText().toString());
                     patient.setOccuLoc(etOcculoc.getText().toString());
-                    patient.setOccuHouseStreet(etOccuStreet.getText().toString());
+                    patient.setOccuStreet(etOccuStreet.getText().toString());
                     patient.setOccuCity(tvOccuCity.getText().toString());
                     patient.setOccuBrgy(tvOccuBrgy.getText().toString());
                     patient.setCurrHouseStreet(etCurrStreet.getText().toString());
@@ -500,10 +534,10 @@ public class AddtclActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addtcl2);
 
         this.radioPatientAdmit = findViewById(R.id.radiogroup_patientadmit);
-        this.etAdmitdate = findViewById(R.id.et_tcl_admitDate);
-        this.etOnsetdate = findViewById(R.id.et_tcl_onsetdate);
-        this.etReportdate = findViewById(R.id.et_tcl_reportdate);
-        this.etReporter = findViewById(R.id.et_tcl_reporter);
+//        this.etAdmitdate = findViewById(R.id.et_tcl_admitDate);
+//        this.etOnsetdate = findViewById(R.id.et_tcl_onsetdate);
+//        this.etReportdate = findViewById(R.id.et_tcl_reportdate);
+//        this.etReporter = findViewById(R.id.et_tcl_reporter);
 
         this.checkRfL1 = findViewById(R.id.checkbox_tcl_rfL1);
         this.checkRfL2 = findViewById(R.id.checkbox_tcl_rfL2);
@@ -537,46 +571,125 @@ public class AddtclActivity extends AppCompatActivity {
         this.checkRfO11 = findViewById(R.id.checkbox_tcl_rfO11);
         this.etRfHOthers = findViewById(R.id.et_tcl_rfOOthers);
 
-        radioPatientAdmit.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton radioButton = (RadioButton) findViewById(i);
-                patientAdmit = radioButton.getText().toString();
-                if (patientAdmit.equals("Yes")) etAdmitdate.setVisibility(View.VISIBLE);
-                else etAdmitdate.setVisibility(View.INVISIBLE);
+        TextView id2= findViewById(R.id.tv_tcl_id2);
+        id2.setText(TCLIDString);
+
+        if(page2){
+//            etAdmitdate.setText(admitdate);
+//            etOnsetdate.setText(onsetdate);
+//            etReportdate.setText(reportdate);
+//            etReporter.setText(reportdate);
+
+            // RISK FACTORS
+
+            checkRfL2.setChecked(riskFactors.getLSmoking());
+            checkRfL3.setChecked(riskFactors.getLAlcoholism());
+            checkRfL4.setChecked(riskFactors.getLDrugUse());
+            checkRfL5.setChecked(riskFactors.getLPhysicalInactivity());
+            if (riskFactors.getLOthers().equals("")) {
+                checkRfL6.setChecked(false);
+            } else {
+                checkRfL6.setChecked(true);
+                etRfLOthers.setVisibility(View.VISIBLE);
+                etRfLOthers.setText(riskFactors.getLOthers());
             }
-        });
 
-        etAdmitdate.setOnClickListener(new View.OnClickListener() { @Override
-        public void onClick(View v) {
-            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
-            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
-                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etAdmitdate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
-            datePickerDialog.show(); }
-        });
-        etOnsetdate.setOnClickListener(new View.OnClickListener() { @Override
-        public void onClick(View v) {
-            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
-            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
-                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etOnsetdate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
-            datePickerDialog.show(); }
-        });
-        etReportdate.setOnClickListener(new View.OnClickListener() { @Override
-        public void onClick(View v) {
-            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
-            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
-                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                    etReportdate.setText( (monthOfYear + 1)+ "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
-            datePickerDialog.show(); }
-        });
+            checkRfC2.setChecked(riskFactors.getCAsthma());
+            checkRfC3.setChecked(riskFactors.getCHereditary());
+            if (riskFactors.getCOthers().equals("")) {
+                checkRfC4.setChecked(false);
+            } else {
+                checkRfL4.setChecked(true);
+                etRfCOthers.setVisibility(View.VISIBLE);
+                etRfCOthers.setText(riskFactors.getCOthers());
+            }
 
-//        checkRfO1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//            if (b && riskfactors/1000==1) riskfactors += 1000; } });
+            riskFactors.setHDiabetes(checkRfH2.isChecked());
+            riskFactors.setHHeartDisease(checkRfH3.isChecked());
+            riskFactors.setHHypertension(checkRfH4.isChecked());
+            riskFactors.setHObesity(checkRfH5.isChecked());
+            if (checkRfH6.isChecked()) {
+                riskFactors.setHOthers(etRfHOthers.getText().toString());
+            } else {
+                etRfLOthers.setVisibility(View.VISIBLE);
+                etRfLOthers.setText(riskFactors.getLOthers());
+            }
+
+            checkRfH2.setChecked(riskFactors.getHDiabetes());
+            checkRfH3.setChecked(riskFactors.getHHeartDisease());
+            checkRfH4.setChecked(riskFactors.getHHypertension());
+            checkRfH5.setChecked(riskFactors.getHObesity());
+            if (riskFactors.getHOthers().equals("")) {
+                checkRfH6.setChecked(false);
+            } else {
+                checkRfH6.setChecked(true);
+                etRfHOthers.setVisibility(View.VISIBLE);
+                etRfHOthers.setText(riskFactors.getHOthers());
+            }
+
+            checkRfO2.setChecked(riskFactors.getOAirPollution());
+            checkRfO3.setChecked(riskFactors.getOCleanWater());
+            checkRfO4.setChecked(riskFactors.getOFlooding());
+            checkRfO5.setChecked(riskFactors.getOHealthFacility());
+            checkRfO6.setChecked(riskFactors.getOHealthEdu());
+            checkRfO7.setChecked(riskFactors.getOPoverty());
+            checkRfO8.setChecked(riskFactors.getOShelter());
+            checkRfO9.setChecked(riskFactors.getOWasteMgmt());
+            checkRfO10.setChecked(riskFactors.getOVacCoverage());
+            if (riskFactors.getOOthers().equals("")) {
+                checkRfO11.setChecked(false);
+            } else {
+                checkRfO11.setChecked(true);
+                etRfOOthers.setVisibility(View.VISIBLE);
+                etRfOOthers.setText(riskFactors.getOOthers());
+            }
+        }
+//        radioPatientAdmit.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                RadioButton radioButton = (RadioButton) findViewById(i);
+//                patientAdmit = radioButton.getText().toString();
+//                if (patientAdmit.equals("Yes")) etAdmitdate.setVisibility(View.VISIBLE);
+//                else etAdmitdate.setVisibility(View.INVISIBLE);
+//            }
+//        });
+//
+//        etAdmitdate.setOnClickListener(new View.OnClickListener() { @Override
+//        public void onClick(View v) {
+//            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+//            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+//            DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
+//                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+//                    etAdmitdate.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+//                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+//                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
+//            datePickerDialog.show(); }
+//        });
+//        etOnsetdate.setOnClickListener(new View.OnClickListener() { @Override
+//        public void onClick(View v) {
+//            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+//            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+//            DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
+//                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+//                    etOnsetdate.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+//                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+//                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
+//            datePickerDialog.show(); }
+//        });
+//        etReportdate.setOnClickListener(new View.OnClickListener() { @Override
+//        public void onClick(View v) {
+//            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+//            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+//            DatePickerDialog datePickerDialog = new DatePickerDialog(AddtclActivity.this, new DatePickerDialog.OnDateSetListener() {
+//                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+//                    etReportdate.setText( Strings.padStart(Integer.toString(year),4,'0') + "-" +
+//                            Strings.padStart(Integer.toString(monthOfYear + 1),2,'0') + "-" +
+//                            Strings.padStart(Integer.toString(dayOfMonth),2,'0'));} }, mYear, mMonth, mDay);
+//            datePickerDialog.show(); }
+//        });
+
+        checkRfO1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (b && riskfactors/1000==1) riskfactors += 1000; } });
         checkRfL6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
             if (b) etRfLOthers.setVisibility(View.VISIBLE); else etRfLOthers.setVisibility(View.INVISIBLE); } });
         checkRfC4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -599,18 +712,18 @@ public class AddtclActivity extends AppCompatActivity {
             public void onClick(View view) {
                 page2 = true;
 
-                if (patientAdmit.length() <= 0) { page2 = page2 & false; radioPatientAdmit.setBackgroundResource(R.color.theme_lightest_red); }
-                else radioPatientAdmit.setBackgroundResource(0);
-                if (Objects.equals(patientAdmit, "Yes")) {
-                    if (etAdmitdate.getText().toString().length() <= 0) { page2 = page2 & false; etAdmitdate.setBackgroundResource(R.drawable.inputbox_red); }
-                    else etAdmitdate.setBackgroundResource(R.drawable.inputbox);
-                }
-                if (etOnsetdate.getText().toString().length() <= 0) { page2 = page2 & false; etOnsetdate.setBackgroundResource(R.drawable.inputbox_red); }
-                else etOnsetdate.setBackgroundResource(R.drawable.inputbox);
-                if (etReportdate.getText().toString().length() <= 0) { page2 = page2 & false; etReportdate.setBackgroundResource(R.drawable.inputbox_red); }
-                else etReportdate.setBackgroundResource(R.drawable.inputbox);
-                if (etReporter.getText().toString().length() <= 0) { page2 = page2 & false; etReporter.setBackgroundResource(R.drawable.inputbox_red); }
-                else etReporter.setBackgroundResource(R.drawable.inputbox);
+//                if (patientAdmit.length() <= 0) { page2 = page2 & false; radioPatientAdmit.setBackgroundResource(R.color.theme_lightest_red); }
+//                else radioPatientAdmit.setBackgroundResource(0);
+//                if (Objects.equals(patientAdmit, "Yes")) {
+//                    if (etAdmitdate.getText().toString().length() <= 0) { page2 = page2 & false; etAdmitdate.setBackgroundResource(R.drawable.inputbox_red); }
+//                    else etAdmitdate.setBackgroundResource(R.drawable.inputbox);
+//                }
+//                if (etOnsetdate.getText().toString().length() <= 0) { page2 = page2 & false; etOnsetdate.setBackgroundResource(R.drawable.inputbox_red); }
+//                else etOnsetdate.setBackgroundResource(R.drawable.inputbox);
+//                if (etReportdate.getText().toString().length() <= 0) { page2 = page2 & false; etReportdate.setBackgroundResource(R.drawable.inputbox_red); }
+//                else etReportdate.setBackgroundResource(R.drawable.inputbox);
+//                if (etReporter.getText().toString().length() <= 0) { page2 = page2 & false; etReporter.setBackgroundResource(R.drawable.inputbox_red); }
+//                else etReporter.setBackgroundResource(R.drawable.inputbox);
 
                 if (checkRfL6.isChecked()) {
                     if (etRfLOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfLOthers.setBackgroundResource(R.drawable.inputbox_red); }
@@ -634,12 +747,52 @@ public class AddtclActivity extends AppCompatActivity {
                 if (!page2) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
                     // patientAdmit set in onclick
-                    admitdate = etAdmitdate.getText().toString();
-                    onsetdate = etOnsetdate.getText().toString();
-                    reportdate = etReportdate.getText().toString();
-                    reporter = etReporter.getText().toString();
+//                    admitdate = etAdmitdate.getText().toString();
+//                    onsetdate = etOnsetdate.getText().toString();
+//                    reportdate = etReportdate.getText().toString();
+//                    reporter = etReporter.getText().toString();
                     // TODO: idk how to get risk factor
+                    riskFactors = new RiskFactors();
 
+                    riskFactors.setLSmoking(checkRfL2.isChecked());
+                    riskFactors.setLAlcoholism(checkRfL3.isChecked());
+                    riskFactors.setLDrugUse(checkRfL4.isChecked());
+                    riskFactors.setLPhysicalInactivity(checkRfL5.isChecked());
+                    if (checkRfL6.isChecked()) {
+                        riskFactors.setLOthers(etRfLOthers.getText().toString());
+                    } else {
+                        riskFactors.setLOthers("");
+                    }
+                    riskFactors.setCAsthma(checkRfC2.isChecked());
+                    riskFactors.setCHereditary(checkRfC3.isChecked());
+                    if (checkRfC4.isChecked()) {
+                        riskFactors.setCOthers(etRfCOthers.getText().toString());
+                    } else {
+                        riskFactors.setCOthers("");
+                    }
+                    riskFactors.setHDiabetes(checkRfH2.isChecked());
+                    riskFactors.setHHeartDisease(checkRfH3.isChecked());
+                    riskFactors.setHHypertension(checkRfH4.isChecked());
+                    riskFactors.setHObesity(checkRfH5.isChecked());
+                    if (checkRfH6.isChecked()) {
+                        riskFactors.setHOthers(etRfHOthers.getText().toString());
+                    } else {
+                        riskFactors.setHOthers("");
+                    }
+                    riskFactors.setOAirPollution(checkRfO2.isChecked());
+                    riskFactors.setOCleanWater(checkRfO3.isChecked());
+                    riskFactors.setOFlooding(checkRfO4.isChecked());
+                    riskFactors.setOHealthFacility(checkRfO5.isChecked());
+                    riskFactors.setOHealthEdu(checkRfO6.isChecked());
+                    riskFactors.setOPoverty(checkRfO7.isChecked());
+                    riskFactors.setOShelter(checkRfO8.isChecked());
+                    riskFactors.setOWasteMgmt(checkRfO9.isChecked());
+                    riskFactors.setOVacCoverage(checkRfO10.isChecked());
+                    if (checkRfO11.isChecked()) {
+                        riskFactors.setOOthers(etRfOOthers.getText().toString());
+                    } else {
+                        riskFactors.setOOthers("");
+                    }
                     pageThree();
                 }
             }
@@ -666,6 +819,29 @@ public class AddtclActivity extends AppCompatActivity {
         this.etDeng1 = findViewById(R.id.et_deng_1);
         this.etDeng2 = findViewById(R.id.et_deng_2);
         this.etDeng3 = findViewById(R.id.et_deng_3);
+
+        TextView id3= findViewById(R.id.tv_tcl_id3);
+        id3.setText(TCLIDString);
+
+        if(page3) {
+            etBCG.setText(immunisationData.getBCGdate());
+            etHepa1.setText(immunisationData.getHEPAwithdate());
+            etHep2.setText(immunisationData.getHEPAmoredate());
+            etOpv1.setText(immunisationData.getOPV1date());
+            etOpv2.setText(immunisationData.getOPV2date());
+            etOpv3.setText(immunisationData.getOPV3date());
+            etPenta1.setText(immunisationData.getPENTA1date());
+            etPenta2.setText(immunisationData.getPENTA2date());
+            etPenta3.setText(immunisationData.getPENTA3date());
+            etPcv1.setText(immunisationData.getPCV1date());
+            etPcv2.setText(immunisationData.getPCV2date());
+            etPcv3.setText(immunisationData.getPCV3date());
+            etMcv1.setText(immunisationData.getMCV1date());
+            etMcv2.setText(immunisationData.getMCV2date());
+            etDeng1.setText(immunisationData.getDengue1date());
+            etDeng2.setText(immunisationData.getDengue2date());
+            etDeng3.setText(immunisationData.getDengue3date());
+        }
 
         etBCG.setOnClickListener(new View.OnClickListener() { @Override
         public void onClick(View v) {
@@ -870,23 +1046,24 @@ public class AddtclActivity extends AppCompatActivity {
 
                 if (!page3) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
                 else {
-                    BCG = etBCG.getText().toString();
-                    Hepa1 = etHepa1.getText().toString();
-                    Hep2 = etHep2.getText().toString();
-                    Opv1 = etOpv1.getText().toString();
-                    Opv2 = etOpv2.getText().toString();
-                    Opv3 = etOpv3.getText().toString();
-                    Penta1 = etPenta1.getText().toString();
-                    Penta2 = etPenta2.getText().toString();
-                    Penta3 = etPenta3.getText().toString();
-                    Pcv1 = etPcv1.getText().toString();
-                    Pcv2 = etPcv2.getText().toString();
-                    Pcv3 = etPcv3.getText().toString();
-                    Mcv1 = etMcv1.getText().toString();
-                    Mcv2 = etMcv2.getText().toString();
-                    Deng1 = etDeng1.getText().toString();
-                    Deng2 = etDeng2.getText().toString();
-                    Deng3 = etDeng3.getText().toString();
+
+                    immunisationData.setBCGdate(etBCG.getText().toString());
+                    immunisationData.setHEPAwithdate(etHepa1.getText().toString());
+                    immunisationData.setHEPAmoredate(etHep2.getText().toString());
+                    immunisationData.setOPV1date(etOpv1.getText().toString());
+                    immunisationData.setOPV2date(etOpv2.getText().toString());
+                    immunisationData.setOPV3date(etOpv3.getText().toString());
+                    immunisationData.setPENTA1date(etPenta1.getText().toString());
+                    immunisationData.setPENTA2date(etPenta2.getText().toString());
+                    immunisationData.setPENTA3date(etPenta3.getText().toString());
+                    immunisationData.setPCV1date(etPcv1.getText().toString());
+                    immunisationData.setPCV2date(etPcv2.getText().toString());
+                    immunisationData.setPCV3date(etPcv3.getText().toString());
+                    immunisationData.setMCV1date(etMcv1.getText().toString());
+                    immunisationData.setMCV2date(etMcv2.getText().toString());
+                    immunisationData.setDengue1date(etDeng1.getText().toString());
+                    immunisationData.setDengue2date(etDeng2.getText().toString());
+                    immunisationData.setDengue3date(etDeng3.getText().toString());
 
                     submit(view);
                 }
@@ -920,10 +1097,10 @@ public class AddtclActivity extends AppCompatActivity {
         });
         buttonConfirm.setOnClickListener(new View.OnClickListener() { @Override
         public void onClick(View v) {
-            popupWindow.dismiss();
+
             //As an example, display the message
             Toast.makeText(view.getContext(), "Please wait for page to load", Toast.LENGTH_SHORT).show();
-
+            popupWindow.dismiss();
             setContentView(R.layout.activity_loading);
 
             // TODO: make function to submit the thingies
@@ -933,29 +1110,58 @@ public class AddtclActivity extends AppCompatActivity {
 
             LinearLayout layoutDone = findViewById(R.id.layout_done);
             Button buttonHome = findViewById(R.id.btn_home);
-            Button buttonAddCase = findViewById(R.id.btn_addanothercase);
+            Button buttonAddEvent = findViewById(R.id.btn_addanothercase);
 
-            int i = 900000000;
-            while (i>= -900000000) {
-                i -= 1;
-                if (i== -900000000) {
-                    loadingpanel.setVisibility(View.GONE);
-                    imgCheck.setVisibility(View.VISIBLE);
-                    layoutDone.setVisibility(View.VISIBLE);
-                    tvCaseAddStatus.setText("Case successfully submitted!");
+            TCLJS tcljs = new TCLJS();
+            tcljs.setTCLID(TCLIDString.substring(7));
+            tcljs.setImmunisationData(immunisationData);
+            tcljs.setFormData(new TCLJS.FormData(patient));
 
-                    buttonHome.setOnClickListener(new View.OnClickListener() { @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(AddtclActivity.this, HomeActivity.class));
+            Call<ResponseBody> call = apiClient.APIservice.postAddNewProgEntry(tcljs);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    try {
+                        if (response.code() == 200) {
+                            loadingpanel.setVisibility(View.GONE);
+                            imgCheck.setVisibility(View.VISIBLE);
+                            layoutDone.setVisibility(View.VISIBLE);
+                            tvCaseAddStatus.setText("Entry successfully submitted!");
+                            buttonAddEvent.setText("Add New Entry");
+
+                            buttonHome.setOnClickListener(new View.OnClickListener() { @Override
+                            public void onClick(View view) {
+                                finish();
+                            }
+                            });
+                            buttonAddEvent.setOnClickListener(new View.OnClickListener() { @Override
+                            public void onClick(View view) {
+                                page1 = false;
+                                page2 = false;
+                                page3 = false;
+
+                                patient = new Patient();
+                                riskFactors = new RiskFactors();
+                                immunisationData = new Immunization();
+                                existingpatient = false;
+
+                                pageOne();
+                            }
+                            });
+                        } else {
+                            Toast.makeText(AddtclActivity.this, "Add Immunisation Failed", Toast.LENGTH_LONG).show();
+                            pageThree();
+                        }
+                    } catch (Error e) {
+                        Log.e("failedPostEvent", e.getMessage());
                     }
-                    });
-                    buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(AddtclActivity.this, AddtclActivity.class));
-                    }
-                    });
                 }
-            }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Log.e("failedPostLogin", t.getMessage());
+                }
+            });
         }
         });
 
