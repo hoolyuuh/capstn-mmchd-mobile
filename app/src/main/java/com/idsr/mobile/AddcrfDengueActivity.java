@@ -28,7 +28,7 @@ import android.widget.Toast;
 import com.idsr.mobile.models.APIClient;
 import com.idsr.mobile.models.Case;
 import com.idsr.mobile.models.CaseData;
-import com.idsr.mobile.models.CaseFormData;
+import com.idsr.mobile.models.CaseForm;
 import com.idsr.mobile.models.Patient;
 import com.idsr.mobile.models.RiskFactors;
 import com.idsr.mobile.models.User;
@@ -62,7 +62,7 @@ public class AddcrfDengueActivity extends AppCompatActivity {
     private ArrayList<String> userCRFs;
     private User user;
     private Bundle bundle;
-    private CaseFormData formData;
+    private CaseForm formData;
     private ArrayList<Patient> patientArrayList;
     private Patient patient;
     private boolean existingpatient = false;
@@ -466,13 +466,13 @@ public class AddcrfDengueActivity extends AppCompatActivity {
                 caseData.setFinalDiagnosis(finaldiagnosis);
 
                 // prepping form data before sending to retrofit
-                formData = new CaseFormData();
+                formData = new CaseForm();
                 formData.setCases(cases);
-                formData.setPatient(patient);
+                formData.setPatient(patientForm);
                 formData.setRiskFactors(riskFactors);
                 formData.setCaseData(caseData);
 
-                Call<ResponseBody> call = apiClient.APIservice.postNewCase(formData,null);
+                Call<ResponseBody> call = apiClient.APIservice.postMobCRF(formData, "");
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
