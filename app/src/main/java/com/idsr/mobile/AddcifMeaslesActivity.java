@@ -34,6 +34,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.api.client.repackaged.com.google.common.base.Strings;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles0Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles1Binding;
 import com.idsr.mobile.databinding.ActivityAddcifMeasles2Binding;
@@ -346,8 +347,10 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
-                        new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                                etBirthdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                            etBirthdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                    Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                    Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
 
@@ -643,7 +646,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                             @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                                etAdmitdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                                etAdmitdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                        Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                        Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
         etOnsetdate.setOnClickListener(new View.OnClickListener() { @Override
@@ -652,7 +657,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etOnsetdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etOnsetdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
         etReportdate.setOnClickListener(new View.OnClickListener() { @Override
@@ -661,7 +668,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etReportdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etReportdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
 
@@ -768,7 +777,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etSymp1Date.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etSymp1Date.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
         etSymp2Date.setOnClickListener(new View.OnClickListener() { @Override
@@ -777,7 +788,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etSymp2Date.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etSymp2Date.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
 
@@ -857,7 +870,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this, new DatePickerDialog.OnDateSetListener() { @Override
                     public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etVaccineLastDoseDate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etVaccineLastDoseDate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
                 datePickerDialog.show(); }
         });
 
@@ -1017,7 +1032,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etTravelPlace.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etTravelPlace.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                    Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                    Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         this.etTravelDate.setOnClickListener(new View.OnClickListener() {@Override
@@ -1025,7 +1042,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etTravelDate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etTravelDate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                    Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                    Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
 
@@ -1148,7 +1167,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etDatedied.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etDatedied.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
 
@@ -1225,7 +1246,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etCollectdate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etCollectdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etReceivedate.setOnClickListener(new View.OnClickListener() {@Override
@@ -1233,7 +1256,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etReceivedate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etReceivedate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
         etInvestigDate.setOnClickListener(new View.OnClickListener() {@Override
@@ -1241,7 +1266,9 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
             DatePickerDialog datePickerDialog = new DatePickerDialog(AddcifMeaslesActivity.this,
                     new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
-                        etInvestigDate.setText((monthOfYear + 1) + "-" + dayOfMonth + "-" + year);} }, mYear, mMonth, mDay);
+                        etInvestigDate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
             datePickerDialog.show(); }
         });
 
@@ -1490,45 +1517,49 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 cases.setCRFID(null);
 
                 // PATIENTS
-                Patient patient = new Patient();
+                Patient patientForm = new Patient();
                 // TODO: autofill patient
-                patient.setPatientID(null);
-                // phone
-                patient.setEpiID(null);
-                patient.setLastName(lastName);
-                patient.setFirstName(firstName);
-                patient.setMidName(middleName);
-                patient.setCurrHouseStreet(currStreet);
-                patient.setCurrBrgy(currBrgy);
-                patient.setCurrCity(currCity);
-                patient.setPermHouseStreet(permStreet);
-                patient.setPermBrgy(permBrgy);
-                patient.setPermCity(permCity);
-                patient.setSex(sex);
-                patient.setBirthdate(birthdate);
+                if (existingpatient) {
+                    patientForm = patient;
+                } else {
+                    patientForm.setPatientID(null);
+                    // phone
+                    patientForm.setEpiID(null);
+                    patientForm.setLastName(lastName);
+                    patientForm.setFirstName(firstName);
+                    patientForm.setMidName(middleName);
+                    patientForm.setCurrHouseStreet(currStreet);
+                    patientForm.setCurrBrgy(currBrgy);
+                    patientForm.setCurrCity(currCity);
+                    patientForm.setPermHouseStreet(permStreet);
+                    patientForm.setPermBrgy(permBrgy);
+                    patientForm.setPermCity(permCity);
+                    patientForm.setSex(sex);
+                    patientForm.setBirthdate(birthdate);
 
-                try {
-                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                    Date date = formatter.parse(birthdate);
-                    patient.setAgeNo(Math.toIntExact(ChronoUnit.YEARS.between((Temporal) date, LocalDate.now(ZoneId.of("GMT+8")))));
-                } catch (ParseException e) {
-                    Log.d("ParseException", "Got an exception in converting birthdate! " + e);
-                    patient.setAgeNo(30);
+                    try {
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                        Date date = formatter.parse(birthdate);
+                        patientForm.setAgeNo(Math.toIntExact(ChronoUnit.YEARS.between((Temporal) date, LocalDate.now(ZoneId.of("GMT+8")))));
+                    } catch (ParseException e) {
+                        Log.d("ParseException", "Got an exception in converting birthdate! " + e);
+                        patient.setAgeNo(30);
+                    }
+                    patientForm.setAgeType("year");
+                    patientForm.setAdmitStatus(patientAdmit);
+                    patientForm.setCivilStatus(civilstatus);
+                    patientForm.setOccupation(occupation);
+                    patientForm.setOccuLoc(occuloc);
+                    patientForm.setOccuStreet(occuStreet);
+                    patientForm.setOccuCity(occuCity);
+                    patientForm.setOccuBrgy(occuBrgy);
+                    patientForm.setGuardianName(parentCg);
+                    patientForm.setGuardianContact(parentCgContact);
+                    patientForm.setIndGroup(indigenousgroup);
+                    patientForm.setPregWeeks(pregnancy);
+                    patientForm.setHCPN(HCPN);
+                    patientForm.setILHZ(ILHZ);
                 }
-                patient.setAgeType("year");
-                patient.setAdmitStatus(patientAdmit);
-                patient.setCivilStatus(civilstatus);
-                patient.setOccupation(occupation);
-                patient.setOccuLoc(occuloc);
-                patient.setOccuStreet(occuStreet);
-                patient.setOccuCity(occuCity);
-                patient.setOccuBrgy(occuBrgy);
-                patient.setGuardianName(parentCg);
-                patient.setGuardianContact(parentCgContact);
-                patient.setIndGroup(indigenousgroup);
-                patient.setPregWeeks(pregnancy);
-                patient.setHCPN(HCPN);
-                patient.setILHZ(ILHZ);
 
                 // RISK FACTORS
                 RiskFactors riskFactors = new RiskFactors();
