@@ -58,6 +58,10 @@ public class APIClient {
 
         @GET("getPatients")
         Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
+
+        @GET("getMobCRFs")
+        Call<ArrayList<String>> getMobileCRFs(@Query("userID") String userID);
+
         /* Template for query paths */
 
 //        @GET("getPatients")
