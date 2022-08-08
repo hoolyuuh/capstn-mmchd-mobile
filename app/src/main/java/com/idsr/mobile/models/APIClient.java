@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import com.idsr.mobile.models.APIModels.EventJs;
 import com.idsr.mobile.models.APIModels.LoginJS;
 import com.idsr.mobile.models.APIModels.LoginResponse;
+import com.idsr.mobile.models.APIModels.SettingsResponse;
 import com.idsr.mobile.models.APIModels.TCLJS;
 import com.idsr.mobile.models.APIModels.TCLResponse;
 
@@ -56,11 +57,17 @@ public class APIClient {
         @POST("newImmuProgEntry")
         Call<ResponseBody> postAddNewProgEntry(@Body TCLJS tcljs);
 
+        @POST("updatePushData")
+        Call<ResponseBody> postUpdatePushData(@Body UserSettings userSettings);
+
         @GET("getPatients")
         Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
 
         @GET("getTCL")
         Call<TCLResponse> getTCLID(@Query("userID") String userID, @Query("diseaseID") String diseaseID);
+
+        @GET("getSettings")
+        Call<SettingsResponse> getUserSettings(@Query("userID") String userID);
         /* Template for query paths */
 
 //        @GET("getPatients")
@@ -88,6 +95,19 @@ public class APIClient {
         });
     }
 
+    public void callGetSettingsTest() {
+        Call<SettingsResponse> call = APIservice.getUserSettings("US-0000000000002");
+        call.enqueue(new Callback<SettingsResponse>() {
+            @Override
+            public void onResponse(Call<SettingsResponse> call, Response<SettingsResponse> response) {
+                Log.e("callGetSettingsTest", "Settings UserID: " + response.body().getUserSettings().getUserID());
+            }
+            @Override
+            public void onFailure(Call<SettingsResponse> call, Throwable t) {
+                Log.e("callGetSettingsTest", t.getMessage());
+            }
+        });
+    }
 //    public String getTCLIDTest(String userID) {
 //        Call<TCLResponse> call = APIservice.getTCLID(userID, "DI-0000000000003");
 //        final String[] result = new String[1];

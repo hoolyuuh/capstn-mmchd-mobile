@@ -137,7 +137,6 @@ public class AddtclActivity extends AppCompatActivity {
 //                Log.e("TestingAPI", "Contents: " + response.body().getTCL().getTCLID());
                 TCLIDString.substring(0,8);
                 TCLIDString = new String("TCLID: " + response.body().getTCL().getTCLID());
-                Log.e("TCLID", "TCLID: " + TCLIDString);
             }
             @Override
             public void onFailure(Call<TCLResponse> call, Throwable t) {
