@@ -108,7 +108,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     //    page 0
     private AutoCompleteTextView autocompPatients;
 
-//    page 1
+    //    page 1
     private EditText etLastname, etMiddlename, etFirstname, etBirthdate, /*etPhone,*/ etPregantweeks, etIndigenousgroup;
     private RadioGroup radioSex, radioPregnancy;
     private TextView tvCivilStatus, tvOccuCity, tvOccuBrgy, tvCurrCity, tvCurrBrgy, tvPermCity, tvPermBrgy;
@@ -124,7 +124,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String permStreet, permCity, permBrgy;
     private String parentCg, HCPN, ILHZ;
 
-//    page 2
+    //    page 2
     private RadioGroup radioPatientAdmit;
     private EditText etAdmitdate, etOnsetdate, etReportdate, etReporter;
     private CheckBox checkRfL1, checkRfL2, checkRfL3, checkRfL4, checkRfL5, checkRfL6;
@@ -136,7 +136,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String patientAdmit = "", admitdate, onsetdate, reportdate, reporter;
     private int riskfactors = 0;
 
-//    page 3
+    //    page 3
     private EditText etSymp1Date, etSymp2Date;
     private CheckBox checkSymp1, checkSymp2, checkSymp3, checkSymp4, checkSymp5, checkSymp6, checkSymp7, checkSymp8;
     private EditText etComplications, etSymptoms, etWorkingDiagnosis;
@@ -144,7 +144,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String symp1date, symp2date, complications, symptoms, workingdiagnosis;
     // TODO: symptoms initialize, idk how symptoms are stored
 
-//    page 4
+    //    page 4
     private RadioGroup radioMeaslesVaccination;
     private LinearLayout constVaccinated, constUnvaccinated;
     private EditText etVaccineMV, etVaccineMR, etVaccineMMR, etVaccineLastDoseDate, etVaccineValidityOthers;
@@ -156,23 +156,23 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private String vaccinationStatus="", vaccineMV, vaccineMR, vaccineMMR, vaccineLastDoseDate, vaccinationValidity="", vaccineCampaign="", novaccineReasonOther="", vitA="";
     private ArrayList<String> noVaccReasons = new ArrayList<>();
 
-//    page 5
+    //    page 5
     private RadioGroup radioTravelhistory, radioRashOnset, radioMeaslesContact, radioRubellaContact, radioRubellaExposure, radioOtherFeverRashes;
     private ConstraintLayout consWithTravelHistory, consConfirmedRubella;
     private EditText etTravelPlace, etTravelDate, etRubellaContactName, etRubellaContactPlace, etRubellaTravelDate, etRubellaExposureOther;
 
     private String travelHistory="", travelPlace, travelDate, rashOnset="", measlesContact="", rubellaContact="", rubellaContactName, rubellaContactPlace, rubellaContactTravelDate, rubellaExposure="", otherKnownFeverRash="";
 
-//    page 6
+    //    page 6
     private RadioGroup radioSourceinfo;
     private String sourceinfo="";
 
-//    page 7
+    //    page 7
     private RadioGroup radioOutcome;
     private EditText etDatedied, etFinalDiagnosis;
     private String outcome="", datedied, finaldiagnosis;
 
-//    page 8
+    //    page 8
     private RadioGroup radioLabResult;
     private ConstraintLayout consWithLabResult, consNoLabResult;
     private TextView tvLabspecimen, tvLabSelect;
@@ -181,7 +181,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
     private String labresult="", labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, investigatorContact, investigateDate, labselected;
 
-//    page 9
+    //    page 9
     private RadioGroup radioFinalClassif;
     private ImageButton imageDropdown1, imageDropdown2, imageDropdown3, imageDropdown4, imageDropdown5, imageDropdown6, imageDropdown7;
     private TextView textDropdown1, textDropdown2, textDropdown3, textDropdown4, textDropdown5, textDropdown6, textDropdown7;
@@ -1488,16 +1488,12 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
                 setContentView(R.layout.activity_loading);
 
-                // TODO: make function to submit the thingies
                 TextView tvCaseAddStatus = findViewById(R.id.tv_caseAddStatus);
                 ProgressBar loadingpanel = findViewById(R.id.loadingPanel);
                 ImageView imgCheck = findViewById(R.id.imgCheckPanel);
-
                 LinearLayout layoutDone = findViewById(R.id.layout_done);
                 Button buttonHome = findViewById(R.id.btn_home);
                 Button buttonAddCase = findViewById(R.id.btn_addanothercase);
-
-                // converting string to date
 
                 // CASES
                 Case cases = new Case();
