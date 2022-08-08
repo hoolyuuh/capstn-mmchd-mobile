@@ -1126,8 +1126,8 @@ public class AddtclActivity extends AppCompatActivity {
                             loadingpanel.setVisibility(View.GONE);
                             imgCheck.setVisibility(View.VISIBLE);
                             layoutDone.setVisibility(View.VISIBLE);
-                            tvCaseAddStatus.setText("Event successfully submitted!");
-                            buttonAddEvent.setText("Add New Event");
+                            tvCaseAddStatus.setText("Entry successfully submitted!");
+                            buttonAddEvent.setText("Add New Entry");
 
                             buttonHome.setOnClickListener(new View.OnClickListener() { @Override
                             public void onClick(View view) {
