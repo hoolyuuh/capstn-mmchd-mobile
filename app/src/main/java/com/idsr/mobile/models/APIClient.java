@@ -60,7 +60,7 @@ public class APIClient {
         Call<ResponseBody> postAddEvent(@Body EventJs event);
 
         @POST("newCase")
-        Call<ResponseBody> postNewCase(@Body CaseFormData formData, @Nullable @Body String CRFID);
+        Call<ResponseBody> postNewCase(@Body CaseFormJS formData);
 
         @POST("newImmuProgEntry")
         Call<ResponseBody> postAddNewProgEntry(@Body TCLJS tcljs);
@@ -69,7 +69,7 @@ public class APIClient {
         Call<ArrayList<String>> getMobileCRFs(@Query("userID") String userID);
 
         @POST("postMobCRF")
-        Call<ResponseBody> postMobCRF(@Body CaseFormData formData, @Nullable @Body String CRFID);
+        Call<ResponseBody> postMobCRF(@Body CaseForm formData, @Nullable @Body String CRFID);
         
         @POST("updatePushData")
         Call<ResponseBody> postUpdatePushData(@Body UserSettings userSettings);

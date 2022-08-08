@@ -7,14 +7,11 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -35,19 +32,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.api.client.repackaged.com.google.common.base.Strings;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles0Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles1Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles2Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles3Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles4Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles5Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles6Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles7Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles8Binding;
-import com.idsr.mobile.databinding.ActivityAddcifMeasles9Binding;
 import com.idsr.mobile.models.APIClient;
-import com.idsr.mobile.models.CaseFormData;
+import com.idsr.mobile.models.CaseForm;
 import com.idsr.mobile.models.Case;
+import com.idsr.mobile.models.CaseFormJS;
 import com.idsr.mobile.models.Patient;
 import com.idsr.mobile.models.RiskFactors;
 import com.idsr.mobile.models.CaseData;
@@ -56,13 +44,9 @@ import com.idsr.mobile.models.User;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -99,7 +83,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private APIClient apiClient;
     private User user;
     private Bundle bundle;
-    private CaseFormData formData;
+    private CaseForm formData;
     private ArrayList<Patient> patientArrayList;
     private Patient patient;
     private boolean existingpatient = false;
@@ -1534,7 +1518,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                     try {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                         Date date = formatter.parse(birthdate);
-                        patientForm.setAgeNo(Math.toIntExact(ChronoUnit.YEARS.between((Temporal) date, LocalDate.now(ZoneId.of("GMT+8")))));
+                        patientForm.setAgeNo(Math.toIntExact(ChronoUnit.YEARS.between(date.toInstant().atZone(ZoneId.of("GMT+8")).toLocalDate(), LocalDate.now(ZoneId.of("GMT+8")))));
                     } catch (ParseException e) {
                         Log.d("ParseException", "Got an exception in converting birthdate! " + e);
                         patient.setAgeNo(30);
@@ -1647,13 +1631,16 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 caseData.setFinalDiagnosis(finaldiagnosis);
 
                 // prepping form data before sending to retrofit
-                formData = new CaseFormData();
+                formData = new CaseForm();
                 formData.setCases(cases);
-                formData.setPatient(patient);
+                formData.setPatient(patientForm);
                 formData.setRiskFactors(riskFactors);
                 formData.setCaseData(caseData);
 
-                Call<ResponseBody> call = apiClient.APIservice.postNewCase(formData,null);
+                CaseFormJS caseFormJS = new CaseFormJS();
+                caseFormJS.setFormData(formData);
+
+                Call<ResponseBody> call = apiClient.APIservice.postNewCase(caseFormJS);
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
