@@ -73,7 +73,7 @@ public class AccountActivity extends AppCompatActivity {
         tv_email = findViewById(R.id.tv_email);
         sw_consent = findViewById(R.id.switch_location);
 
-        tv_name.setText(user.getFirstName() +  " " + user.getMidName() + " " + user.getLastName());
+        tv_name.setText(user.getFirstName() +  " " + user.getLastName());
         tv_email.setText(user.getUserEmail());
 
         if(settingsResponse.getUserSettings().getPushDataAccept() == 1)
