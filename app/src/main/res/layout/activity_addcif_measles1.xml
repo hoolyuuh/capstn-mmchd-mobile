@@ -328,7 +328,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="42dp"
                         android:buttonTint="@color/theme_darkgray"
-                        android:text="Female"
+                        android:text="FEMALE"
                         android:textColor="@color/theme_darkgray" />
 
                     <RadioButton
@@ -338,7 +338,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:buttonTint="@color/theme_darkgray"
-                        android:text="Male"
+                        android:text="MALE"
                         android:textColor="@color/theme_darkgray" />
                 </RadioGroup>
 
