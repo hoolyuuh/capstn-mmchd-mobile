@@ -52,6 +52,9 @@ public class APIClient {
         @POST("login")
         Call<LoginResponse> postLogin(@Body LoginJS login);
 
+        @GET("getPatients")
+        Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
+
         @POST("newEvent")
         Call<ResponseBody> postAddEvent(@Body EventJs event);
 
@@ -61,12 +64,11 @@ public class APIClient {
         @POST("newImmuProgEntry")
         Call<ResponseBody> postAddNewProgEntry(@Body TCLJS tcljs);
 
-        @GET("getPatients")
-        Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
-
         @GET("getMobCRFs")
         Call<ArrayList<String>> getMobileCRFs(@Query("userID") String userID);
 
+        @POST("postMobCRF")
+        Call<ResponseBody> postMobCRF(@Body CaseFormData formData, @Nullable @Body String CRFID);
 
         @GET("getTCL")
         Call<TCLResponse> getTCLID(@Query("userID") String userID, @Query("diseaseID") String diseaseID);

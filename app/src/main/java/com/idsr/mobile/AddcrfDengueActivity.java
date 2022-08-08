@@ -158,10 +158,8 @@ public class AddcrfDengueActivity extends AppCompatActivity {
         userCRFs = new ArrayList<>();
         bundle = getIntent().getExtras();
         user = bundle.getParcelable("user");
-    }
 
-    private void getCRFs() {
-        Call<ArrayList<String>> call = apiClient.APIservice.getMobileCRFs("TODO!!!");
+        Call<ArrayList<String>> call = apiClient.APIservice.getMobileCRFs(user.getUserID());
         call.enqueue(new Callback<ArrayList<String>>() {
             @Override
             public void onResponse(Call<ArrayList<String>> call, Response<ArrayList<String>> response) {
