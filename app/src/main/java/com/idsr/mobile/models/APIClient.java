@@ -7,6 +7,8 @@ import com.google.gson.GsonBuilder;
 import com.idsr.mobile.models.APIModels.EventJs;
 import com.idsr.mobile.models.APIModels.LoginJS;
 import com.idsr.mobile.models.APIModels.LoginResponse;
+import com.idsr.mobile.models.APIModels.TCLJS;
+import com.idsr.mobile.models.APIModels.TCLResponse;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -51,8 +53,14 @@ public class APIClient {
         @POST("newEvent")
         Call<ResponseBody> postAddEvent(@Body EventJs event);
 
+        @POST("newImmuProgEntry")
+        Call<ResponseBody> postAddNewProgEntry(@Body TCLJS tcljs);
+
         @GET("getPatients")
         Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
+
+        @GET("getTCL")
+        Call<TCLResponse> getTCLID(@Query("userID") String userID, @Query("diseaseID") String diseaseID);
         /* Template for query paths */
 
 //        @GET("getPatients")
@@ -80,23 +88,22 @@ public class APIClient {
         });
     }
 
-    public ArrayList<Patient> getPatientAutofillTest(String userID, String userOnly) {
-        Call<ArrayList<Patient>> call = APIservice.getPatientAutofill(userID,"false");
-        ArrayList<Patient> patients = new ArrayList<Patient>();
-
-        call.enqueue(new Callback<ArrayList<Patient>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Patient>> call, Response<ArrayList<Patient>> response){
-                Log.e("TestingAPI", "Got here");
-                patients.addAll(response.body());
-                Log.e("callGetTest", patients.get(0).getFirstName());
-            }
-            @Override
-            public void onFailure(Call<ArrayList<Patient>> call, Throwable t) {
-                Log.e("callGetTest", t.getMessage());
-            }
-        });
-
-        return patients;
-    }
+//    public String getTCLIDTest(String userID) {
+//        Call<TCLResponse> call = APIservice.getTCLID(userID, "DI-0000000000003");
+//        final String[] result = new String[1];
+//        result[0] = "";
+//        call.enqueue(new Callback<TCLResponse>() {
+//            @Override
+//            public void onResponse(Call<TCLResponse> call, Response<TCLResponse> response){
+////                Log.e("TestingAPI", "Got here");
+////                Log.e("TestingAPI", "Contents: " + response.body().getTCL().getTCLID());
+//                result[0] = new String(response.body().getTCL().getTCLID());
+//            }
+//            @Override
+//            public void onFailure(Call<TCLResponse> call, Throwable t) {
+//                Log.e("callGetTest", t.getMessage());
+//            }
+//        });
+//        return result[0];
+//    }
 }

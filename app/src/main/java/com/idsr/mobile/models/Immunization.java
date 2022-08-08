@@ -20,6 +20,23 @@ public class Immunization {
 	private String Dengue3date;
 
 	public Immunization() {
+		this.BCGdate = "";
+		this.HEPAwithdate = "";
+		this.HEPAmoredate = "";
+		this.OPV1date = "";
+		this.OPV2date = "";
+		this.OPV3date = "";
+		this.PENTA1date = "";
+		this.PENTA2date = "";
+		this.PENTA3date = "";
+		this.PCV1date = "";
+		this.PCV2date = "";
+		this.PCV3date = "";
+		this.MCV1date = "";
+		this.MCV2date = "";
+		this.Dengue1date = "";
+		this.Dengue2date = "";
+		this.Dengue3date = "";
 	}
 
 	public String getBCGdate() {
