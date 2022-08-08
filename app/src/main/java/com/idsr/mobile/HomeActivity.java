@@ -31,7 +31,9 @@ public class HomeActivity extends AppCompatActivity {
         this.findViewById(R.id.new_disease_case).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, AddcaseActivity.class));
+                Intent goToAddCase = new Intent(HomeActivity.this, AddcaseActivity.class);
+                goToAddCase.putExtras(bundle);
+                startActivity(goToAddCase);
             }
         });
 

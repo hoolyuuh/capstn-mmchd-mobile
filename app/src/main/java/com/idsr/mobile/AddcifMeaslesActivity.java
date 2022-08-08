@@ -240,7 +240,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         buttonConfirm.setOnClickListener(new View.OnClickListener() { @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
-                startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                // startActivity(new Intent(AddcifMeaslesActivity.this, AddcaseActivity.class));
+                finish();
             }
         });
 
