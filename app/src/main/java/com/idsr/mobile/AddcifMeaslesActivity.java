@@ -172,9 +172,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
 //    page 9
     private RadioGroup radioFinalClassif;
-    private ImageButton imageDropdown1, imageDropdown2;
-    private TextView textDropdown1, textDropdown2;
-    private LinearLayout lineargroup1, lineargroup2;
+    private ImageButton imageDropdown1, imageDropdown2, imageDropdown3, imageDropdown4, imageDropdown5, imageDropdown6, imageDropdown7;
+    private TextView textDropdown1, textDropdown2, textDropdown3, textDropdown4, textDropdown5, textDropdown6, textDropdown7;
 
     private String finalClassification="";
 
@@ -1330,46 +1329,63 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
         this.radioFinalClassif = findViewById(R.id.radiogroup_mea_finalclassif);
         this.imageDropdown1 = findViewById(R.id.image_mea_expand1);
         this.imageDropdown2 = findViewById(R.id.image_mea_expand2);
+        this.imageDropdown3 = findViewById(R.id.image_mea_expand3);
+        this.imageDropdown4 = findViewById(R.id.image_mea_expand4);
+        this.imageDropdown5 = findViewById(R.id.image_mea_expand5);
+        this.imageDropdown6 = findViewById(R.id.image_mea_expand6);
+        this.imageDropdown7 = findViewById(R.id.image_mea_expand7);
         this.textDropdown1 = findViewById(R.id.tv_mea_expand1);
         this.textDropdown2 = findViewById(R.id.tv_mea_expand2);
-        this.lineargroup1 = findViewById(R.id.linear_mea_finalclass1);
-        this.lineargroup2 = findViewById(R.id.linear_mea_finalclass2);
-
-        // TODO: Initialize Data if Backpressed
-        if(page9){
-
-        }
+        this.textDropdown3 = findViewById(R.id.tv_mea_expand3);
+        this.textDropdown4 = findViewById(R.id.tv_mea_expand4);
+        this.textDropdown5 = findViewById(R.id.tv_mea_expand5);
+        this.textDropdown6 = findViewById(R.id.tv_mea_expand6);
+        this.textDropdown7 = findViewById(R.id.tv_mea_expand7);
 
         imageDropdown1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (textDropdown1.getVisibility() == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup1, new AutoTransition());
+//                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup1, new AutoTransition());
                     textDropdown1.setVisibility(View.GONE);
                     imageDropdown1.setBackgroundResource(R.drawable.arrow_down);
                 }
                 else {
-                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup1, new AutoTransition());
                     textDropdown1.setVisibility(View.VISIBLE);
                     imageDropdown1.setBackgroundResource(R.drawable.arrow_up);
                 }
             }
         });
-        imageDropdown2.setOnClickListener(new View.OnClickListener() {
-            @Override
+        imageDropdown2.setOnClickListener(new View.OnClickListener() { @Override
             public void onClick(View view) {
-                if (textDropdown2.getVisibility() == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup2, new AutoTransition());
-                    textDropdown2.setVisibility(View.GONE);
-                    imageDropdown2.setBackgroundResource(R.drawable.arrow_down);
-                }
-                else {
-                    TransitionManager.beginDelayedTransition((ViewGroup) lineargroup2, new AutoTransition());
-                    textDropdown2.setVisibility(View.VISIBLE);
-                    imageDropdown2.setBackgroundResource(R.drawable.arrow_up);
-                }
-            }
-        });
+                if (textDropdown2.getVisibility() == View.VISIBLE) { textDropdown2.setVisibility(View.GONE); imageDropdown2.setBackgroundResource(R.drawable.arrow_down); }
+                else { textDropdown2.setVisibility(View.VISIBLE); imageDropdown2.setBackgroundResource(R.drawable.arrow_up); }
+        } });
+        imageDropdown3.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View view) {
+            if (textDropdown3.getVisibility() == View.VISIBLE) { textDropdown3.setVisibility(View.GONE); imageDropdown3.setBackgroundResource(R.drawable.arrow_down); }
+            else { textDropdown3.setVisibility(View.VISIBLE); imageDropdown3.setBackgroundResource(R.drawable.arrow_up); }
+        } });
+        imageDropdown4.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View view) {
+            if (textDropdown4.getVisibility() == View.VISIBLE) { textDropdown4.setVisibility(View.GONE); imageDropdown4.setBackgroundResource(R.drawable.arrow_down); }
+            else { textDropdown4.setVisibility(View.VISIBLE); imageDropdown4.setBackgroundResource(R.drawable.arrow_up); }
+        } });
+        imageDropdown5.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View view) {
+            if (textDropdown5.getVisibility() == View.VISIBLE) { textDropdown5.setVisibility(View.GONE); imageDropdown5.setBackgroundResource(R.drawable.arrow_down); }
+            else { textDropdown5.setVisibility(View.VISIBLE); imageDropdown5.setBackgroundResource(R.drawable.arrow_up); }
+        } });
+        imageDropdown6.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View view) {
+            if (textDropdown6.getVisibility() == View.VISIBLE) { textDropdown6.setVisibility(View.GONE); imageDropdown6.setBackgroundResource(R.drawable.arrow_down); }
+            else { textDropdown6.setVisibility(View.VISIBLE); imageDropdown6.setBackgroundResource(R.drawable.arrow_up); }
+        } });
+        imageDropdown7.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View view) {
+            if (textDropdown7.getVisibility() == View.VISIBLE) { textDropdown7.setVisibility(View.GONE); imageDropdown7.setBackgroundResource(R.drawable.arrow_down); }
+            else { textDropdown7.setVisibility(View.VISIBLE); imageDropdown7.setBackgroundResource(R.drawable.arrow_up); }
+        } });
 
         radioFinalClassif.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {

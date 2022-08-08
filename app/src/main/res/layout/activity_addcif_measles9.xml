@@ -200,6 +200,7 @@
                 android:textSize="15dp"
                 app:layout_constraintLeft_toLeftOf="@id/et_mea_finalclassif"
                 app:layout_constraintTop_toTopOf="@id/et_mea_finalclassif" />
+
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/radiogroup_mea_finalclassif"
                 android:layout_width="match_parent"
@@ -208,38 +209,38 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
                 android:orientation="vertical"
+                android:translationZ="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/et_mea_finalclassif"
                 tools:ignore="MissingConstraints">
 
-                <LinearLayout
-                    android:id="@+id/linear_mea_finalclass1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_finalclassif1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="vertical">
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Clinically Compatible Measles"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/theme_darkgray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
                     <ImageButton
                         android:id="@+id/image_mea_expand1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="right"
                         android:layout_marginTop="2dp"
-                        android:background="@drawable/arrow_down"
-                        />
-                    <RadioButton
-                        android:id="@+id/radiobutton_mea_finalclassif1"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="-32dp"
-                        android:buttonTint="@color/theme_darkgray"
-                        android:text="Alive"
-                        android:textColor="@color/theme_darkgray" />
+                        android:background="@drawable/arrow_down" />
                     <TextView
-                        android:id="@+id/tv_mea_expand1"
                         android:visibility="gone"
+                        android:id="@+id/tv_mea_expand1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -247,51 +248,52 @@
                         android:layout_marginBottom="2dp"
                         android:paddingLeft="32dp"
                         android:paddingRight="5dp"
-                        android:text="ALIHEBIUEYBEIUBEU"
+                        android:textSize="13dp"
+                        android:textStyle="italic"
+                        android:text="Must be a suspected measles case, for which no adequate clinical specimen was taken and the case has not been linked epidemiologically to a laboratory-confirmed case of measles or other communicable disease OR laboratory confirmation is still pending"
                         android:textColor="@color/light_gray"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@drawable/bar"
                         android:backgroundTint="@color/theme_gray"
                         android:outlineAmbientShadowColor="@color/black"
                         android:outlineSpotShadowColor="@color/black"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints" />
                 </LinearLayout>
 
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_finalclassif2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="0dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Epidemiologically Linked Confirmed Measles"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/theme_darkgray" />
                 <LinearLayout
-                    android:id="@+id/linear_mea_finalclass2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
                     <ImageButton
                         android:id="@+id/image_mea_expand2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="right"
                         android:layout_marginTop="2dp"
-                        android:background="@drawable/arrow_down"
-                        />
-                    <RadioButton
-                        android:id="@+id/radiobutton_mea_finalclassif2"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="-32dp"
-                        android:buttonTint="@color/theme_darkgray"
-                        android:text="Alive"
-                        android:textColor="@color/theme_darkgray" />
+                        android:background="@drawable/arrow_down" />
                     <TextView
-                        android:id="@+id/tv_mea_expand2"
                         android:visibility="gone"
+                        android:id="@+id/tv_mea_expand2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -299,25 +301,354 @@
                         android:layout_marginBottom="2dp"
                         android:paddingLeft="32dp"
                         android:paddingRight="5dp"
-                        android:text="ALIHEBIUEYBEIUBEU"
+                        android:textSize="13dp"
+                        android:textStyle="italic"
+                        android:text="A suspected measles case that has not been confirmed by a laboratory but was geographically and temporally related with dates of rash onset occurring between 7 and 23 days apart from a laboratory-confirmed case or another epidemiologically confirmed measles case"
                         android:textColor="@color/light_gray"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@drawable/bar"
                         android:backgroundTint="@color/theme_gray"
                         android:outlineAmbientShadowColor="@color/black"
                         android:outlineSpotShadowColor="@color/black"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="5dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints" />
                 </LinearLayout>
 
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_finalclassif3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="0dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Epidemiologically Linked Confirmed Rubella"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/theme_darkgray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
+                    <ImageButton
+                        android:id="@+id/image_mea_expand3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/arrow_down" />
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_mea_expand3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="5dp"
+                        android:textSize="13dp"
+                        android:textStyle="italic"
+                        android:text="A suspected case who has direct contact with another laboratory confirmed rubella case with rash onset occurred 12-23 days before the present case"
+                        android:textColor="@color/light_gray"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/theme_gray"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:outlineSpotShadowColor="@color/black"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_finalclassif4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="0dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Laboratory-Confirmed Measles"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/theme_darkgray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
+                    <ImageButton
+                        android:id="@+id/image_mea_expand4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/arrow_down" />
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_mea_expand4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="5dp"
+                        android:textSize="13dp"
+                        android:textStyle="italic"
+                        android:text="A suspected measles case that has been confirmed by a proficient laboratory as positive for Measles IgM antibodies and/or positive for measles virus isolation or Polymerase Chain Reaction (PCR)"
+                        android:textColor="@color/light_gray"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/theme_gray"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:outlineSpotShadowColor="@color/black"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_finalclassif5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="0dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Laboratory-Confirmed Rubella"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/theme_darkgray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
+                    <ImageButton
+                        android:id="@+id/image_mea_expand5"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/arrow_down" />
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_mea_expand5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="5dp"
+                        android:textSize="13dp"
+                        android:textStyle="italic"
+                        android:text="Must be a suspected measles case with a positive laboratory test results for rubella-specific IgM antibodies or other laboratory test method"
+                        android:textColor="@color/light_gray"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/theme_gray"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:outlineSpotShadowColor="@color/black"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_finalclassif6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="0dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Non-Measles/Rubella Discarded Case"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/theme_darkgray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
+                    <ImageButton
+                        android:id="@+id/image_mea_expand6"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/arrow_down" />
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_mea_expand6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="5dp"
+                        android:textSize="13dp"
+                        android:textStyle="italic"
+                        android:text="A suspected case that has been investigated and discarded as a non-measles (and non-rubella) when anyofthe following are true: negative laboratory testing in a proficient laboratory on an adequate specimen collected during the proper time period after rash onset; epidemiological linkage to a laboratory confirmed outbreak of another communicable disease that is not measles/rubella; confirmation of another etiology"
+                        android:textColor="@color/light_gray"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/theme_gray"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:outlineSpotShadowColor="@color/black"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_finalclassif7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="0dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Suspected Case"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/theme_darkgray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
+                    <ImageButton
+                        android:id="@+id/image_mea_expand7"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/arrow_down" />
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_mea_expand7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="5dp"
+                        android:textSize="13dp"
+                        android:textStyle="italic"
+                        android:text="Any individual, regardless of age, with the following signs and symptoms: fever (39°C or more) or hot to touch; and Maculo-papular rash (non-vesicular) AND at least one of the following: cold sweat, jaw pain, cough, coryza (runny nose), or conjunctivitis (red eyes)"
+                        android:textColor="@color/light_gray"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/theme_gray"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:outlineSpotShadowColor="@color/black"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+
             </RadioGroup>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+                <RadioButton
+                    android:id="@+id/radiobutton_mea_finalclassif0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="0dp"
+                    android:buttonTint="@color/theme_darkgray"
+                    android:text="Epidemiologically Linked Confirmed Measles"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/theme_darkgray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-35dp">
+                    <ImageButton
+                        android:id="@+id/image_mea_expand0"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/arrow_down" />
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_mea_expand0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="5dp"
+                        android:textSize="13dp"
+                        android:textStyle="italic"
+                        android:text="ABC"
+                        android:textColor="@color/light_gray"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/theme_gray"
+                        android:outlineAmbientShadowColor="@color/black"
+                        android:outlineSpotShadowColor="@color/black"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
