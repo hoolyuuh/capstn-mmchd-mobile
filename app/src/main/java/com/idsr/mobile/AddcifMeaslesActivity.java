@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import com.google.api.client.repackaged.com.google.common.base.Strings;
 import com.idsr.mobile.models.APIClient;
+import com.idsr.mobile.models.APIModels.TCLResponse;
 import com.idsr.mobile.models.CaseForm;
 import com.idsr.mobile.models.Case;
 import com.idsr.mobile.models.CaseFormJS;
@@ -88,6 +89,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private Patient patient;
     private boolean existingpatient = false;
     private ArrayList<String> patientnames;
+    private ArrayList<User> labUsers;
 
     //    page 0
     private AutoCompleteTextView autocompPatients;
@@ -163,7 +165,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
     private Spinner spinnerLabSpecimen, spinnerLabSelect;
     private EditText etCollectdate, etReceivedate, etresultMeasles, etresultRubella, etresultVirus, etresultPRC, etInvestigator, etInvestigContact, etInvestigDate;
 
-    private String labresult="", labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, investigatorContact, investigateDate, labselected;
+    private String labresult="", labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, investigatorContact, investigateDate, labselected, labSelectID;
 
     //    page 9
     private RadioGroup radioFinalClassif;
@@ -180,6 +182,19 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
         user = bundle.getParcelable("user");
+
+        Call<ArrayList<User>> call = apiClient.APIservice.getLabUsers();
+        call.enqueue(new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response){
+                labUsers = response.body();
+                Log.d("callGetLabUsers", "labUsers get: " + labUsers.size());
+            }
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+                Log.e("callGetLabUsers", t.getMessage());
+            }
+        });
 
 //        binding0 = ActivityAddcifMeasles0Binding.inflate(getLayoutInflater());
 //        binding1 = ActivityAddcifMeasles1Binding.inflate(getLayoutInflater());
@@ -494,14 +509,14 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
 
                 if (etOccupation.getText().toString().length() <= 0) { page1 = page1 & false; etOccupation.setBackgroundResource(R.drawable.inputbox_red); }
                 else etOccupation.setBackgroundResource(R.drawable.inputbox);
-                if (etOcculoc.getText().toString().length() <= 0) { page1 = page1 & false; etOcculoc.setBackgroundResource(R.drawable.inputbox_red); }
-                else etOcculoc.setBackgroundResource(R.drawable.inputbox);
-                if (etOccuStreet.getText().toString().length() <= 0) { page1 = page1 & false; etOccuStreet.setBackgroundResource(R.drawable.inputbox_red); }
-                else etOccuStreet.setBackgroundResource(R.drawable.inputbox);
-                if (tvOccuCity.getText().toString().length() <= 0) { page1 = page1 & false; tvOccuCity.setBackgroundResource(R.drawable.inputbox_red); tvOccuCity.setPadding(25,50,25,20); }
-                else { tvOccuCity.setBackgroundResource(R.drawable.inputbox); tvOccuCity.setPadding(25,50,25,20); }
-                if (tvOccuBrgy.getText().toString().length() <= 0) { page1 = page1 & false; tvOccuBrgy.setBackgroundResource(R.drawable.inputbox_red); tvOccuBrgy.setPadding(25,50,25,20); }
-                else { tvOccuBrgy.setBackgroundResource(R.drawable.inputbox); tvOccuBrgy.setPadding(25,50,25,20); }
+//                if (etOcculoc.getText().toString().length() <= 0) { page1 = page1 & false; etOcculoc.setBackgroundResource(R.drawable.inputbox_red); }
+//                else etOcculoc.setBackgroundResource(R.drawable.inputbox);
+//                if (etOccuStreet.getText().toString().length() <= 0) { page1 = page1 & false; etOccuStreet.setBackgroundResource(R.drawable.inputbox_red); }
+//                else etOccuStreet.setBackgroundResource(R.drawable.inputbox);
+//                if (tvOccuCity.getText().toString().length() <= 0) { page1 = page1 & false; tvOccuCity.setBackgroundResource(R.drawable.inputbox_red); tvOccuCity.setPadding(25,50,25,20); }
+//                else { tvOccuCity.setBackgroundResource(R.drawable.inputbox); tvOccuCity.setPadding(25,50,25,20); }
+//                if (tvOccuBrgy.getText().toString().length() <= 0) { page1 = page1 & false; tvOccuBrgy.setBackgroundResource(R.drawable.inputbox_red); tvOccuBrgy.setPadding(25,50,25,20); }
+//                else { tvOccuBrgy.setBackgroundResource(R.drawable.inputbox); tvOccuBrgy.setPadding(25,50,25,20); }
 
                 if (etCurrStreet.getText().toString().length() <= 0) { page1 = page1 & false; etCurrStreet.setBackgroundResource(R.drawable.inputbox_red); }
                 else etCurrStreet.setBackgroundResource(R.drawable.inputbox);
@@ -1267,14 +1282,20 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
-        ArrayAdapter<CharSequence>adapterLabSelection=ArrayAdapter.createFromResource(this, R.array.measLabSelection, android.R.layout.simple_spinner_item);
-        adapterLabSelection.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        ArrayList<String> labUserNames = new ArrayList<>();
+        for (int i = 0; i < labUsers.size(); i++) {
+            labUserNames.add(labUsers.get(i).getDruName());
+        }
+        ArrayAdapter<String> adapterLabSelection = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, labUserNames);
         spinnerLabSelect.setAdapter(adapterLabSelection);
         spinnerLabSelect.setSelection(0, true);
         spinnerLabSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 tvLabSelect.setText(spinnerLabSelect.getSelectedItem().toString());
+                labSelectID = labUsers.get(i).getUserID();
+                Log.d("onLabUserSelect", "LabUser: " + labUsers.get(i).getUserID() + "-" + labUsers.get(i).getDruName());
                 ((TextView) adapterView.getChildAt(0)).setVisibility(View.INVISIBLE);
             }
             @Override
@@ -1488,8 +1509,8 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                 cases.setDateOnset(onsetdate);
                 cases.setReporterName(reporter);
                 cases.setReporterContact(null);
-                cases.setInvestigatorLab(labselected);
-                cases.setInvestigatorName(investigator);
+                cases.setInvestigatorLab(labSelectID);
+                cases.setInvestigatorName(labselected);
                 cases.setInvestigatorContact(investigatorContact);
                 cases.setFinalDiagnosis(finaldiagnosis);
                 cases.setCRFID(null);
