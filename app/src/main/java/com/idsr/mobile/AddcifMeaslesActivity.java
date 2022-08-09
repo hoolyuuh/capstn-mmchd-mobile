@@ -1675,7 +1675,7 @@ public class AddcifMeaslesActivity extends AppCompatActivity {
                                 buttonHome.setOnClickListener(new View.OnClickListener() { @Override
                                     public void onClick(View view) {
                                         pageNine();
-                                        startActivity(new Intent(AddcifMeaslesActivity.this, HomeActivity.class));
+                                        finish();
                                     }
                                 });
                                 buttonAddCase.setOnClickListener(new View.OnClickListener() { @Override

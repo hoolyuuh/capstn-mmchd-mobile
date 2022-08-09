@@ -112,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Select Week and Search Patient"
+            android:text="Select CRFID and Search Patient"
             android:textColor="@color/theme_green"
             android:textSize="13dp" />
 
@@ -192,7 +192,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="-10dp"
                     android:background="@color/theme_cream"
-                    android:text="   Report Week *  "
+                    android:text="   CRFID *  "
                     android:textColor="@color/light_gray"
                     android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="@id/tv_den_week"
@@ -243,7 +243,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_meas_cancel"
+            android:id="@+id/btn_den_cancel"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
@@ -259,7 +259,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next1"
+            android:id="@+id/btn_den_next1"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"

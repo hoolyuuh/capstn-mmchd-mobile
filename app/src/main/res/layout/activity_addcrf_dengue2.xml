@@ -340,6 +340,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/inputbox"
                 android:inputType="textCapCharacters"
+                android:focusable="false"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="18dp"
@@ -855,7 +856,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next3"
+            android:id="@+id/btn_den_next3"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"
