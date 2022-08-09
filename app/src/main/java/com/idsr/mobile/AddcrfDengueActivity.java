@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,21 +15,26 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.api.client.repackaged.com.google.common.base.Strings;
 import com.idsr.mobile.models.APIClient;
 import com.idsr.mobile.models.Case;
 import com.idsr.mobile.models.CaseData;
 import com.idsr.mobile.models.CaseForm;
+import com.idsr.mobile.models.CaseFormJS;
 import com.idsr.mobile.models.Patient;
 import com.idsr.mobile.models.RiskFactors;
 import com.idsr.mobile.models.User;
@@ -41,7 +47,9 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -88,54 +96,39 @@ public class AddcrfDengueActivity extends AppCompatActivity {
     private String parentCg, HCPN, ILHZ;
 
     //    page 2
-    private RadioGroup radioPatientAdmit;
-    private EditText etAdmitdate, etOnsetdate, etReportdate, etReporter;
+    private RadioGroup radioPatientAdmit, radioConsulted;
+    private EditText etAdmitdate, etOnsetdate, etReportdate, etReporter, etconsultDate, etConsultPlace;
     private CheckBox checkRfL1, checkRfL2, checkRfL3, checkRfL4, checkRfL5, checkRfL6;
     private CheckBox checkRfC1, checkRfC2, checkRfC3, checkRfC4;
     private CheckBox checkRfH1, checkRfH2, checkRfH3, checkRfH4, checkRfH5, checkRfH6;
     private CheckBox checkRfO1, checkRfO2, checkRfO3, checkRfO4, checkRfO5, checkRfO6, checkRfO7, checkRfO8, checkRfO9, checkRfO10, checkRfO11;
     private EditText etRfLOthers, etRfCOthers, etRfHOthers, etRfOOthers;
 
-    private String patientAdmit = "", admitdate, onsetdate, reportdate, reporter;
+    private String patientAdmit = "", admitdate, onsetdate, reportdate, reporter, consultDate, consulted = "", consultPlace;
     private int riskfactors = 0;
 
     //    page 3
-    private EditText etSymp1Date, etSymp2Date;
-    private CheckBox checkSymp1, checkSymp2, checkSymp3, checkSymp4, checkSymp5, checkSymp6, checkSymp7, checkSymp8;
-    private EditText etComplications, etSymptoms, etWorkingDiagnosis;
+    private RadioGroup radioDengueVaccination;
+    private ConstraintLayout constVaccinate;
+    private EditText etdatefirstvax, etdatelastvax;
 
-    private String symp1date, symp2date, complications, symptoms, workingdiagnosis;
-    // TODO: symptoms initialize, idk how symptoms are stored
+    private String datefirstvax, datelastvax, vaccinated = "";
+    private int RG_Vaxcheckedid;
 
-    //    page 4
-    private RadioGroup radioMeaslesVaccination;
-    private LinearLayout constVaccinated, constUnvaccinated;
-    private EditText etVaccineMV, etVaccineMR, etVaccineMMR, etVaccineLastDoseDate, etVaccineValidityOthers;
-    private RadioGroup radioVaccineValidity, radioVaccineCampaign;
-    private CheckBox checkNoVaccReas1, checkNoVaccReas2, checkNoVaccReas3, checkNoVaccReas4, checkNoVaccReas5, checkNoVaccReas6, checkNoVaccReas7, checkNoVaccReas8, checkNoVaccReas9, checkNoVaccReasOthers;
-    private EditText etNoVaccReasOther;
-    private RadioGroup radioVitA;
-
-    private String vaccinationStatus="", vaccineMV, vaccineMR, vaccineMMR, vaccineLastDoseDate, vaccinationValidity="", vaccineCampaign="", novaccineReasonOther="", vitA="";
     private ArrayList<String> noVaccReasons = new ArrayList<>();
 
+    //  page 4
+    private RadioGroup radioDengueClinicalClass;
+
+    private String clinicalClass = "";
+    private int RG_clinicalClassID;
+
     //    page 5
-    private RadioGroup radioTravelhistory, radioRashOnset, radioMeaslesContact, radioRubellaContact, radioRubellaExposure, radioOtherFeverRashes;
-    private ConstraintLayout consWithTravelHistory, consConfirmedRubella;
-    private EditText etTravelPlace, etTravelDate, etRubellaContactName, etRubellaContactPlace, etRubellaTravelDate, etRubellaExposureOther;
-
-    private String travelHistory="", travelPlace, travelDate, rashOnset="", measlesContact="", rubellaContact="", rubellaContactName, rubellaContactPlace, rubellaContactTravelDate, rubellaExposure="", otherKnownFeverRash="";
-
-    //    page 6
-    private RadioGroup radioSourceinfo;
-    private String sourceinfo="";
-
-    //    page 7
     private RadioGroup radioOutcome;
     private EditText etDatedied, etFinalDiagnosis;
     private String outcome="", datedied, finaldiagnosis;
 
-    //    page 8
+    //    page 6
     private RadioGroup radioLabResult;
     private ConstraintLayout consWithLabResult, consNoLabResult;
     private TextView tvLabspecimen, tvLabSelect;
@@ -144,12 +137,15 @@ public class AddcrfDengueActivity extends AppCompatActivity {
 
     private String labresult="", labspecimen, collectdate, receivedate, resultMeasle, resultRubella, resultVirus, resultPRC, investigator, investigatorContact, investigateDate, labselected;
 
-    //    page 9
+    //    page 7
     private RadioGroup radioFinalClassif;
     private ImageButton imageDropdown1, imageDropdown2, imageDropdown3, imageDropdown4, imageDropdown5, imageDropdown6, imageDropdown7;
     private TextView textDropdown1, textDropdown2, textDropdown3, textDropdown4, textDropdown5, textDropdown6, textDropdown7;
 
     private String finalClassification="";
+    private int RG_finalClassifID;
+
+    //data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,17 +225,344 @@ public class AddcrfDengueActivity extends AppCompatActivity {
 
     public void pageTwo() {
         // something
-        pageThree();
+        setContentView(R.layout.activity_addcrf_dengue2);
+
+        this.radioPatientAdmit = findViewById(R.id.radiogroup_patientadmit);
+        this.etAdmitdate = findViewById(R.id.et_den_admitDate);
+        this.etOnsetdate = findViewById(R.id.et_den_onset);
+
+        this.checkRfL1 = findViewById(R.id.checkbox_den_rfL1);
+        this.checkRfL2 = findViewById(R.id.checkbox_den_rfL2);
+        this.checkRfL3 = findViewById(R.id.checkbox_den_rfL3);
+        this.checkRfL4 = findViewById(R.id.checkbox_den_rfL4);
+        this.checkRfL5 = findViewById(R.id.checkbox_den_rfL5);
+        this.checkRfL6 = findViewById(R.id.checkbox_den_rfL6);
+        this.etRfLOthers = findViewById(R.id.et_den_rfLOthers);
+        this.checkRfC1 = findViewById(R.id.checkbox_den_rfC1);
+        this.checkRfC2 = findViewById(R.id.checkbox_den_rfC2);
+        this.checkRfC3 = findViewById(R.id.checkbox_den_rfC3);
+        this.checkRfC4 = findViewById(R.id.checkbox_den_rfC4);
+        this.etRfCOthers = findViewById(R.id.et_den_rfCOthers);
+        this.checkRfH1 = findViewById(R.id.checkbox_den_rfH1);
+        this.checkRfH2 = findViewById(R.id.checkbox_den_rfH2);
+        this.checkRfH3 = findViewById(R.id.checkbox_den_rfH3);
+        this.checkRfH4 = findViewById(R.id.checkbox_den_rfH4);
+        this.checkRfH5 = findViewById(R.id.checkbox_den_rfH5);
+        this.checkRfH6 = findViewById(R.id.checkbox_den_rfH6);
+        this.etRfHOthers = findViewById(R.id.et_den_rfHOthers);
+        this.checkRfO1 = findViewById(R.id.checkbox_den_rfO1);
+        this.checkRfO2 = findViewById(R.id.checkbox_den_rfO2);
+        this.checkRfO3 = findViewById(R.id.checkbox_den_rfO3);
+        this.checkRfO4 = findViewById(R.id.checkbox_den_rfO4);
+        this.checkRfO5 = findViewById(R.id.checkbox_den_rfO5);
+        this.checkRfO6 = findViewById(R.id.checkbox_den_rfO6);
+        this.checkRfO7 = findViewById(R.id.checkbox_den_rfO7);
+        this.checkRfO8 = findViewById(R.id.checkbox_den_rfO8);
+        this.checkRfO9 = findViewById(R.id.checkbox_den_rfO9);
+        this.checkRfO10 = findViewById(R.id.checkbox_den_rfO10);
+        this.checkRfO11 = findViewById(R.id.checkbox_den_rfO11);
+        this.etRfHOthers = findViewById(R.id.et_den_rfOOthers);
+
+        this.etconsultDate = findViewById(R.id.et_den_consultDate);
+        this.etConsultPlace = findViewById(R.id.et_den_consultPlace);
+        this.radioConsulted = findViewById(R.id.radiogroup_den_consulted);
+
+        // TODO: Initialize Data if Backpressed
+        if(page2){
+            etAdmitdate.setText(admitdate);
+            etOnsetdate.setText(onsetdate);
+            etReportdate.setText(reportdate);
+            etReporter.setText(reporter);
+
+            if(consulted.equals("Yes")) {
+                radioConsulted.check(R.id.radiobutton_den_consultYes);
+                etConsultPlace.setText(consulted);
+                etconsultDate.setText(consultDate);
+                etConsultPlace.setVisibility(View.VISIBLE);
+                etconsultDate.setVisibility(View.VISIBLE);
+            } else radioConsulted.check(R.id.radiobutton_den_consultNo);
+        }
+
+        radioConsulted.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButton = (RadioButton) findViewById(i);
+                consulted = radioButton.getText().toString();
+                if (consulted.equals("Yes")) {
+                    etConsultPlace.setVisibility(View.VISIBLE);
+                    etconsultDate.setVisibility(View.VISIBLE);
+                }
+                else {
+                    etConsultPlace.setText("");
+                    etconsultDate.setText("");
+                    etConsultPlace.setVisibility(View.INVISIBLE);
+                    etconsultDate.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        etAdmitdate.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View v) {
+            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcrfDengueActivity.this, new DatePickerDialog.OnDateSetListener() {
+                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                    etAdmitdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+        etOnsetdate.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View v) {
+            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcrfDengueActivity.this, new DatePickerDialog.OnDateSetListener() {
+                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                    etOnsetdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+        etReportdate.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View v) {
+            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcrfDengueActivity.this, new DatePickerDialog.OnDateSetListener() {
+                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                    etReportdate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+
+        etconsultDate.setOnClickListener(new View.OnClickListener() { @Override
+        public void onClick(View v) {
+            final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcrfDengueActivity.this, new DatePickerDialog.OnDateSetListener() {
+                @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                    etconsultDate.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                            Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                            Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+
+//        checkRfO1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//            if (b && riskfactors/1000==1) riskfactors += 1000; } });
+        checkRfL6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (b) etRfLOthers.setVisibility(View.VISIBLE); else etRfLOthers.setVisibility(View.INVISIBLE); } });
+        checkRfC4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (b) etRfCOthers.setVisibility(View.VISIBLE); else etRfCOthers.setVisibility(View.INVISIBLE); } });
+        checkRfH6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (b) etRfHOthers.setVisibility(View.VISIBLE); else etRfHOthers.setVisibility(View.INVISIBLE); } });
+        checkRfO11.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()  { @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (b) etRfOOthers.setVisibility(View.VISIBLE); else etRfOOthers.setVisibility(View.INVISIBLE); } });
+
+        this.next3 = findViewById(R.id.btn_meas_next3);
+        this.back1 = findViewById(R.id.btn_meas_back1);
+
+        back1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { pageOne(); }
+        });
+
+        next3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                page2 = true;
+
+                if (patientAdmit.length() <= 0) { page2 = page2 & false; radioPatientAdmit.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioPatientAdmit.setBackgroundResource(0);
+                if (Objects.equals(patientAdmit, "Yes")) {
+                    if (etAdmitdate.getText().toString().length() <= 0) { page2 = page2 & false; etAdmitdate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etAdmitdate.setBackgroundResource(R.drawable.inputbox);
+                }
+
+                if (consulted.length() <= 0) { page2 = page2 & false; radioConsulted.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioConsulted.setBackgroundResource(0);
+                if (Objects.equals(patientAdmit, "Yes")) {
+                    if (etconsultDate.getText().toString().length() <= 0) { page2 = page2 & false; etconsultDate.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etconsultDate.setBackgroundResource(R.drawable.inputbox);
+                    if (etConsultPlace.getText().toString().length() <= 0) { page2 = page2 & false; etConsultPlace.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etConsultPlace.setBackgroundResource(R.drawable.inputbox);
+                }
+
+                if (etOnsetdate.getText().toString().length() <= 0) { page2 = page2 & false; etOnsetdate.setBackgroundResource(R.drawable.inputbox_red); }
+                else etOnsetdate.setBackgroundResource(R.drawable.inputbox);
+                if (etReportdate.getText().toString().length() <= 0) { page2 = page2 & false; etReportdate.setBackgroundResource(R.drawable.inputbox_red); }
+                else etReportdate.setBackgroundResource(R.drawable.inputbox);
+                if (etReporter.getText().toString().length() <= 0) { page2 = page2 & false; etReporter.setBackgroundResource(R.drawable.inputbox_red); }
+                else etReporter.setBackgroundResource(R.drawable.inputbox);
+
+                if (checkRfL6.isChecked()) {
+                    if (etRfLOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfLOthers.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRfLOthers.setBackgroundResource(R.drawable.inputbox);
+                }
+                if (checkRfC4.isChecked()) {
+                    if (etRfCOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfCOthers.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRfCOthers.setBackgroundResource(R.drawable.inputbox);
+                }
+                if (checkRfH6.isChecked()) {
+                    if (etRfHOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfHOthers.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRfHOthers.setBackgroundResource(R.drawable.inputbox);
+                }
+                if (checkRfO11.isChecked()) {
+                    if (etRfOOthers.getText().toString().length() <= 0) { page2 = page2 & false; etRfOOthers.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etRfOOthers.setBackgroundResource(R.drawable.inputbox);
+                }
+
+                // TODO: validate risk factors
+
+                if (!page2) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                else {
+                    // patientAdmit set in onclick
+                    admitdate = etAdmitdate.getText().toString();
+                    onsetdate = etOnsetdate.getText().toString();
+                    reportdate = etReportdate.getText().toString();
+                    reporter = etReporter.getText().toString();
+                    consultDate = etconsultDate.getText().toString();
+                    consultPlace = etConsultPlace.getText().toString();
+                    pageThree();
+                }
+            }
+        });
     }
 
     public void pageThree() {
         // something
-        pageFour();
+        setContentView(R.layout.activity_addcrf_dengue3);
+
+        radioDengueVaccination = findViewById(R.id.radiogroup_den_vaxxed);
+        etdatefirstvax = findViewById(R.id.et_den_vaxxedFirstDate);
+        etdatelastvax = findViewById(R.id.et_den_vaxxedFirstDate);
+
+        back2 = findViewById(R.id.btn_den_back2);
+        next4 = findViewById(R.id.btn_den_next4);
+
+        if(page3) {
+            radioDengueVaccination.check(RG_Vaxcheckedid);
+            etdatelastvax.setText(datelastvax);
+            etdatefirstvax.setText(datefirstvax);
+
+            if(vaccinated.equals("Yes")) {
+                etdatelastvax.setVisibility(View.VISIBLE);
+                etdatefirstvax.setVisibility(View.VISIBLE);
+            }
+        }
+
+        radioDengueVaccination.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButton = (RadioButton) findViewById(i);
+                vaccinated = radioButton.getText().toString();
+                RG_Vaxcheckedid = i;
+
+                if (vaccinated.equals("Yes")) {
+                    etdatelastvax.setVisibility(View.VISIBLE);
+                    etdatefirstvax.setVisibility(View.VISIBLE);
+                }
+                else {
+                    etdatelastvax.setVisibility(View.INVISIBLE);
+                    etdatefirstvax.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        this.etdatefirstvax.setOnClickListener(new View.OnClickListener() {@Override
+            public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+                mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddcrfDengueActivity.this,
+                        new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                            etdatefirstvax.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                    Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                    Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
+                datePickerDialog.show(); }
+        });
+
+        this.etdatelastvax.setOnClickListener(new View.OnClickListener() {@Override
+        public void onClick(View v) { final Calendar c = Calendar.getInstance(); int mYear, mMonth, mDay;
+            mYear = c.get(Calendar.YEAR); mMonth = c.get(Calendar.MONTH); mDay = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddcrfDengueActivity.this,
+                    new DatePickerDialog.OnDateSetListener() { @Override  public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+                        etdatelastvax.setText(Strings.padStart(Integer.toString(year), 4, '0') + "-" +
+                                Strings.padStart(Integer.toString(monthOfYear), 2, '0') + "-" +
+                                Strings.padStart(Integer.toString(dayOfMonth), 2, '0'));} }, mYear, mMonth, mDay);
+            datePickerDialog.show(); }
+        });
+
+        back2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { pageTwo(); }
+        });
+
+        next4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                page3 = true;
+
+                if (vaccinated.equals("")) { page3 = false; radioDengueVaccination.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioDengueVaccination.setBackgroundResource(0);
+                if(vaccinated.equals("Yes")){
+                    if (etdatefirstvax.getText().toString().length() <= 0) { page3 = false; etdatefirstvax.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etdatefirstvax.setBackgroundResource(R.drawable.inputbox);
+                    if (etdatelastvax.getText().toString().length() <= 0) { page3 = false; etdatelastvax.setBackgroundResource(R.drawable.inputbox_red); }
+                    else etdatelastvax.setBackgroundResource(R.drawable.inputbox);
+                }
+
+
+                if (!page3) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                else {
+                    datefirstvax = etdatefirstvax.getText().toString();
+                    datelastvax = etdatelastvax.getText().toString();
+
+                    pageFour();
+                }
+            }
+        });
     }
 
     public void pageFour() {
         // something
-        pageFive();
+        radioDengueClinicalClass = findViewById(R.id.radiogroup_den_clinic_classif);
+
+        next5 = findViewById(R.id.btn_den_next5);
+        back4 = findViewById(R.id.btn_den_back4);
+
+        if(page4){
+            radioDengueClinicalClass.check(RG_clinicalClassID);
+        }
+
+        radioDengueClinicalClass.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButton = (RadioButton) findViewById(i);
+                clinicalClass = radioButton.getText().toString();
+                RG_clinicalClassID = i;
+            }
+        });
+
+        back2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { pageTwo(); }
+        });
+
+        next4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                page4 = true;
+
+                if (clinicalClass.equals("")) { page3 = false; radioDengueClinicalClass.setBackgroundResource(R.color.theme_lightest_red); }
+                else radioDengueClinicalClass.setBackgroundResource(0);
+
+                if (!page4) Toast.makeText(getBaseContext(), "Please fill all required fields.", Toast.LENGTH_SHORT).show();
+                else {
+                    datefirstvax = etdatefirstvax.getText().toString();
+                    datelastvax = etdatelastvax.getText().toString();
+
+                    pageFive();
+                }
+            }
+        });
     }
 
     public void pageFive() {
@@ -254,6 +577,28 @@ public class AddcrfDengueActivity extends AppCompatActivity {
 
     public void pageSeven() {
         // something
+
+        this.radioFinalClassif = findViewById(R.id.radiogroup_den_case_classif);
+
+        if(page7) {
+            radioFinalClassif.check(RG_finalClassifID);
+        }
+
+        radioFinalClassif.setOnCheckedChangeListener (new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButton = (RadioButton) findViewById(i);
+                finalClassification = radioButton.getText().toString();
+                RG_finalClassifID = i;
+            }
+        });
+
+        this.back6 = findViewById(R.id.btn_den_back6);
+        back6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { pageSix(); }
+        });
+
         this.submit = findViewById(R.id.btn_meas_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -419,51 +764,7 @@ public class AddcrfDengueActivity extends AppCompatActivity {
                 // CASE DATA
                 CaseData caseData = new CaseData();
                 // checkSymp1, checkSymp2
-                caseData.setPatientAdmitted(patientAdmit);
-                caseData.setSympFever(symp1date);
-                caseData.setSympRash(symp2date);
-                caseData.setSympLymph(checkSymp3.isChecked());
-                caseData.setSympCough(checkSymp4.isChecked());
-                caseData.setSympKoplik(checkSymp5.isChecked());
-                caseData.setSympRunnynose(checkSymp6.isChecked());
-                caseData.setSympRedeye(checkSymp7.isChecked());
-                caseData.setSympArthrisis(checkSymp8.isChecked());
-                caseData.setComplications(complications);
-                caseData.setOtherSymptoms(symptoms);
-                caseData.setDiagnosis(workingdiagnosis);
-                caseData.setMCVaccine(vaccinationStatus);
-                caseData.setMCVmv(vaccineMV);
-                caseData.setMCVmr(vaccineMR);
-                caseData.setMCVmmr(vaccineMMR);
-                caseData.setMCVlastDoseDate(vaccineLastDoseDate);
-                caseData.setMCVvalidation(vaccinationValidity);
-                caseData.setMCVCampaign(vaccineCampaign);
-                caseData.setNoMCVreason(noVaccReasons);
-                caseData.setVitA(vitA);
-                caseData.setTravelHistory(travelHistory);
-                caseData.setTravelHistoryPlace(travelPlace);
-                caseData.setTravelHistoryDate(travelDate);
-                caseData.setTravelDaysRashOnset(rashOnset);
-                caseData.setExpContactMeasles(measlesContact);
-                caseData.setExpContactRubella(rubellaContact);
-                caseData.setExpContactName(rubellaContactName);
-                caseData.setExpContactPlace(rubellaContactPlace);
-                caseData.setExpContactDate(rubellaContactTravelDate);
-                caseData.setExpPlaceType(rubellaExposure);
-                caseData.setOtherCommunityCases(otherKnownFeverRash);
-                caseData.setLabSpecimen(labspecimen);
-                caseData.setLabDateCollected(collectdate);
-                caseData.setLabDateSent(labresult);
-                caseData.setLabDateReceived(receivedate);
-                caseData.setLabMeaslesResult(resultMeasle);
-                caseData.setLabRubellaResult(resultRubella);
-                caseData.setLabVirusResult(resultVirus);
-                caseData.setLabPCRResult(resultPRC);
-                caseData.setFinalClassification(finalClassification);
-                caseData.setSourceInfection(sourceinfo);
-                caseData.setOutcome(outcome);
-                caseData.setDateDied(datedied);
-                caseData.setFinalDiagnosis(finaldiagnosis);
+                // TODO : Set Case Data
 
                 // prepping form data before sending to retrofit
                 formData = new CaseForm();

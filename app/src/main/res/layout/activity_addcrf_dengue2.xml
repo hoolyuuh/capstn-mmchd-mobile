@@ -159,6 +159,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/inputbox"
                 android:inputType="text"
+                android:focusable="false"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -230,7 +231,7 @@
                     app:layout_constraintTop_toTopOf="@id/radiobutton_den_consultYes" />
 
                 <EditText
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     android:id="@+id/et_den_consultPlace"
                     style="@style/Input"
                     android:layout_width="150dp"
