@@ -286,7 +286,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/btn_meas_next4"
+            android:id="@+id/btn_den_next4"
             style="@style/NoCorner"
             android:layout_width="95dp"
             android:layout_height="45dp"

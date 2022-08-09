@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.idsr.mobile.models.APIModels.DengueSubmitJS;
 import com.idsr.mobile.models.APIModels.EventJs;
 import com.idsr.mobile.models.APIModels.LoginJS;
 import com.idsr.mobile.models.APIModels.LoginResponse;
@@ -72,7 +73,7 @@ public class APIClient {
         Call<ArrayList<String>> getMobileCRFs(@Query("userID") String userID);
 
         @POST("postMobCRF")
-        Call<ResponseBody> postMobCRF(@Body CaseForm formData, @Nullable @Body String CRFID);
+        Call<ResponseBody> postMobCRF(@Body DengueSubmitJS submitform);
         
         @POST("updatePushData")
         Call<ResponseBody> postUpdatePushData(@Body UserSettings userSettings);
