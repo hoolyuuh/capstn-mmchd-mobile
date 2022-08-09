@@ -56,6 +56,9 @@ public class APIClient {
         @GET("getPatients")
         Call<ArrayList<Patient>> getPatientAutofill(@Query("userID") String userID, @Query("userOnly") String userOnly);
 
+        @GET("getLabUsers")
+        Call<ArrayList<User>> getLabUsers();
+
         @POST("newEvent")
         Call<ResponseBody> postAddEvent(@Body EventJs event);
 
